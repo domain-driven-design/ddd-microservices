@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public enum DemoBusinessRule implements IBusinessRule {
+public enum BusinessRuleDemo implements IBusinessRule {
 
     DEMO1("demo1", "desc1"),
     DEMO2("demo2", "desc2");
