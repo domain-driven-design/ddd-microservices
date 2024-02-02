@@ -30,7 +30,7 @@ class BusinessRuleAppServiceTest {
     @Test
     void should_query_business_rules_success() {
         // 配置
-        when(businessRuleConfig.getClassPath()).thenReturn("businessruletest.DemoBusinessRule");
+        when(businessRuleConfig.getClassPath()).thenReturn("businessruletest.BusinessRuleDemo");
 
         // 执行测试的业务逻辑
         List<BusinessRuleResponse> responses = businessRuleAppService.query();
