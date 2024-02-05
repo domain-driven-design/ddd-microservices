@@ -1,11 +1,15 @@
 package datadictionary;
 
+import java.util.Collections;
 import java.util.Map;
 
 public interface Description {
 
     String getCode();
     String getDescription();
-    Map<String, String> getExtraFields();
+
+    default Map<String, String> getExtraFields() {
+        return Collections.emptyMap();
+    }
 
 }
