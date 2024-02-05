@@ -3,7 +3,7 @@ package bizidgenerator.infrastructure;
 import bizidgenerator.domain.BizIdVariable;
 import org.apache.commons.lang3.StringUtils;
 
-import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class BizIdGeneratorUtil {
@@ -12,13 +12,13 @@ public class BizIdGeneratorUtil {
 
     public static String buildBizId(BizIdVariable bizIdVariable, String seq) {
         String prefix = bizIdVariable.getPrefix();
-        String formattedDate = BizIdGeneratorUtil.formatDate(bizIdVariable.getDayRule(), LocalDate.now());
+        String formattedDate = BizIdGeneratorUtil.formatDate(bizIdVariable.getDayRule(), OffsetDateTime.now());
         String formattedSeq = BizIdGeneratorUtil.formatSeq(seq, bizIdVariable.getLength());
 
         return prefix + formattedDate + formattedSeq;
     }
 
-    public static String formatDate(String datePattern, LocalDate date) {
+    public static String formatDate(String datePattern, OffsetDateTime date) {
         if (StringUtils.isEmpty(datePattern)) {
             return "";
         }
