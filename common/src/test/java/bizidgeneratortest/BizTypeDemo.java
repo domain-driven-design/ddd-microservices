@@ -1,4 +1,4 @@
-package bizidgeneratortest.businessruletest;
+package bizidgeneratortest;
 
 import bizidgenerator.domain.BizType;
 import lombok.AllArgsConstructor;

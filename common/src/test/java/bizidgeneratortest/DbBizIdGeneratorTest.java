@@ -1,4 +1,4 @@
-package bizidgeneratortest.businessruletest;
+package bizidgeneratortest;
 
 import bizidgenerator.config.BizIdGeneratorConfig;
 import bizidgenerator.domain.BizIdVariable;
