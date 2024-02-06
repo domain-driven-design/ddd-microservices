@@ -28,5 +28,6 @@
         <module>bff</module>
         <module>domain-base</module>
         <module>common</module>
+        <module>calculation</module>
     </modules>
 </project>
