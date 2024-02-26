@@ -26,7 +26,7 @@
 
     <modules>
         <module>bff</module>
-        <module>domain-base</module>
+        <module>base</module>
         <module>common</module>
         <module>calculation</module>
     </modules>
