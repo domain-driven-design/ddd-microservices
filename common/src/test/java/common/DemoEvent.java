@@ -1,16 +1,18 @@
-package datadictionarytest;
+package common;
 
 import datadictionary.Description;
 
 import java.util.Map;
 
-public enum StatusDemo implements Description {
-    SUBMITTED("已提交"),
-    CALCULATED("已测算");
+public enum DemoEvent implements Description {
+    SUBMIT("提交"),
+    CALCULATE("测算"),
+    REJECT("驳回"),
+    APPROVE("审批");
 
     private final String description;
 
-    StatusDemo(String description) {
+    DemoEvent(String description) {
         this.description = description;
     }
 

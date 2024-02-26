@@ -1,11 +1,12 @@
 package datadictionarytest;
 
 
+import common.DemoStatus;
 import datadictionary.DataDictionaryType;
 import datadictionary.Description;
 
 public enum DataDictionaryDemo implements DataDictionaryType {
-    STATUS_DEMO(StatusDemo.class, "状态");
+    STATUS_DEMO(DemoStatus.class, "状态");
 
     private final Class<? extends Description> clazz;
     private final String desc;
