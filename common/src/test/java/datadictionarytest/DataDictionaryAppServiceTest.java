@@ -36,15 +36,15 @@ class DataDictionaryAppServiceTest {
         assertEquals(1, responses.size());
 
         DataDictionaryResponse dataDictionaryResponse = responses.get(0);
-        assertEquals("StatusDemo", dataDictionaryResponse.getName());
+        assertEquals("DemoStatus", dataDictionaryResponse.getName());
         assertEquals("状态", dataDictionaryResponse.getDescription());
-        assertEquals(2, dataDictionaryResponse.getAttributes().size());
+        assertEquals(6, dataDictionaryResponse.getAttributes().size());
 
         List<DataDictionaryResponse.DictionaryAttributeResponse> attributes = dataDictionaryResponse.getAttributes();
-        assertEquals("SUBMITTED", attributes.get(0).getCode());
-        assertEquals("已提交", attributes.get(0).getDescription());
-        assertEquals("CALCULATED", attributes.get(1).getCode());
-        assertEquals("已测算", attributes.get(1).getDescription());
+        assertEquals("SUBMITTED", attributes.get(2).getCode());
+        assertEquals("已提交", attributes.get(2).getDescription());
+        assertEquals("CALCULATED", attributes.get(3).getCode());
+        assertEquals("已测算", attributes.get(3).getDescription());
     }
 
 }
