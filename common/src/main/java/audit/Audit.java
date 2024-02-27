@@ -3,14 +3,14 @@ package audit;
 import lombok.Getter;
 import lombok.experimental.SuperBuilder;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 @SuperBuilder
 @Getter
 public class Audit {
     private String id;
     private String createdBy;
-    private LocalDateTime createdTime;
+    private OffsetDateTime createdTime;
     private String updatedBy;
-    private LocalDateTime updatedTime;
+    private OffsetDateTime updatedTime;
 }

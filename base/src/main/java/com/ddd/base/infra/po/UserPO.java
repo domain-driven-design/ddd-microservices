@@ -3,7 +3,7 @@ package com.ddd.base.infra.po;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 @Data
 @TableName("user")
@@ -15,12 +15,12 @@ public class UserPO {
     private Boolean deleted;
     private String maintainBy;
     private String maintainByName;
-    private String maintainTime;
+    private OffsetDateTime maintainTime;
     private Integer version;
 
     private String id;
     private String createdBy;
-    private LocalDateTime createdTime;
+    private OffsetDateTime createdTime;
     private String updatedBy;
-    private LocalDateTime updatedTime;
+    private OffsetDateTime updatedTime;
 }
