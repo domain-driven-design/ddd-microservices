@@ -64,7 +64,7 @@ public class DbBizIdGenerator implements BizIdGenerator {
         OffsetDateTime expirationTime = bizIdGeneratorPO.getExpirationTime();
 
         if (TimeUtil.expired(expirationTime)) {
-            expirationTime = TimeUtil.addDays(variable.getExpireDays()).truncatedTo(ChronoUnit.DAYS);
+            expirationTime = TimeUtil.addDaysFromNow(variable.getExpireDays()).truncatedTo(ChronoUnit.DAYS);
             seq = BizIdGenerator.INITIAL_SEQ.intValue();
         }
 

@@ -41,7 +41,7 @@ public class BizIdGeneratorRepository {
         bizIdGeneratorPO.setSeq(1);
         if (variable.hasExpireDays()) {
             bizIdGeneratorPO.setExpireDays(variable.getExpireDays());
-            bizIdGeneratorPO.setExpirationTime(TimeUtil.addDays(variable.getExpireDays()).truncatedTo(ChronoUnit.DAYS));
+            bizIdGeneratorPO.setExpirationTime(TimeUtil.addDaysFromNow(variable.getExpireDays()).truncatedTo(ChronoUnit.DAYS));
         }
         bizIdGeneratorMapper.insert(bizIdGeneratorPO);
     }
@@ -50,7 +50,7 @@ public class BizIdGeneratorRepository {
         if (variable.hasExpireDays()) {
             if (!Objects.equals(originalPO.getExpireDays(), variable.getExpireDays())) {
                 originalPO.setExpireDays(variable.getExpireDays());
-                originalPO.setExpirationTime(TimeUtil.addDays(variable.getExpireDays()).truncatedTo(ChronoUnit.DAYS));
+                originalPO.setExpirationTime(TimeUtil.addDaysFromNow(variable.getExpireDays()).truncatedTo(ChronoUnit.DAYS));
             }
         } else {
             originalPO.setExpireDays(null);
