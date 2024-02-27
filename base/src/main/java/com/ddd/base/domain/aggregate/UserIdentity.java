@@ -1,6 +1,6 @@
 package com.ddd.base.domain.aggregate;
 
-import audit.Audit;
+import audit.AggregateAudit;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -8,7 +8,7 @@ import java.util.List;
 
 @Getter
 @Builder
-public class UserIdentity extends Audit {
+public class UserIdentity extends AggregateAudit {
     private String permissionBranchId;
     private String userId;
     private List<UserIdentityRole> roles;

@@ -1,12 +1,12 @@
 package com.ddd.base.domain.aggregate;
 
-import audit.Audit;
+import audit.AggregateAudit;
 import lombok.Builder;
 import lombok.Getter;
 
 @Getter
 @Builder
-public class User extends Audit {
+public class User extends AggregateAudit {
     private String name;
     private String currentIdentityId;
     private String abnormalBatch;

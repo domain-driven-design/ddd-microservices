@@ -7,7 +7,7 @@ import java.time.OffsetDateTime;
 
 @SuperBuilder
 @Getter
-public class Audit {
+public class AggregateAudit {
     private String id;
     private String createdBy;
     private OffsetDateTime createdTime;
