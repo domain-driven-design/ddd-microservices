@@ -29,7 +29,13 @@
             <optional>true</optional>
         </dependency>
 
-<!--Test related-->
+        <dependency>
+            <groupId>microservices</groupId>
+            <artifactId>common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <!--Test related-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
