@@ -1,0 +1,45 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ddd.base.infra.mapper.UserMapper">
+
+    <select id="selectPage" resultType="com.ddd.base.infra.po.UserPO">
+        SELECT
+        u.id,
+        name,
+        status,
+        deleted,
+        maintain_by,
+        maintain_by_name,
+        maintain_time,
+        u.created_by,
+        u.created_time,
+        u.updated_by,
+        u.updated_time
+        FROM user u
+        left join user_identity ui on u.id = ui.user_id
+        left join user_identity_role uir on ui.id = uir.user_identity_id
+        WHERE deleted = False
+        <if test="queryDTO.name != null and queryDTO.name != ''">
+            AND name LIKE CONCAT('%', #{queryDTO.name}, '%')
+        </if>
+        <if test="queryDTO.status != null and queryDTO.status != ''">
+            AND status = #{queryDTO.status}
+        </if>
+        <if test="queryDTO.maintainBy != null and queryDTO.maintainBy != ''">
+            AND maintain_by = #{queryDTO.maintainBy}
+        </if>
+        <if test="queryDTO.maintainByName != null and queryDTO.maintainByName != ''">
+            AND maintain_by_name LIKE CONCAT('%', #{queryDTO.maintainByName}, '%')
+        </if>
+        <if test="queryDTO.id != null and queryDTO.id != ''">
+            AND u.id = #{queryDTO.id}
+        </if>
+        <if test="queryDTO.permissionBranchId != null and queryDTO.permissionBranchId != ''">
+            AND ui.permission_branch_id = #{queryDTO.permissionBranchId}
+        </if>
+        <if test="queryDTO.role != null and queryDTO.role != ''">
+            AND uir.role = #{queryDTO.role}
+        </if>
+    </select>
+
+</mapper>

@@ -1,6 +1,6 @@
 package com.ddd.base.adapter;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ddd.base.application.service.UserService;
 import com.ddd.base.application.service.dto.UserDTO;
 import com.ddd.base.application.service.dto.query.UserQueryDTO;
@@ -19,7 +19,7 @@ public class UserController {
 
     //    查询	实现用户信息检索和筛选功能
     @GetMapping
-    public ResponseEntity<IPage<UserDTO>> query(UserQueryDTO userQuery) {
+    public ResponseEntity<Page<UserDTO>> query(UserQueryDTO userQuery) {
         return userService.query(userQuery);
     }
 //    注册	开发用户注册流程
