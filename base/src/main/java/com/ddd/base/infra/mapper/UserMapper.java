@@ -1,4 +1,4 @@
-﻿package com.ddd.base.infra.mapper;
+package com.ddd.base.infra.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;

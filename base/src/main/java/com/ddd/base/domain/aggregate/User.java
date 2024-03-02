@@ -1,11 +1,14 @@
 package com.ddd.base.domain.aggregate;
 
 import audit.AggregateAudit;
-import lombok.Builder;
 import lombok.Getter;
+import lombok.experimental.SuperBuilder;
+
+import java.time.OffsetDateTime;
+import java.util.List;
 
 @Getter
-@Builder
+@SuperBuilder
 public class User extends AggregateAudit {
     private String name;
     private String currentIdentityId;
@@ -14,7 +17,6 @@ public class User extends AggregateAudit {
     private Boolean deleted;
     private String maintainBy;
     private String maintainByName;
-    private String maintainTime;
-    private String version;
-    private UserIdentity userIdentity;
+    private OffsetDateTime maintainTime;
+    private List<UserIdentity> userIdentity;
 }

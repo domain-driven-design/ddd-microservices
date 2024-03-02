@@ -5,8 +5,6 @@ import com.ddd.base.domain.aggregate.UserIdentityRole;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.time.OffsetDateTime;
-
 
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -18,7 +16,6 @@ public class UserQueryDTO extends BasePageDTO {
     private String maintainByName;
     private String permissionBranchId;
     private UserIdentityRole role;
-    private OffsetDateTime maintainTime;
 
 }
 
