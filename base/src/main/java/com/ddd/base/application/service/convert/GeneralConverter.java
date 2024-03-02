@@ -4,10 +4,12 @@ import com.ddd.base.application.service.dto.UserIdentityResponse;
 import com.ddd.base.domain.aggregate.UserIdentity;
 import com.ddd.base.domain.repository.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @AllArgsConstructor
+@Component
 public class GeneralConverter {
     private final UserRepository userRepository;
 
