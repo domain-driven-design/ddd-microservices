@@ -20,6 +20,7 @@
         <mockito.version>3.4.0</mockito.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <mybatis-plus-boot-starter.version>3.3.1</mybatis-plus-boot-starter.version>
+        <springfox.version>3.0.0</springfox.version>
     </properties>
 
     <dependencies>
@@ -58,7 +59,7 @@
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-boot-starter</artifactId>
-            <version>3.0.0</version>
+            <version>${springfox.version}</version>
         </dependency>
 
         <!--    测试    -->
