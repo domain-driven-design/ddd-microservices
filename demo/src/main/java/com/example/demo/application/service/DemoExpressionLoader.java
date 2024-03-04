@@ -5,7 +5,7 @@ import businessrule.IBusinessRule;
 import com.example.calculation.domain.aggregate.CalculationMode;
 import com.example.demo.domain.aggregate.DemoBusinessRule;
 import com.example.demo.domain.aggregate.DemoCalculationMode;
-import infrastructure.util.AbstractExpressionLoader;
+import com.example.calculation.infrastructure.util.AbstractExpressionLoader;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,7 +1,7 @@
 package com.example.demo;
 
 import enabler.EnableBusinessRule;
-import infrastructure.util.EnableCalculation;
+import com.example.calculation.infrastructure.util.EnableCalculation;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

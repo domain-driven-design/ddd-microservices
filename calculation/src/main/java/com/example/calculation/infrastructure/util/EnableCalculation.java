@@ -1,4 +1,4 @@
-package infrastructure.util;
+package com.example.calculation.infrastructure.util;
 
 import com.example.calculation.adapter.CalculationController;
 import com.example.calculation.application.assembler.CalculationAssemblerImpl;
@@ -24,5 +24,5 @@ import java.lang.annotation.Target;
         CalculationAssemblerImpl.class,
         CalculationTransactionRepository.class,
         FlowExecutor.class})
-@MapperScan("infrastructure.persistence")  // 指定 MyBatis 扫描的包路径
+@MapperScan("com.example.calculation.infrastructure")
 public @interface EnableCalculation {}

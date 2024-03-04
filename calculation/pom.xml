@@ -22,6 +22,7 @@
         <qlexpress.version>3.3.0</qlexpress.version>
         <liteflow.version>2.10.6</liteflow.version>
         <mysql.version>8.0.29</mysql.version>
+        <mybatis.plus.version>3.3.1</mybatis.plus.version>
     </properties>
 
     <dependencies>
@@ -68,6 +69,7 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${mybatis.plus.version}</version>
         </dependency>
 
         <dependency>
@@ -76,22 +78,5 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

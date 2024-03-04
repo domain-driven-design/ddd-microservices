@@ -1,4 +1,4 @@
-package infrastructure.util;
+package com.example.calculation.infrastructure.util;
 
 import com.baomidou.mybatisplus.autoconfigure.ConfigurationCustomizer;
 import org.apache.ibatis.session.Configuration;

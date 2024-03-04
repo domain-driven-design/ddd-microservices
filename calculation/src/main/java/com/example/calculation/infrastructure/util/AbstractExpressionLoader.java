@@ -1,4 +1,4 @@
-package infrastructure.util;
+package com.example.calculation.infrastructure.util;
 
 import businessrule.BusinessRuleProvider;
 import businessrule.IBusinessRule;

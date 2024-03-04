@@ -4,8 +4,8 @@ import bizidgenerator.domain.BizType;
 import com.example.calculation.domain.aggregate.CalculationMode;
 import com.example.demo.domain.aggregate.DemoBizType;
 import com.example.demo.domain.aggregate.DemoCalculationMode;
-import infrastructure.util.AbstractMyBatisConfig;
-import infrastructure.util.CommonEnumTypeHandler;
+import com.example.calculation.infrastructure.util.AbstractMyBatisConfig;
+import com.example.calculation.infrastructure.util.CommonEnumTypeHandler;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration

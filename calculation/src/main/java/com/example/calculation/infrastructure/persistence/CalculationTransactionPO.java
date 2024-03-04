@@ -1,4 +1,4 @@
-package infrastructure.persistence;
+package com.example.calculation.infrastructure.persistence;
 
 import bizidgenerator.domain.BizType;
 import com.baomidou.mybatisplus.annotation.TableName;

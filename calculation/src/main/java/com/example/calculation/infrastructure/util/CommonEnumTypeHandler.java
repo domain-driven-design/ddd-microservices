@@ -1,4 +1,4 @@
-package infrastructure.util;
+package com.example.calculation.infrastructure.util;
 
 import org.apache.ibatis.type.BaseTypeHandler;
 import org.apache.ibatis.type.JdbcType;

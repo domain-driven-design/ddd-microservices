@@ -29,5 +29,6 @@
         <module>base</module>
         <module>common</module>
         <module>calculation</module>
+        <module>demo</module>
     </modules>
 </project>

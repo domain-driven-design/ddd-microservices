@@ -6,7 +6,7 @@ import com.example.calculation.domain.aggregate.AbstractCalculationData;
 import com.example.calculation.domain.aggregate.CalculationEssential;
 import com.example.calculation.domain.aggregate.CalculationNode;
 import com.example.calculation.domain.aggregate.CalculationTransaction;
-import infrastructure.persistence.CalculationTransactionPO;
+import com.example.calculation.infrastructure.persistence.CalculationTransactionPO;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
 import org.mapstruct.ReportingPolicy;

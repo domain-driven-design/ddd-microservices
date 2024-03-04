@@ -7,7 +7,7 @@ import com.example.calculation.domain.repository.CalculationTransactionRepositor
 import com.example.demo.domain.aggregate.DemoCalculationMode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yomahub.liteflow.core.FlowExecutor;
-import infrastructure.util.AbstractExpressionLoader;
+import com.example.calculation.infrastructure.util.AbstractExpressionLoader;
 import org.springframework.stereotype.Service;
 
 

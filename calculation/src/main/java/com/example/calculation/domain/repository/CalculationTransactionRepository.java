@@ -3,8 +3,8 @@ package com.example.calculation.domain.repository;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.example.calculation.application.assembler.CalculationAssembler;
 import com.example.calculation.domain.aggregate.CalculationTransaction;
-import infrastructure.persistence.CalculationTransactionMapper;
-import infrastructure.persistence.CalculationTransactionPO;
+import com.example.calculation.infrastructure.persistence.CalculationTransactionMapper;
+import com.example.calculation.infrastructure.persistence.CalculationTransactionPO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
