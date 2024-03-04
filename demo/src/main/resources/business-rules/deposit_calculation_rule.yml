@@ -1,0 +1,23 @@
+
+rmbAmount:
+  componentName: rmbAmount
+
+upperLimitInterestRate:
+  componentName: upperLimitInterestRate
+  expression: "benchmarkInterestRate*rmbAmount/12"
+  variables:
+    - benchmarkInterestRate
+    - rmbAmount
+
+benchmarkInterestRate:
+  componentName: benchmarkInterestRate
+  expression: "basicRefactor * listingPrice"
+  variables:
+    - listingPrice
+    - basicRefactor
+
+listingPrice:
+  componentName: listingPrice
+
+basicRefactor:
+  componentName: basicRefactor

@@ -22,7 +22,7 @@ import java.util.TimeZone;
 @Slf4j
 public class JacksonUtil {
 
-    private static final ObjectMapper MAPPER = new ObjectMapper();
+    public static final ObjectMapper MAPPER = new ObjectMapper();
 
     static {
         SimpleModule module = new SimpleModule();

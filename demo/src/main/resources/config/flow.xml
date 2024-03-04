@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<flow>
+    <chain name="DEPOSIT">
+        THEN(
+        WHEN(
+            rmbAmount,
+            listingPrice,
+            basicRefactor
+        ),
+        WHEN(
+            benchmarkInterestRate
+        ),
+        WHEN(
+            upperLimitInterestRate
+        )
+        )
+    </chain>
+</flow>

@@ -1,5 +1,6 @@
 package enabler;
 
+import businessrule.BusinessRuleProvider;
 import businessrule.application.BusinessRuleAppService;
 import businessrule.controller.BusinessRuleController;
 import org.springframework.context.annotation.Import;
@@ -13,5 +14,5 @@ import java.lang.annotation.Target;
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Import({BusinessRuleAppService.class, BusinessRuleController.class})
+@Import({BusinessRuleAppService.class, BusinessRuleController.class, BusinessRuleProvider.class})
 public @interface EnableBusinessRule {}

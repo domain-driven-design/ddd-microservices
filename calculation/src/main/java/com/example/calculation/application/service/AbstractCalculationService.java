@@ -32,7 +32,7 @@ public abstract class AbstractCalculationService implements CalculationServiceIn
     private final CalculationTransactionRepository transactionRepository;
     private final FlowExecutor flowExecutor;
 
-    abstract CalculationMode getMode();
+    public abstract CalculationMode getMode();
 
     public List<CalculationNodeResult> execute(CalculationCommand<AbstractCalculationData> command) {
         try {

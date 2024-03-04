@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 @Data
@@ -23,8 +24,8 @@ public class CalculationContext {
     private CalculationMode mode;
     private CalculationEssential<AbstractCalculationData> essential;
     private Map<String, CalculationExpression> expression = new HashMap<>();
-    private Map<String, BigDecimal> variables = new HashMap<>();
-    private Map<String, CalculationNode> nodes = new HashMap<>();
+    private ConcurrentHashMap<String, BigDecimal> variables = new ConcurrentHashMap<>();
+    private ConcurrentHashMap<String, CalculationNode> nodes = new ConcurrentHashMap<>();
     private Exception failureCause;
 
     public static CalculationContext init(CalculationMode mode,
