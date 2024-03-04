@@ -19,4 +19,29 @@ public class User extends AggregateAudit {
     private String maintainByName;
     private OffsetDateTime maintainTime;
     private List<UserIdentity> userIdentity;
+
+    public void buildUserIdentity(List<UserIdentity> identities) {
+        this.userIdentity = identities;
+    }
+
+    public void disable(String id) {
+        if (!this.status.equals("NORMAL")) {
+            throw new RuntimeException("USER STATUS INVALID");
+        }
+        this.status = "DISABLE";
+        this.maintainBy = id;
+        this.maintainTime = OffsetDateTime.now();
+        super.updatedAudit(id);
+
+    }
+
+    public void enable(String id) {
+        if (!this.status.equals("DISABLE")) {
+            throw new RuntimeException("USER STATUS INVALID");
+        }
+        this.status = "NORMAL";
+        this.maintainBy = id;
+        this.maintainTime = OffsetDateTime.now();
+        super.updatedAudit(id);
+    }
 }

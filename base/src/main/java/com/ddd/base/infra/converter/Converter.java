@@ -23,4 +23,6 @@ public interface Converter {
     UserPO toPO(User user);
 
     UserIdentityPO toIdentityPO(UserIdentity userIdentity);
+
+    UserIdentityPO toUserIdentityPO(UserIdentity userIdentity);
 }

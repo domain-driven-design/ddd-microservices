@@ -11,14 +11,13 @@ import com.ddd.base.infra.mapper.UserIdentityRoleMapper;
 import com.ddd.base.infra.mapper.UserMapper;
 import com.ddd.base.infra.po.UserIdentityPO;
 import com.ddd.base.infra.po.UserIdentityRolePO;
+import com.ddd.base.infra.po.UserPO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import javax.validation.constraints.NotBlank;
 import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
@@ -31,11 +30,21 @@ public class UserRepositoryImpl implements UserRepository {
 
 
     @Override
+    public Optional<User> find(@NotBlank String id) {
+        UserPO userPO = userMapper.selectById(id);
+        if (Objects.isNull(userPO)) {
+            return Optional.empty();
+        }
+        User user = Converter.INSTANCE.toEntity(userPO);
+        List<UserIdentity> identities = findUserIdentitiesByUserId(user.getId());
+        user.buildUserIdentity(identities);
+        return Optional.of(user);
+    }
+
+    @Override
     public List<UserIdentity> findUserIdentitiesByUserId(@NotBlank String userId) {
         List<UserIdentity> userIdentities = new ArrayList<>();
-        LambdaQueryWrapper<UserIdentityPO> identityWrapper = new LambdaQueryWrapper<>();
-        identityWrapper.eq(UserIdentityPO::getUserId, userId);
-        List<UserIdentityPO> userIdentityPOS = userIdentityMapper.selectList(identityWrapper);
+        List<UserIdentityPO> userIdentityPOS = getUserIdentityPOsByUserId(userId);
 
         userIdentityPOS.forEach(
                 identityPO -> {
@@ -54,16 +63,56 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public void create(User user) {
         userMapper.insert(Converter.INSTANCE.toPO(user));
+
+        insertUserIdentity(user);
+
+    }
+
+
+    @Override
+    public void update(User user) {
+        if (Objects.isNull(user)) {
+            return;
+        }
+        updateAggregate(user);
+
+        LambdaQueryWrapper<UserIdentityPO> identityWrapper = new LambdaQueryWrapper<>();
+        identityWrapper.eq(UserIdentityPO::getUserId, user.getId());
+        userIdentityMapper.delete(identityWrapper);
+
+        List<String> userIdentityIds =
+                user.getUserIdentity().stream().map(UserIdentity::getId).distinct().collect(Collectors.toList());
+        LambdaQueryWrapper<UserIdentityRolePO> roleWrapper = new LambdaQueryWrapper<>();
+        roleWrapper.in(UserIdentityRolePO::getUserIdentityId, userIdentityIds);
+        userIdentityRoleMapper.delete(roleWrapper);
+
+        insertUserIdentity(user);
+
+
+
+    }
+
+    @Override
+    public void updateAggregate(User user) {
+        UserPO userPO = Converter.INSTANCE.toPO(user);
+        userMapper.updateById(userPO);
+    }
+
+    private void insertUserIdentity(User user) {
         user.getUserIdentity().forEach(
                 userIdentity -> {
                     userIdentityMapper.insert(Converter.INSTANCE.toIdentityPO(userIdentity));
-
                     userIdentity.getRoles().forEach(insertRoles(userIdentity)
                     );
 
                 }
         );
+    }
 
+    private List<UserIdentityPO> getUserIdentityPOsByUserId(String userId) {
+        LambdaQueryWrapper<UserIdentityPO> identityWrapper = new LambdaQueryWrapper<>();
+        identityWrapper.eq(UserIdentityPO::getUserId, userId);
+        return userIdentityMapper.selectList(identityWrapper);
     }
 
     private Consumer<UserIdentityRole> insertRoles(UserIdentity userIdentity) {

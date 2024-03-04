@@ -4,10 +4,17 @@ import com.ddd.base.domain.aggregate.User;
 import com.ddd.base.domain.aggregate.UserIdentity;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserRepository {
 
-     List<UserIdentity> findUserIdentitiesByUserId(String userId);
+    Optional<User> find(String id);
+
+    List<UserIdentity> findUserIdentitiesByUserId(String userId);
 
     void create(User user);
+
+    void update(User user);
+
+    void updateAggregate(User user);
 }

@@ -36,12 +36,20 @@ public class UserService {
     }
 
     public UserResponse disable(String id) {
-        return null;
+        User user = userRepository.find(id)
+                .orElseThrow(() -> new RuntimeException("User not found: " + id));
+        user.disable(id);
+        userRepository.updateAggregate(user);
+        return UserMapperConverter.INSTANCE.toResponse(user);
     }
 
 
     public UserResponse enable(String id) {
-        return null;
+        User user = userRepository.find(id)
+                .orElseThrow(() -> new RuntimeException("User not found: " + id));
+        user.enable(id);
+        userRepository.updateAggregate(user);
+        return UserMapperConverter.INSTANCE.toResponse(user);
     }
 
     public UserResponse switchIdentity(String id) {
