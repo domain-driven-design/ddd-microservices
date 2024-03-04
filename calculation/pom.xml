@@ -13,22 +13,64 @@
     <name>calculation</name>
     <modelVersion>4.0.0</modelVersion>
     <description>calculation</description>
+    <packaging>jar</packaging>
 
     <properties>
         <java.version>11</java.version>
+        <microservices.version>0.0.1-SNAPSHOT</microservices.version>
+        <org.mapstruct.version>1.5.2.Final</org.mapstruct.version>
+        <org.mapstruct.processor.version>1.4.2.Final</org.mapstruct.processor.version>
+        <qlexpress.version>3.3.0</qlexpress.version>
+        <liteflow.version>2.10.6</liteflow.version>
+        <mysql.version>8.0.29</mysql.version>
     </properties>
 
     <dependencies>
         <dependency>
+            <groupId>microservices</groupId>
+            <artifactId>common</artifactId>
+            <version>${microservices.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>QLExpress</artifactId>
+            <version>${qlexpress.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.yomahub</groupId>
+            <artifactId>liteflow-spring-boot-starter</artifactId>
+            <version>${liteflow.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>${org.mapstruct.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>${org.mapstruct.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

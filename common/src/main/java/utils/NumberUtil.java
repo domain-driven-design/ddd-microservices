@@ -71,4 +71,17 @@ public class NumberUtil {
         return multiply(BigDecimal.valueOf(mode.getFactor())).result;
     }
 
+    public static BigDecimal toBigDecimal(Object value) {
+        if (value == null) {
+            return null;
+        }
+        if (value instanceof String) {
+            return new BigDecimal((String) value);
+        }
+        if (value instanceof Number) {
+            return BigDecimal.valueOf(((Number) value).doubleValue());
+        }
+        throw new IllegalArgumentException(); //todo
+    }
+
 }
