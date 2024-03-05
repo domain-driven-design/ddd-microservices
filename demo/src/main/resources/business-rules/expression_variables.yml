@@ -1,0 +1,34 @@
+rmbAmount:
+  name: "折人民币金额"
+  description: "将原价按人民币汇率换算的金额"
+  beIncludedSubsidy: false
+  beAnnualized: false
+  beFirstYear: false
+
+upperLimitInterestRate:
+  name: "上限利率"
+  description: "在基准利率的基础上调高的成数"
+  beIncludedSubsidy: false
+  beAnnualized: false
+  beFirstYear: true
+
+benchmarkInterestRate:
+  name: "基准利率"
+  description: "商业银行存款、贷款、贴现等业务的指导性利率"
+  beIncludedSubsidy: false
+  beAnnualized: true
+  beFirstYear: false
+
+listingPrice:
+  name: "挂牌利率"
+  description: "对外公布的当前存款或贷款的利率"
+  beIncludedSubsidy: false
+  beAnnualized: true
+  beFirstYear: false
+
+basicRefactor:
+  name: "折算基准"
+  description: "折算基准"
+  beIncludedSubsidy: true
+  beAnnualized: false
+  beFirstYear: false

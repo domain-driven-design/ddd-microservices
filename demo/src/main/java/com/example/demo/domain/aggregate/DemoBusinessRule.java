@@ -10,7 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public enum DemoBusinessRule implements IBusinessRule {
 
-    DEPOSIT_CALCULATION_RULE("deposit_calculation_rule", "存款测算规则");
+    DEPOSIT_CALCULATION_RULE("deposit_calculation_rule", "存款测算规则"),
+    EXPRESSION_VARIABLES("expression_variables", "变量信息");
 
     private String ruleName;
     private String description;
