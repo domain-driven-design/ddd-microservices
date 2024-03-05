@@ -1,8 +1,8 @@
-package com.ddd.base.application.service.convert;
+package com.ddd.base.application.convert;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.ddd.base.application.service.dto.UserResponse;
-import com.ddd.base.application.service.dto.UserIdentityResponse;
+import com.ddd.base.application.dto.UserIdentityResponse;
+import com.ddd.base.application.dto.UserResponse;
 import com.ddd.base.domain.aggregate.User;
 import com.ddd.base.domain.aggregate.UserIdentity;
 import com.ddd.base.infra.po.UserPO;

@@ -1,4 +1,4 @@
-package com.ddd.base.application.service.dto;
+package com.ddd.base.application.dto;
 
 import lombok.Data;
 

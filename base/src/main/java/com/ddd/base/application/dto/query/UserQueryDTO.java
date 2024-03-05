@@ -1,4 +1,4 @@
-package com.ddd.base.application.service.dto.query;
+package com.ddd.base.application.dto.query;
 
 import audit.BasePageDTO;
 import com.ddd.base.domain.aggregate.UserIdentityRole;

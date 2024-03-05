@@ -1,6 +1,6 @@
-package com.ddd.base.application.service.convert;
+package com.ddd.base.application.convert;
 
-import com.ddd.base.application.service.dto.UserIdentityResponse;
+import com.ddd.base.application.dto.UserIdentityResponse;
 import com.ddd.base.domain.aggregate.UserIdentity;
 import com.ddd.base.domain.repository.UserRepository;
 import lombok.AllArgsConstructor;
