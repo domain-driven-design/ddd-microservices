@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Order Summary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        object[type="watermark"] {
+            position: fixed;
+            display: block;
+            width: 100%;
+            height: 100%;
+            transform: rotate(45deg);
+            z-index: 1000;
+            left: 0;
+            top: 0;
+        }
+        .page-footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+        }
+        @page {
+            @bottom-center {
+                content: 'Page ' counter(page);
+            }
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Order Summary</h1>
+<p>Order ID: <span th:text="${order.id}"></span></p>
+<p>Customer Name: <span th:text="${order.customerName}"></span></p>
+<p>Date: <span th:text="${order.date}"></span></p>
+
+<h2>Items</h2>
+<ul>
+    <li th:each="item : ${order.items}" th:text="${item.name} + ' - Quantity: ' + ${item.quantity} + ', Price: $' + ${item.price}"></li>
+</ul>
+
+<p>Total: <span th:text="${order.total}"></span></p>
+
+<div class='page-footer'></div>"
+<object type="watermark"></object>
+</body>
+</html>
