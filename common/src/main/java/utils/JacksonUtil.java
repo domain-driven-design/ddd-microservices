@@ -85,7 +85,7 @@ public class JacksonUtil {
         @Override
         public void serialize(BigDecimal value, JsonGenerator gen, SerializerProvider serializers)
                 throws IOException {
-            gen.writeNumber(value.stripTrailingZeros());
+            gen.writeString(value.toPlainString());
         }
     }
 }
