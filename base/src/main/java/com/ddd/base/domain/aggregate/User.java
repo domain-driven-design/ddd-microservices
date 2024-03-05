@@ -44,4 +44,12 @@ public class User extends AggregateAudit {
         this.maintainTime = OffsetDateTime.now();
         super.updatedAudit(id);
     }
+
+    public void switchIdentity(String identityId) {
+        if (!this.status.equals("NORMAL")) {
+            throw new RuntimeException("USER STATUS INVALID");
+        }
+        this.currentIdentityId = identityId;
+        super.updatedAudit("");
+    }
 }

@@ -63,9 +63,7 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public void create(User user) {
         userMapper.insert(Converter.INSTANCE.toPO(user));
-
         insertUserIdentity(user);
-
     }
 
 
@@ -87,8 +85,6 @@ public class UserRepositoryImpl implements UserRepository {
         userIdentityRoleMapper.delete(roleWrapper);
 
         insertUserIdentity(user);
-
-
 
     }
 

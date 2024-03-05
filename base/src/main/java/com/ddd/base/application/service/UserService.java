@@ -52,8 +52,12 @@ public class UserService {
         return UserMapperConverter.INSTANCE.toResponse(user);
     }
 
-    public UserResponse switchIdentity(String id) {
-        return null;
+    public UserResponse switchIdentity(String id, String identityId) {
+        User user = userRepository.find(id)
+                .orElseThrow(() -> new RuntimeException("User not found: " + id));
+        user.switchIdentity(identityId);
+        userRepository.update(user);
+        return UserMapperConverter.INSTANCE.toResponse(user);
     }
 
 }

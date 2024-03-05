@@ -41,7 +41,7 @@ public class UserController {
 
     //身份切换	提供用户角色及权限的动态切换功能
     @PutMapping("/switch/{id}")
-    public ResponseEntity<UserResponse> switchIdentity(@PathVariable String id) {
-        return ResponseEntity.ok(userService.switchIdentity(id));
+    public ResponseEntity<UserResponse> switchIdentity(@PathVariable String id, @RequestParam String identityId) {
+        return ResponseEntity.ok(userService.switchIdentity(id, identityId));
     }
 }
