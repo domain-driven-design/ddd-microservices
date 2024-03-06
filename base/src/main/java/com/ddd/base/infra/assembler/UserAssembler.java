@@ -1,10 +1,10 @@
-package com.ddd.base.infra.converter;
+package com.ddd.base.infra.assembler;
 
 import com.ddd.base.domain.aggregate.User;
 import com.ddd.base.domain.aggregate.UserIdentity;
 import com.ddd.base.domain.aggregate.UserIdentityRole;
-import com.ddd.base.infra.po.UserIdentityPO;
-import com.ddd.base.infra.po.UserPO;
+import com.ddd.base.infra.persistence.po.UserIdentityPO;
+import com.ddd.base.infra.persistence.po.UserPO;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
@@ -12,8 +12,8 @@ import org.mapstruct.factory.Mappers;
 import java.util.List;
 
 @Mapper(componentModel = "spring", typeConversionPolicy = ReportingPolicy.IGNORE)
-public interface Converter {
-    Converter INSTANCE = Mappers.getMapper(Converter.class);
+public interface UserAssembler {
+    UserAssembler INSTANCE = Mappers.getMapper(UserAssembler.class);
 
 
     User toEntity(UserPO userPO);

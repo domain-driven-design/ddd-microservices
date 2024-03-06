@@ -1,14 +1,14 @@
 package com.ddd.base.application.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.ddd.base.application.convert.UserMapperConverter;
+import com.ddd.base.application.assembler.UserMapperAssembler;
 import com.ddd.base.application.dto.UserCreateDTO;
 import com.ddd.base.application.dto.UserResponse;
 import com.ddd.base.application.dto.query.UserQueryDTO;
 import com.ddd.base.domain.aggregate.User;
 import com.ddd.base.domain.repository.UserRepository;
-import com.ddd.base.infra.mapper.UserMapper;
-import com.ddd.base.infra.po.UserPO;
+import com.ddd.base.infra.persistence.mapper.UserMapper;
+import com.ddd.base.infra.persistence.po.UserPO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,14 +25,14 @@ public class UserService {
 
         Page<UserPO> userPOPage = userMapper.selectPage(page, userQuery);
 
-        return UserMapperConverter.INSTANCE.toPageDTO(userPOPage);
+        return UserMapperAssembler.INSTANCE.toPageDTO(userPOPage);
     }
 
     @Transactional
     public UserResponse register(UserCreateDTO createDTO) {
         User user = createDTO.toEntity();
         userRepository.create(user);
-        return UserMapperConverter.INSTANCE.toResponse(user);
+        return UserMapperAssembler.INSTANCE.toResponse(user);
     }
 
     @Transactional
@@ -41,7 +41,7 @@ public class UserService {
                 .orElseThrow(() -> new RuntimeException("User not found: " + id));
         user.disable(id);
         userRepository.updateAggregate(user);
-        return UserMapperConverter.INSTANCE.toResponse(user);
+        return UserMapperAssembler.INSTANCE.toResponse(user);
     }
 
     @Transactional
@@ -50,7 +50,7 @@ public class UserService {
                 .orElseThrow(() -> new RuntimeException("User not found: " + id));
         user.enable(id);
         userRepository.updateAggregate(user);
-        return UserMapperConverter.INSTANCE.toResponse(user);
+        return UserMapperAssembler.INSTANCE.toResponse(user);
     }
     @Transactional
     public UserResponse switchIdentity(String id, String identityId) {
@@ -58,7 +58,7 @@ public class UserService {
                 .orElseThrow(() -> new RuntimeException("User not found: " + id));
         user.switchIdentity(identityId);
         userRepository.update(user);
-        return UserMapperConverter.INSTANCE.toResponse(user);
+        return UserMapperAssembler.INSTANCE.toResponse(user);
     }
 
 }

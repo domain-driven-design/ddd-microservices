@@ -1,8 +1,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ddd.base.infra.mapper.UserMapper">
+<mapper namespace="com.ddd.base.infra.persistence.mapper.UserMapper">
 
-    <select id="selectPage" resultType="com.ddd.base.infra.po.UserPO">
+    <select id="selectPage" resultType="com.ddd.base.infra.persistence.po.UserPO">
         SELECT
         u.id,
         name,

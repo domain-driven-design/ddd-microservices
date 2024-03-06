@@ -1,4 +1,4 @@
-package com.ddd.base.infra.po;
+package com.ddd.base.infra.persistence.po;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;

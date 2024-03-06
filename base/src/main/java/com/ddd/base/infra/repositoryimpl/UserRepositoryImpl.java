@@ -5,13 +5,13 @@ import com.ddd.base.domain.aggregate.User;
 import com.ddd.base.domain.aggregate.UserIdentity;
 import com.ddd.base.domain.aggregate.UserIdentityRole;
 import com.ddd.base.domain.repository.UserRepository;
-import com.ddd.base.infra.converter.Converter;
-import com.ddd.base.infra.mapper.UserIdentityMapper;
-import com.ddd.base.infra.mapper.UserIdentityRoleMapper;
-import com.ddd.base.infra.mapper.UserMapper;
-import com.ddd.base.infra.po.UserIdentityPO;
-import com.ddd.base.infra.po.UserIdentityRolePO;
-import com.ddd.base.infra.po.UserPO;
+import com.ddd.base.infra.assembler.UserAssembler;
+import com.ddd.base.infra.persistence.mapper.UserIdentityMapper;
+import com.ddd.base.infra.persistence.mapper.UserIdentityRoleMapper;
+import com.ddd.base.infra.persistence.mapper.UserMapper;
+import com.ddd.base.infra.persistence.po.UserIdentityPO;
+import com.ddd.base.infra.persistence.po.UserIdentityRolePO;
+import com.ddd.base.infra.persistence.po.UserPO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -35,7 +35,7 @@ public class UserRepositoryImpl implements UserRepository {
         if (Objects.isNull(userPO)) {
             return Optional.empty();
         }
-        User user = Converter.INSTANCE.toEntity(userPO);
+        User user = UserAssembler.INSTANCE.toEntity(userPO);
         List<UserIdentity> identities = findUserIdentitiesByUserId(user.getId());
         user.buildUserIdentity(identities);
         return Optional.of(user);
@@ -51,7 +51,7 @@ public class UserRepositoryImpl implements UserRepository {
                     List<UserIdentityRolePO> rolePOS = getUserIdentityRoles(identityPO.getId());
                     List<UserIdentityRole> roles =
                             rolePOS.stream().map(UserIdentityRolePO::getRole).distinct().collect(Collectors.toList());
-                    UserIdentity userIdentity = Converter.INSTANCE.toUserIdentityEntity(identityPO, roles);
+                    UserIdentity userIdentity = UserAssembler.INSTANCE.toUserIdentityEntity(identityPO, roles);
 
                     userIdentities.add(userIdentity);
                 }
@@ -62,7 +62,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public void create(User user) {
-        userMapper.insert(Converter.INSTANCE.toPO(user));
+        userMapper.insert(UserAssembler.INSTANCE.toPO(user));
         insertUserIdentity(user);
     }
 
@@ -90,14 +90,14 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public void updateAggregate(User user) {
-        UserPO userPO = Converter.INSTANCE.toPO(user);
+        UserPO userPO = UserAssembler.INSTANCE.toPO(user);
         userMapper.updateById(userPO);
     }
 
     private void insertUserIdentity(User user) {
         user.getUserIdentity().forEach(
                 userIdentity -> {
-                    userIdentityMapper.insert(Converter.INSTANCE.toIdentityPO(userIdentity));
+                    userIdentityMapper.insert(UserAssembler.INSTANCE.toIdentityPO(userIdentity));
                     userIdentity.getRoles().forEach(insertRoles(userIdentity)
                     );
 

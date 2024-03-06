@@ -1,4 +1,4 @@
-package com.ddd.base.application.convert;
+package com.ddd.base.application.assembler;
 
 import com.ddd.base.application.dto.UserIdentityResponse;
 import com.ddd.base.domain.aggregate.UserIdentity;
@@ -10,11 +10,11 @@ import java.util.List;
 
 @AllArgsConstructor
 @Component
-public class GeneralConverter {
+public class GeneralAssembler {
     private final UserRepository userRepository;
 
     List<UserIdentityResponse> findUserIdentity(String userId) {
         List<UserIdentity> identities = userRepository.findUserIdentitiesByUserId(userId);
-        return UserMapperConverter.INSTANCE.toIdentityResponses(identities);
+        return UserMapperAssembler.INSTANCE.toIdentityResponses(identities);
     }
 }

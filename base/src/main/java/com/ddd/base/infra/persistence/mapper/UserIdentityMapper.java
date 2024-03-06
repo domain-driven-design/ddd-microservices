@@ -1,7 +1,7 @@
-package com.ddd.base.infra.mapper;
+package com.ddd.base.infra.persistence.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.ddd.base.infra.po.UserIdentityPO;
+import com.ddd.base.infra.persistence.po.UserIdentityPO;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

@@ -1,9 +1,9 @@
-package com.ddd.base.infra.mapper;
+package com.ddd.base.infra.persistence.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ddd.base.application.dto.query.UserQueryDTO;
-import com.ddd.base.infra.po.UserPO;
+import com.ddd.base.infra.persistence.po.UserPO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
