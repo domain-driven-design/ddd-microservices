@@ -35,6 +35,7 @@ public class UserService {
         return UserMapperConverter.INSTANCE.toResponse(user);
     }
 
+    @Transactional
     public UserResponse disable(String id) {
         User user = userRepository.find(id)
                 .orElseThrow(() -> new RuntimeException("User not found: " + id));
@@ -43,7 +44,7 @@ public class UserService {
         return UserMapperConverter.INSTANCE.toResponse(user);
     }
 
-
+    @Transactional
     public UserResponse enable(String id) {
         User user = userRepository.find(id)
                 .orElseThrow(() -> new RuntimeException("User not found: " + id));
@@ -51,7 +52,7 @@ public class UserService {
         userRepository.updateAggregate(user);
         return UserMapperConverter.INSTANCE.toResponse(user);
     }
-
+    @Transactional
     public UserResponse switchIdentity(String id, String identityId) {
         User user = userRepository.find(id)
                 .orElseThrow(() -> new RuntimeException("User not found: " + id));
