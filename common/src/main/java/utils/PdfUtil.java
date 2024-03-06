@@ -5,6 +5,7 @@ import com.openhtmltopdf.extend.FSObjectDrawerFactory;
 import com.openhtmltopdf.extend.OutputDevice;
 import com.openhtmltopdf.pdfboxout.PdfRendererBuilder;
 import com.openhtmltopdf.render.RenderingContext;
+import lombok.AllArgsConstructor;
 import org.w3c.dom.Element;
 
 import java.awt.*;
@@ -22,11 +23,11 @@ public class PdfUtil {
     private PdfUtil() {
     }
 
-    public static byte[] htmlToPdf(String htmlContent, String title, String waterMark) {
+    public static byte[] htmlToPdf(String htmlContent, String waterMark) {
         try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream();) {
             PdfRendererBuilder builder = new PdfRendererBuilder();
             builder.useFastMode();
-            builder.useObjectDrawerFactory(new WatermarkDrawerFactory());
+            builder.useObjectDrawerFactory(new WatermarkDrawerFactory(waterMark));
             builder.withHtmlContent(htmlContent, null);
             builder.toStream(outputStream);
             builder.run();
@@ -36,7 +37,10 @@ public class PdfUtil {
         }
     }
 
+    @AllArgsConstructor
     private static class WatermarkDrawer implements FSObjectDrawer {
+        private String waterMark;
+
         @Override
         public Map<Shape, String> drawObject(Element e, double x, double y, double width, double height, OutputDevice outputDevice, RenderingContext ctx, int dotsPerPixel) {
             outputDevice.drawWithGraphics((float) x, (float) y, (float) width / dotsPerPixel, (float) height / dotsPerPixel, (Graphics2D g2d) -> {
@@ -53,27 +57,38 @@ public class PdfUtil {
                     e1.printStackTrace();
                     throw new RuntimeException(e1);
                 }
-                // TODO as parameter
-                String watermarkString = "OpenHTMLToPDF";
-                Rectangle2D bounds = font.getStringBounds(watermarkString, g2d.getFontRenderContext());
+                Rectangle2D bounds = font.getStringBounds(waterMark, g2d.getFontRenderContext());
 
                 g2d.setFont(font);
-                g2d.setPaint(Color.RED);
+                g2d.setPaint(Color.BLACK);
                 g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f));
+                g2d.rotate(Math.toRadians(45));
+                int margin = 100;
+                int offset = 600;
 
-                g2d.drawString(watermarkString, (float) ((realWidth - bounds.getWidth()) / 2), (float) ((realHeight - bounds.getHeight()) / 2));
-
+                // Watermark matrix
+                for (int row = 0; row < 10; row++) {
+                    for (int column = 0; column < 10; column++) {
+                        g2d.drawString(waterMark,
+                                (float) ((bounds.getWidth() + margin) * (column + 1) - offset),
+                                (float) ((bounds.getHeight() + margin) * (row + 1) - offset)
+                        );
+                    }
+                }
             });
 
             return null;
         }
     }
 
+    @AllArgsConstructor
     private static class WatermarkDrawerFactory implements FSObjectDrawerFactory {
+        private String waterMark;
+
         @Override
         public FSObjectDrawer createDrawer(Element e) {
             if (isReplacedObject(e)) {
-                return new WatermarkDrawer();
+                return new WatermarkDrawer(this.waterMark);
             }
             return null;
         }

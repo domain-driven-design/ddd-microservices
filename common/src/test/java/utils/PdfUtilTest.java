@@ -21,7 +21,7 @@ class PdfUtilTest {
     @Test
     void should_convert_html_to_pdf() throws IOException {
         String htmlContent = getHtmlContent();
-        byte[] pdfBytes = PdfUtil.htmlToPdf(htmlContent, "订单详情", "内部测试，请勿转发");
+        byte[] pdfBytes = PdfUtil.htmlToPdf(htmlContent, "waterMark");
         Files.write(pdfBytes, new File("order-detail.pdf"));
     }
 
