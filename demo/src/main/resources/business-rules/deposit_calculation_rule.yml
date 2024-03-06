@@ -11,7 +11,7 @@ upperLimitInterestRate:
 
 benchmarkInterestRate:
   componentName: benchmarkInterestRate
-  expression: "basicRefactor * listingPrice"
+  expression: "basicRefactor*listingPrice"
   variables:
     - listingPrice
     - basicRefactor

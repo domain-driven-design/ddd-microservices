@@ -4,6 +4,8 @@ rmbAmount:
   beIncludedSubsidy: false
   beAnnualized: false
   beFirstYear: false
+  beFullLife: false
+  type: "AMOUNT"
 
 upperLimitInterestRate:
   name: "上限利率"
@@ -11,6 +13,8 @@ upperLimitInterestRate:
   beIncludedSubsidy: false
   beAnnualized: false
   beFirstYear: true
+  beFullLife: false
+  type: "PERCENT"
 
 benchmarkInterestRate:
   name: "基准利率"
@@ -18,6 +22,8 @@ benchmarkInterestRate:
   beIncludedSubsidy: false
   beAnnualized: true
   beFirstYear: false
+  beFullLife: false
+  type: "PERCENT"
 
 listingPrice:
   name: "挂牌利率"
@@ -25,6 +31,8 @@ listingPrice:
   beIncludedSubsidy: false
   beAnnualized: true
   beFirstYear: false
+  beFullLife: false
+  type: "PERCENT"
 
 basicRefactor:
   name: "折算基准"
@@ -32,3 +40,5 @@ basicRefactor:
   beIncludedSubsidy: true
   beAnnualized: false
   beFirstYear: false
+  beFullLife: true
+  type: "FACTOR"

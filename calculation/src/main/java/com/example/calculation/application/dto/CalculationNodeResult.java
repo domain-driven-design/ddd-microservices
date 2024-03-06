@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,7 +21,7 @@ public class CalculationNodeResult {
     private String name;
     private String expression;
     private BigDecimal value;
-    private List<CalculationNodeResult> children;
-    private Map<String, BigDecimal> params;
+    private List<CalculationNodeResult> children = new ArrayList<>();
+    private Map<String, BigDecimal> params = new HashMap<>();
 
 }
