@@ -5,12 +5,18 @@
         WHEN(
             rmbAmount,
             listingPrice,
-            basicRefactor
+            basicRefactor,
+            proposedInterestRateIncome,
+            operatingCost,
+            periodicCost,
+            customerContribution
         ),
         WHEN(
+            originalAllScenesEva,
             benchmarkInterestRate
         ),
         WHEN(
+            proposedInterestRateFullLifeSubsidyEva,
             upperLimitInterestRate
         )
         )

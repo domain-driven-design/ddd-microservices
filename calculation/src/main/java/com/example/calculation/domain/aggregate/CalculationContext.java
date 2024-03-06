@@ -51,6 +51,9 @@ public class CalculationContext {
     }
 
     public void insertNode(String variableName) {
+        if (!hasValue(variableName)) {
+            return;
+        }
         CalculationExpression calculationExpression = this.getExpression().get(variableName);
         Map<String, BigDecimal> vars = new HashMap<>();
         calculationExpression.getVariables().forEach(v -> vars.put(v, this.retrieveValue(v)));
@@ -63,6 +66,7 @@ public class CalculationContext {
         if (!vars.isEmpty()) {
             node.setChildren(calculationExpression.getVariables().stream()
                     .map(v -> nodes.get(v))
+                    .filter(Objects::nonNull)
                     .collect(Collectors.toList()));
         }
         nodes.put(variableName, node);
@@ -70,6 +74,10 @@ public class CalculationContext {
 
     public List<CalculationNode> getAllNodes() {
         return new ArrayList<>(nodes.values());
+    }
+
+    private boolean hasValue(String variableName) {
+        return Objects.nonNull(this.retrieveValue(variableName));
     }
 
 }

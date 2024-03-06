@@ -1,3 +1,31 @@
+proposedInterestRateFullLifeSubsidyEva:
+  componentName: proposedInterestRateFullLifeSubsidyEva
+  expression: "proposedInterestRateIncome-operatingCost-periodicCost+originalAllScenesEva"
+  variables:
+    - proposedInterestRateIncome
+    - operatingCost
+    - periodicCost
+    - originalAllScenesEva
+
+proposedInterestRateIncome:
+  componentName: proposedInterestRateIncome
+
+operatingCost:
+  componentName: operatingCost
+
+periodicCost:
+  componentName: periodicCost
+
+originalAllScenesEva:
+  componentName: originalAllScenesEva
+  expression: "customerSceneEva+innerSceneEva+groupSceneEva"
+  variables:
+    - customerSceneEva
+    - innerSceneEva
+    - groupSceneEva
+
+customerContribution:
+  componentName: customerContribution
 
 rmbAmount:
   componentName: rmbAmount
