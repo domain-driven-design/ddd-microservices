@@ -24,7 +24,8 @@ public class OriginalAllScenesEvaNodeComponent extends AbstractNodeComponent {
         BigDecimal customerScene = context.retrieveValue(CustomerContributionNodeComponent.CUSTOMER_SCENE_VARIABLE_NAME);
         BigDecimal innerScene = context.retrieveValue(CustomerContributionNodeComponent.INNER_SCENE_VARIABLE_NAME);
         BigDecimal groupScene = context.retrieveValue(CustomerContributionNodeComponent.GROUP_SCENE_VARIABLE_NAME);
-        BigDecimal result = customerScene.add(innerScene).add(groupScene);
+        BigDecimal listingPrice = context.retrieveValue(ListingPriceNodeComponent.VARIABLE_NAME);
+        BigDecimal result = customerScene.add(innerScene).add(groupScene).subtract(listingPrice);
         context.saveVariables(Map.of(VARIABLE_NAME, result));
     }
 

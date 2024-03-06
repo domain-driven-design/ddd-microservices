@@ -42,3 +42,75 @@ basicRefactor:
   beFirstYear: false
   beFullLife: true
   type: "FACTOR"
+
+operatingCost:
+  name: "运营成本"
+  description: "运营成本"
+  beIncludedSubsidy: false
+  beAnnualized: true
+  beFirstYear: false
+  beFullLife: true
+  type: "AMOUNT"
+
+periodicCost:
+  name: "周期成本"
+  description: "周期成本"
+  beIncludedSubsidy: false
+  beAnnualized: true
+  beFirstYear: false
+  beFullLife: true
+  type: "AMOUNT"
+
+proposedInterestRateIncome:
+  name: "拟定利率利息收入"
+  description: "拟定利率利息收入"
+  beIncludedSubsidy: true
+  beAnnualized: false
+  beFirstYear: false
+  beFullLife: true
+  type: "AMOUNT"
+
+proposedInterestRateFullLifeSubsidyEva:
+  name: "本币业务全生命周期EVA"
+  description: "本币业务全生命周期EVA"
+  beIncludedSubsidy: true
+  beAnnualized: true
+  beFirstYear: false
+  beFullLife: true
+  type: "AMOUNT"
+
+originalAllScenesEva:
+  name: "原始全情景"
+  description: "原始全情景"
+  beIncludedSubsidy: true
+  beAnnualized: false
+  beFirstYear: false
+  beFullLife: true
+  type: "AMOUNT"
+
+customerSceneEva:
+  name: "客户情景eva"
+  description: "客户情景eva"
+  beIncludedSubsidy: true
+  beAnnualized: false
+  beFirstYear: false
+  beFullLife: true
+  type: "AMOUNT"
+
+innerSceneEva:
+  name: "内环eva"
+  description: "内环eva"
+  beIncludedSubsidy: true
+  beAnnualized: false
+  beFirstYear: false
+  beFullLife: true
+  type: "AMOUNT"
+
+groupSceneEva:
+  name: "外环eva"
+  description: "外环eva"
+  beIncludedSubsidy: true
+  beAnnualized: false
+  beFirstYear: false
+  beFullLife: true
+  type: "AMOUNT"

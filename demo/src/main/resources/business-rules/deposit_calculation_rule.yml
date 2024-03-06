@@ -18,11 +18,12 @@ periodicCost:
 
 originalAllScenesEva:
   componentName: originalAllScenesEva
-  expression: "customerSceneEva+innerSceneEva+groupSceneEva"
+  expression: "(customerSceneEva+innerSceneEva+groupSceneEva)-listingPrice"
   variables:
     - customerSceneEva
     - innerSceneEva
     - groupSceneEva
+    - listingPrice
 
 customerContribution:
   componentName: customerContribution

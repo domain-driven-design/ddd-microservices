@@ -9,7 +9,7 @@ import com.yomahub.liteflow.annotation.LiteflowComponent;
 import java.math.BigDecimal;
 import java.util.Map;
 
-@LiteflowComponent(id = PeriodicCostNodeComponent.VARIABLE_NAME, name = "资金成本")
+@LiteflowComponent(id = PeriodicCostNodeComponent.VARIABLE_NAME, name = "周期成本")
 @LiteflowCmpDefine
 public class PeriodicCostNodeComponent extends AbstractNodeComponent {
     public static final String VARIABLE_NAME = "periodicCost";
