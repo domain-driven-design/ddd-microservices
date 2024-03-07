@@ -11,12 +11,6 @@ spring:
             - Path=/api/base/**
           filters:
             - RewritePath=/api/base/(?<segment>.*), /$\{segment}
-        - id: calculation-service
-          uri: http://localhost:8082
-          predicates:
-            - Path=/api/calculation/**
-          filters:
-            - RewritePath=/api/calculation/(?<segment>.*), /$\{segment}
         - id: demo-service
           uri: http://localhost:8082
           predicates:
