@@ -2,11 +2,14 @@ package utils;
 
 import com.alibaba.excel.annotation.ExcelProperty;
 import com.google.common.io.Files;
+import com.google.common.io.Resources;
 import fixtures.OrderFixture;
 import lombok.Data;
 import org.assertj.core.util.Lists;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletResponse;
+import org.springframework.mock.web.MockMultipartFile;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,7 +19,18 @@ import java.util.List;
 class ExcelUtilTest {
 
     @Test
-    void should_read_excel_file_to_data_set() {
+    void should_read_excel_file_to_data_set() throws IOException {
+
+        byte[] bytes = Resources.toByteArray(Resources.getResource("excel-templates/import-excel-example.xlsx"));
+
+        MockMultipartFile mockMultipartFile = new MockMultipartFile("file", "import-excel-example.xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", bytes);
+
+        List<DemoData> demoDataList = new ArrayList<>();
+        ExcelUtil.read(mockMultipartFile, DemoData.class, (item) -> {
+            demoDataList.add(item);
+        });
+
+        Assertions.assertEquals(demoDataList.size(), 10);
     }
 
     @Test

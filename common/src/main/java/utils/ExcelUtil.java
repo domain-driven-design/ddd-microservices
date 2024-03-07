@@ -37,7 +37,7 @@ import java.util.function.Consumer;
         try {
             EasyExcel.read(file.getInputStream(), clazz, getReadListener(consumer, errorMessages)).sheet().doRead();
         } catch (IOException e) {
-            throw new RuntimeException();
+            throw new RuntimeException(e);
         }
         if (CollectionUtils.isNotEmpty(errorMessages)) {
             throw new RuntimeException();
@@ -85,9 +85,8 @@ import java.util.function.Consumer;
         return new ReadListener() {
             @Override
             public void invoke(Object o, AnalysisContext analysisContext) {
-
+                consumer.accept((T)o);
             }
-
             @Override
             public void doAfterAllAnalysed(AnalysisContext analysisContext) {
 
