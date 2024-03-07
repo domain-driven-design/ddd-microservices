@@ -114,3 +114,30 @@ groupSceneEva:
   beFirstYear: false
   beFullLife: true
   type: "AMOUNT"
+
+businessRaroc:
+  name: "本币业务Raroc"
+  description: "本币业务Raroc"
+  beIncludedSubsidy: true
+  beAnnualized: false
+  beFirstYear: false
+  beFullLife: true
+  type: "AMOUNT"
+
+termMonth:
+  name: "期限"
+  description: "期限"
+  beIncludedSubsidy: true
+  beAnnualized: false
+  beFirstYear: false
+  beFullLife: true
+  type: "AMOUNT"
+
+originalAllScenesFirstYearEva:
+  name: "原始全情景全年"
+  description: "原始全情景全年"
+  beIncludedSubsidy: true
+  beAnnualized: false
+  beFirstYear: false
+  beFullLife: true
+  type: "AMOUNT"

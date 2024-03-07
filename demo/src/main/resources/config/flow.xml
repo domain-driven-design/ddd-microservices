@@ -3,6 +3,7 @@
     <chain name="DEPOSIT">
         THEN(
         WHEN(
+            termMonth,
             rmbAmount,
             listingPrice,
             basicRefactor,
@@ -16,8 +17,14 @@
             benchmarkInterestRate
         ),
         WHEN(
+            originalAllScenesFirstYearEva
+        ),
+        WHEN(
             proposedInterestRateFullLifeSubsidyEva,
             upperLimitInterestRate
+        ),
+        WHEN(
+            businessRaroc
         )
         )
     </chain>

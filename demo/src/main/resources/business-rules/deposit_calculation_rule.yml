@@ -1,11 +1,28 @@
+businessRaroc:
+  componentName: businessRaroc
+  expression: "proposedInterestRateFullLifeSubsidyEva/operatingCost"
+  variables:
+    - proposedInterestRateFullLifeSubsidyEva
+    - operatingCost
+
 proposedInterestRateFullLifeSubsidyEva:
   componentName: proposedInterestRateFullLifeSubsidyEva
-  expression: "proposedInterestRateIncome-operatingCost-periodicCost+originalAllScenesEva"
+  expression: "proposedInterestRateIncome-operatingCost-periodicCost+originalAllScenesFirstYearEva"
   variables:
     - proposedInterestRateIncome
     - operatingCost
     - periodicCost
+    - originalAllScenesFirstYearEva
+
+originalAllScenesFirstYearEva:
+  componentName: originalAllScenesFirstYearEva
+  expression: "originalAllScenesEva/termMonth"
+  variables:
     - originalAllScenesEva
+    - termMonth
+
+termMonth:
+  componentName: termMonth
 
 proposedInterestRateIncome:
   componentName: proposedInterestRateIncome
