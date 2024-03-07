@@ -5,9 +5,21 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: backend-service
+        - id: base-service
           uri: http://localhost:8081
           predicates:
-            - Path=/api/backend/**
+            - Path=/api/base/**
           filters:
-            - RewritePath=/api/backend/(?<segment>.*), /$\{segment}
+            - RewritePath=/api/base/(?<segment>.*), /$\{segment}
+        - id: calculation-service
+          uri: http://localhost:8082
+          predicates:
+            - Path=/api/calculation/**
+          filters:
+            - RewritePath=/api/calculation/(?<segment>.*), /$\{segment}
+        - id: demo-service
+          uri: http://localhost:8082
+          predicates:
+            - Path=/api/demo/**
+          filters:
+            - RewritePath=/api/demo/(?<segment>.*), /$\{segment}
