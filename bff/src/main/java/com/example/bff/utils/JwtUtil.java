@@ -1,37 +1,30 @@
 package com.example.bff.utils;
 
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.auth0.jwt.interfaces.DecodedJWT;
-import com.auth0.jwt.interfaces.JWTVerifier;
+import com.example.bff.domain.UserContext;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import utils.JacksonUtil;
 
 import java.util.Date;
 
 public class JwtUtil {
-    private static final String SECRET_KEY = "your_secret_key";
-    private static final String ISSUER = "your_issuer";
-    private static final long EXPIRATION_TIME = 900000; // 15 minutes in milliseconds
+    private static final String SECRET_KEY = "your_secret_key_here";
 
-    public static String generateToken(String username) {
-        return JWT.create()
-                .withSubject("User Details")
-                .withClaim("username", username)
-                .withIssuer(ISSUER)
-                .withIssuedAt(new Date(System.currentTimeMillis()))
-                .withExpiresAt(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
-                .sign(Algorithm.HMAC256(SECRET_KEY));
+    public static String generateToken(UserContext userContext) throws Exception {
+        String userContextJson = JacksonUtil.toJson(userContext);
+
+        long currentTimeMillis = System.currentTimeMillis();
+        return Jwts.builder().claim("userContext", userContextJson) // Add serialized UserContext as a claim
+                .setSubject(userContext.getUserName()).setIssuedAt(new Date(currentTimeMillis)).setExpiration(new Date(currentTimeMillis + 3600000)) // 1 hour expiration
+                .signWith(SignatureAlgorithm.HS256, SECRET_KEY).compact();
     }
 
-    public static boolean verifyToken(String token) {
-        try {
-            JWTVerifier verifier = JWT.require(Algorithm.HMAC256(SECRET_KEY))
-                    .withIssuer(ISSUER)
-                    .build();
-            DecodedJWT jwt = verifier.verify(token);
-            return true;
-        } catch (JWTVerificationException exception) {
-            return false;
-        }
+    public static UserContext getUserContextFromToken(String token) throws Exception {
+        Claims claims = Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
+
+        String userContextJson = claims.get("userContext", String.class);
+        return JacksonUtil.fromJsonToObject(userContextJson, UserContext.class);
     }
 }
