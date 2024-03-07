@@ -25,6 +25,12 @@ originalAllScenesEva:
     - groupSceneEva
     - listingPrice
 
+innerSceneEva:
+  componentName: customerContribution
+groupSceneEva:
+  componentName: customerContribution
+customerSceneEva:
+  componentName: customerContribution
 customerContribution:
   componentName: customerContribution
 

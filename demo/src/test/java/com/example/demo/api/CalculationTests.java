@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.api;
 
 import com.example.calculation.application.args.CalculationCommand;
 import com.example.calculation.application.dto.CalculationNodeResult;
