@@ -1,0 +1,15 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    username: root
+    url: jdbc:mysql://localhost:3306/ddd-microservices?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    password: '123456'
+  jpa:
+    database: MYSQL
+    show-sql: 'true'
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:/mapper/*.xml

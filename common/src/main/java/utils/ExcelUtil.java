@@ -82,16 +82,16 @@ import java.util.function.Consumer;
     }
 
     private static <T> ReadListener getReadListener(Consumer<T> consumer, List<String> errorMessages) {
-        return new ReadListener() {
+        return new ReadListener<T>() {
             @Override
-            public void invoke(Object o, AnalysisContext analysisContext) {
-                consumer.accept((T)o);
+            public void invoke(T o, AnalysisContext analysisContext) {
+                consumer.accept(o);
             }
+
             @Override
             public void doAfterAllAnalysed(AnalysisContext analysisContext) {
 
             }
         };
     }
-
 }

@@ -1,0 +1,13 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: backend-service
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/backend/**
+          filters:
+            - RewritePath=/api/backend/(?<segment>.*), /$\{segment}
