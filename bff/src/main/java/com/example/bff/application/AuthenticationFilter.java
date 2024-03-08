@@ -30,11 +30,12 @@ public class AuthenticationFilter implements GlobalFilter {
             }
 
             token = token.substring(7);
-            UserContext userContextFromToken = JwtUtil.getUserContextFromToken(token);
-
+            // Authentication
+            UserContext userContext = authenticationAppService.verifyToken(token);
+            // Authorization TODO check if user can access specific api
             // forward token to backend service
-            exchange.getRequest().mutate().header("userId", userContextFromToken.getUserId()).build();
-            exchange.getRequest().mutate().header("userContext", JacksonUtil.toJson(userContextFromToken)).build();
+            exchange.getRequest().mutate().header("userId", userContext.getUserId()).build();
+            exchange.getRequest().mutate().header("userContext", JacksonUtil.toJson(userContext)).build();
 
             return chain.filter(exchange);
         } catch (SignatureException ex) {

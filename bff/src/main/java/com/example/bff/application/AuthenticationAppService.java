@@ -30,8 +30,8 @@ public class AuthenticationAppService {
         }
     }
 
-    public void verifyToken(String userToken) {
-
+    public UserContext verifyToken(String userToken) {
+        return JwtUtil.getUserContextFromToken(userToken);
     }
 
     private UserContext buildUserContext(String userName) {
