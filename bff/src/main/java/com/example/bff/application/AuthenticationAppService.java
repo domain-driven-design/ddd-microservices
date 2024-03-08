@@ -30,6 +30,10 @@ public class AuthenticationAppService {
         }
     }
 
+    public void verifyToken(String userToken) {
+
+    }
+
     private UserContext buildUserContext(String userName) {
         // TODO fetch User Object from domain，just mock it
         return UserContext.builder().userId("id").userName(userName).currentIdentity(UserContext.ContextUserIdentity.builder().permissionBranchId("001").roles(Arrays.asList(UserContext.UserIdentityRole.USER)).build()).build();

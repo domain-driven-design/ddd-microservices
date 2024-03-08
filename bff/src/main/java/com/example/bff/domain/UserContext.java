@@ -4,10 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @Data
 public class UserContext {
@@ -16,6 +18,7 @@ public class UserContext {
     private ContextUserIdentity currentIdentity;
 
     @AllArgsConstructor
+    @NoArgsConstructor
     @Builder
     @Data
     public static class ContextUserIdentity {
