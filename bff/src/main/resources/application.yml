@@ -17,3 +17,11 @@ spring:
             - Path=/api/demo/**
           filters:
             - RewritePath=/api/demo/(?<segment>.*), /$\{segment}
+
+feign:
+  client:
+    config:
+      callbackApiClient:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic

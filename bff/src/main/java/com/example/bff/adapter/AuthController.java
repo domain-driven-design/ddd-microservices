@@ -17,7 +17,6 @@ public class AuthController {
     private final AuthenticationAppService authenticationAppService;
 
     @PostMapping("/login")
-    // 如果 Base 服务有用户名密码这个接口是否应该收到 Base 服务
     public ResponseEntity<UserLoginResponse> login(@RequestBody UserLoginCommand userLoginCommand) {
         return ResponseEntity.ok(authenticationAppService.login(userLoginCommand));
     }
