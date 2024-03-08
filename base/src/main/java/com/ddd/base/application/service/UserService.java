@@ -61,5 +61,4 @@ public class UserService {
         userRepository.update(user);
         return UserMapperAssembler.INSTANCE.toResponse(user);
     }
-
 }

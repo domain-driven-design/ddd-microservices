@@ -8,7 +8,7 @@ import java.util.List;
 @Data
 public class UserResponse {
     private String name;
-    private String currentIdentityId;
+    private UserIdentityResponse currentIdentity;
     private String status;
     private String maintainBy;
     private String maintainByName;

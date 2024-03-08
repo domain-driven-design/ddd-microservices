@@ -37,7 +37,7 @@ public class UserRepositoryImpl implements UserRepository {
         }
         User user = UserAssembler.INSTANCE.toEntity(userPO);
         List<UserIdentity> identities = findUserIdentitiesByUserId(user.getId());
-        user.buildUserIdentity(identities);
+        user.buildUserIdentity(identities,userPO.getCurrentIdentityId());
         return Optional.of(user);
     }
 

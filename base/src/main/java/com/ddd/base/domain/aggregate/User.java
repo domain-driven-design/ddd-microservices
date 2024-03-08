@@ -6,12 +6,13 @@ import lombok.experimental.SuperBuilder;
 
 import java.time.OffsetDateTime;
 import java.util.List;
+import java.util.Objects;
 
 @Getter
 @SuperBuilder
 public class User extends AggregateAudit {
     private String name;
-    private String currentIdentityId;
+    private UserIdentity currentIdentity;
     private String abnormalBatch;
     private String status;
     private Boolean deleted;
@@ -20,7 +21,9 @@ public class User extends AggregateAudit {
     private OffsetDateTime maintainTime;
     private List<UserIdentity> userIdentity;
 
-    public void buildUserIdentity(List<UserIdentity> identities) {
+    public void buildUserIdentity(List<UserIdentity> identities, String currentIdentityId) {
+        this.currentIdentity = identities.stream().filter(identity ->
+                Objects.equals(identity.getId(), currentIdentityId)).findFirst().orElse(null);
         this.userIdentity = identities;
     }
 
@@ -49,7 +52,9 @@ public class User extends AggregateAudit {
         if (!this.status.equals("NORMAL")) {
             throw new RuntimeException("USER STATUS INVALID");
         }
-        this.currentIdentityId = identityId;
+        this.currentIdentity = this.userIdentity.stream().filter(identity ->
+                Objects.equals(identity.getId(), identityId)).findFirst().orElse(null);
+
         super.updatedAudit("");
     }
 }

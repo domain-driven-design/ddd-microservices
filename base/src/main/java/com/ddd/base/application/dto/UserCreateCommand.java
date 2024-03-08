@@ -40,7 +40,7 @@ public class UserCreateCommand {
                 .maintainTime(OffsetDateTime.now())
                 .deleted(false)
                 .status("NORMAL")
-                .currentIdentityId(identityId)
+                .currentIdentity(userIdentity)
                 .userIdentity(userIdentities)
                 .updatedBy("")
                 .updatedTime(OffsetDateTime.now())
