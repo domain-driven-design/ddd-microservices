@@ -20,7 +20,9 @@ public class UserPO {
 
     private String id;
     private String createdBy;
+
     private OffsetDateTime createdTime;
     private String updatedBy;
+
     private OffsetDateTime updatedTime;
 }

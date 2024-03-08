@@ -27,7 +27,7 @@ public class UserRepositoryImpl implements UserRepository {
     private final UserMapper userMapper;
     private final UserIdentityMapper userIdentityMapper;
     private final UserIdentityRoleMapper userIdentityRoleMapper;
-
+    private final UserAssembler assembler;
 
     @Override
     public Optional<User> find(@NotBlank String id) {
@@ -35,7 +35,7 @@ public class UserRepositoryImpl implements UserRepository {
         if (Objects.isNull(userPO)) {
             return Optional.empty();
         }
-        User user = UserAssembler.INSTANCE.toEntity(userPO);
+        User user = assembler.toEntity(userPO);
         List<UserIdentity> identities = findUserIdentitiesByUserId(user.getId());
         user.buildUserIdentity(identities,userPO.getCurrentIdentityId());
         return Optional.of(user);
@@ -51,7 +51,7 @@ public class UserRepositoryImpl implements UserRepository {
                     List<UserIdentityRolePO> rolePOS = getUserIdentityRoles(identityPO.getId());
                     List<UserIdentityRole> roles =
                             rolePOS.stream().map(UserIdentityRolePO::getRole).distinct().collect(Collectors.toList());
-                    UserIdentity userIdentity = UserAssembler.INSTANCE.toUserIdentityEntity(identityPO, roles);
+                    UserIdentity userIdentity = assembler.toUserIdentityEntity(identityPO, roles);
 
                     userIdentities.add(userIdentity);
                 }
@@ -62,7 +62,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public void create(User user) {
-        userMapper.insert(UserAssembler.INSTANCE.toPO(user));
+        userMapper.insert(assembler.toPO(user));
         insertUserIdentity(user);
     }
 
@@ -90,14 +90,14 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public void updateAggregate(User user) {
-        UserPO userPO = UserAssembler.INSTANCE.toPO(user);
+        UserPO userPO = assembler.toPO(user);
         userMapper.updateById(userPO);
     }
 
     private void insertUserIdentity(User user) {
         user.getUserIdentity().forEach(
                 userIdentity -> {
-                    userIdentityMapper.insert(UserAssembler.INSTANCE.toIdentityPO(userIdentity));
+                    userIdentityMapper.insert(assembler.toIdentityPO(userIdentity));
                     userIdentity.getRoles().forEach(insertRoles(userIdentity)
                     );
 

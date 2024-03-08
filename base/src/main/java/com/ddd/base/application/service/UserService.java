@@ -19,6 +19,7 @@ import utils.page.PageResponse;
 public class UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+    private final UserMapperAssembler assembler;
 
     public PageResponse<UserResponse> query(UserQueryDTO userQuery) {
 
@@ -26,14 +27,14 @@ public class UserService {
 
         Page<UserPO> userPOPage = userMapper.selectPage(page, userQuery);
 
-        return UserMapperAssembler.INSTANCE.toPageDTO(userPOPage);
+        return assembler.toPageDTO(userPOPage);
     }
 
     @Transactional
     public UserResponse register(UserCreateCommand createDTO) {
         User user = createDTO.toEntity();
         userRepository.create(user);
-        return UserMapperAssembler.INSTANCE.toResponse(user);
+        return assembler.toResponse(user);
     }
 
     @Transactional
@@ -42,7 +43,7 @@ public class UserService {
                 .orElseThrow(() -> new RuntimeException("User not found: " + id));
         user.disable(id);
         userRepository.updateAggregate(user);
-        return UserMapperAssembler.INSTANCE.toResponse(user);
+        return assembler.toResponse(user);
     }
 
     @Transactional
@@ -51,7 +52,7 @@ public class UserService {
                 .orElseThrow(() -> new RuntimeException("User not found: " + id));
         user.enable(id);
         userRepository.updateAggregate(user);
-        return UserMapperAssembler.INSTANCE.toResponse(user);
+        return assembler.toResponse(user);
     }
     @Transactional
     public UserResponse switchIdentity(String id, String identityId) {
@@ -59,6 +60,6 @@ public class UserService {
                 .orElseThrow(() -> new RuntimeException("User not found: " + id));
         user.switchIdentity(identityId);
         userRepository.update(user);
-        return UserMapperAssembler.INSTANCE.toResponse(user);
+        return assembler.toResponse(user);
     }
 }

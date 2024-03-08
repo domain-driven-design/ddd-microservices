@@ -6,6 +6,7 @@
         SELECT
         u.id,
         name,
+        current_identity_id,
         status,
         deleted,
         maintain_by,

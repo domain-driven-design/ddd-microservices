@@ -22,9 +22,12 @@ public interface UserMapperAssembler {
     PageResponse<UserResponse> toPageDTO(Page<UserPO> userPO);
 
     @Mapping(target = "userIdentities", source = "userPO.id")
+    @Mapping(target = "currentIdentity", source = "userPO.id")
     UserResponse toResponse(UserPO userPO);
 
     List<UserIdentityResponse> toIdentityResponses(List<UserIdentity> identities);
 
     UserResponse toResponse(User user);
+
+    UserIdentityResponse toIdentityResponse(UserIdentity currentIdentity);
 }
