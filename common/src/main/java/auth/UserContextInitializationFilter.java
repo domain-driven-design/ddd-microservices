@@ -28,27 +28,22 @@ public class UserContextInitializationFilter implements Filter {
         HttpServletResponse httpResponse = (HttpServletResponse) response;
 
         try {
-
             // 1. Fetch userContext json from header
             String userContextString = httpRequest.getHeader("userContext");
-            if (Objects.isNull(userContextString)) {
-                throw new UnauthorizedException();
+            if (Objects.nonNull(userContextString)) {
+                // 2. parse to userContext
+                UserContext userContext = JacksonUtil.fromJsonToObject(userContextString, UserContext.class);
+
+                // 3. put it to UserContextHolder object
+                UserContextHolder.setContext(userContext);
             }
-
-            // 2. parse to userContext
-            UserContext userContext = JacksonUtil.fromJsonToObject(userContextString, UserContext.class);
-
-            // 3. put it to UserContextHolder object
-            UserContextHolder.setContext(userContext);
-
-            // Proceed with the request
+            // 4. Proceed with the request
             chain.doFilter(request, response);
         } finally {
-            // Ensure that the context is always cleared
             UserContextHolder.clear();
             httpResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED); // 401 status code
             httpResponse.setContentType("application/json");
-            return; // Stop filter chain, do not call chain.doFilter
+            return;
         }
     }
 
