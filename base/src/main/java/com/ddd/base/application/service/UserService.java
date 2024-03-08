@@ -2,7 +2,7 @@ package com.ddd.base.application.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ddd.base.application.assembler.UserMapperAssembler;
-import com.ddd.base.application.dto.UserCreateDTO;
+import com.ddd.base.application.dto.UserCreateCommand;
 import com.ddd.base.application.dto.UserResponse;
 import com.ddd.base.application.dto.query.UserQueryDTO;
 import com.ddd.base.domain.aggregate.User;
@@ -30,7 +30,7 @@ public class UserService {
     }
 
     @Transactional
-    public UserResponse register(UserCreateDTO createDTO) {
+    public UserResponse register(UserCreateCommand createDTO) {
         User user = createDTO.toEntity();
         userRepository.create(user);
         return UserMapperAssembler.INSTANCE.toResponse(user);

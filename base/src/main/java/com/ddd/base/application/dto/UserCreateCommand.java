@@ -12,7 +12,7 @@ import java.util.UUID;
 
 
 @Data
-public class UserCreateDTO {
+public class UserCreateCommand {
     private String id;
     private String name;
     private String permissionBranchId;

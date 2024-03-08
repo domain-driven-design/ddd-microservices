@@ -1,7 +1,7 @@
 package com.ddd.base.adapter;
 
 
-import com.ddd.base.application.dto.UserCreateDTO;
+import com.ddd.base.application.dto.UserCreateCommand;
 import com.ddd.base.application.dto.UserResponse;
 import com.ddd.base.application.dto.query.UserQueryDTO;
 import com.ddd.base.application.service.UserService;
@@ -25,7 +25,7 @@ public class UserController {
 
     //注册	开发用户注册流程
     @PostMapping
-    public ResponseEntity <UserResponse> register(@RequestBody UserCreateDTO createDTO) {
+    public ResponseEntity <UserResponse> register(@RequestBody UserCreateCommand createDTO) {
         return ResponseEntity.ok(userService.register(createDTO));
     }
 
