@@ -1,6 +1,6 @@
 package com.ddd.base.application.dto;
 
-import com.ddd.base.domain.aggregate.UserIdentityRole;
+import auth.UserIdentityRole;
 import lombok.Data;
 
 import java.util.List;

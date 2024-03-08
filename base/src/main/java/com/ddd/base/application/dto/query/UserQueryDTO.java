@@ -1,7 +1,7 @@
 package com.ddd.base.application.dto.query;
 
 import utils.page.PageQuery;
-import com.ddd.base.domain.aggregate.UserIdentityRole;
+import auth.UserIdentityRole;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

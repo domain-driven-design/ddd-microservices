@@ -1,7 +1,6 @@
 package com.example.bff.application;
 
-import com.example.bff.domain.UserContext;
-import com.example.bff.utils.JwtUtil;
+import auth.UserContext;
 import io.jsonwebtoken.SignatureException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -1,5 +1,6 @@
 package com.example.bff.infrastructure.api.dto;
 
+import auth.UserIdentityRole;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

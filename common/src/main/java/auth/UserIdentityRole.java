@@ -1,4 +1,4 @@
-package com.ddd.base.domain.aggregate;
+package auth;
 
 
 import lombok.AllArgsConstructor;
@@ -10,7 +10,6 @@ import lombok.Getter;
 public enum UserIdentityRole {
     ADMIN("管理员"),
     USER("普通用户");
-
     private final String name;
 
 }

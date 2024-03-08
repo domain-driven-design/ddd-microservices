@@ -3,7 +3,7 @@ package com.ddd.base.infra.repositoryimpl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.ddd.base.domain.aggregate.User;
 import com.ddd.base.domain.aggregate.UserIdentity;
-import com.ddd.base.domain.aggregate.UserIdentityRole;
+import auth.UserIdentityRole;
 import com.ddd.base.domain.repository.UserRepository;
 import com.ddd.base.infra.assembler.UserAssembler;
 import com.ddd.base.infra.persistence.mapper.UserIdentityMapper;

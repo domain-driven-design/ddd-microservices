@@ -2,7 +2,7 @@ package com.ddd.base.infra.assembler;
 
 import com.ddd.base.domain.aggregate.User;
 import com.ddd.base.domain.aggregate.UserIdentity;
-import com.ddd.base.domain.aggregate.UserIdentityRole;
+import auth.UserIdentityRole;
 import com.ddd.base.infra.persistence.po.UserIdentityPO;
 import com.ddd.base.infra.persistence.po.UserPO;
 import org.mapstruct.Mapper;

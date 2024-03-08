@@ -1,6 +1,6 @@
 package com.example.bff.utils;
 
-import com.example.bff.domain.UserContext;
+import auth.UserContext;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

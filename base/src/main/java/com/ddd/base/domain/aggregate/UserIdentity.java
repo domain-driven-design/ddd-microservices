@@ -1,6 +1,7 @@
 package com.ddd.base.domain.aggregate;
 
 import audit.AggregateAudit;
+import auth.UserIdentityRole;
 import lombok.Getter;
 import lombok.experimental.SuperBuilder;
 

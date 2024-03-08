@@ -1,7 +1,7 @@
 package com.ddd.base.infra.persistence.po;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.ddd.base.domain.aggregate.UserIdentityRole;
+import auth.UserIdentityRole;
 import lombok.Data;
 
 import java.time.OffsetDateTime;

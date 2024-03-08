@@ -2,7 +2,7 @@ package com.example.bff.application;
 
 import com.example.bff.application.dto.UserLoginCommand;
 import com.example.bff.application.dto.UserLoginResponse;
-import com.example.bff.domain.UserContext;
+import auth.UserContext;
 import com.example.bff.infrastructure.api.UserClient;
 import com.example.bff.infrastructure.api.dto.UserQuery;
 import com.example.bff.infrastructure.api.dto.UserResult;
@@ -13,9 +13,7 @@ import org.springframework.stereotype.Service;
 import utils.ResponseEntityUtil;
 import utils.page.PageResult;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 @Service
 @AllArgsConstructor
@@ -29,7 +27,7 @@ public class AuthenticationAppService {
          * 2. Generate token
          */
         try {
-            UserContext userContext = buildUserContext(userLoginCommand.getUserName());
+            UserContext userContext = buildUserContext(userLoginCommand.getUsername());
             String token = JwtUtil.generateToken(userContext);
             return new UserLoginResponse(token);
         } catch (Exception e) {
@@ -53,7 +51,11 @@ public class AuthenticationAppService {
             throw new RuntimeException("user not found");
         }
         return UserContext.builder().userId(userResult.getId()).userName(userResult.getName())
-                // TODO  IdentityId confirm with Team
+                .currentIdentity(UserContext.ContextUserIdentity.builder()
+                        .permissionBranchId(userResult.getCurrentIdentity().getPermissionBranchId())
+                        .roles(userResult.getCurrentIdentity().getRoles())
+                        .build()
+                )
                 .build();
     }
 }
