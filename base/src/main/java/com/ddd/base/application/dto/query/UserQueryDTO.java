@@ -1,6 +1,6 @@
 package com.ddd.base.application.dto.query;
 
-import audit.BasePageDTO;
+import utils.page.PageQuery;
 import com.ddd.base.domain.aggregate.UserIdentityRole;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -8,7 +8,7 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class UserQueryDTO extends BasePageDTO {
+public class UserQueryDTO extends PageQuery {
     private String id;
     private String name;
     private String status;

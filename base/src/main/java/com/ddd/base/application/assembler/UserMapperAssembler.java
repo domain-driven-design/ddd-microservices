@@ -10,6 +10,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
+import utils.page.PageResponse;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ public interface UserMapperAssembler {
     UserMapperAssembler INSTANCE = Mappers.getMapper(UserMapperAssembler.class);
 
 
-    Page<UserResponse> toPageDTO(Page<UserPO> userPO);
+    PageResponse<UserResponse> toPageDTO(Page<UserPO> userPO);
 
     @Mapping(target = "userIdentities", source = "userPO.id")
     UserResponse toResponse(UserPO userPO);

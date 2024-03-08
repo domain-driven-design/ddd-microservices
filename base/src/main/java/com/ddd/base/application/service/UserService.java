@@ -12,6 +12,7 @@ import com.ddd.base.infra.persistence.po.UserPO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import utils.page.PageResponse;
 
 @Service
 @AllArgsConstructor
@@ -19,9 +20,9 @@ public class UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
 
-    public Page<UserResponse> query(UserQueryDTO userQuery) {
+    public PageResponse<UserResponse> query(UserQueryDTO userQuery) {
 
-        Page<UserPO> page = new Page<>(userQuery.getCurrentPage(), userQuery.getPageSize());
+        Page<UserPO> page = new Page<>(userQuery.getPageNumber(), userQuery.getPageSize());
 
         Page<UserPO> userPOPage = userMapper.selectPage(page, userQuery);
 

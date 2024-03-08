@@ -18,13 +18,13 @@ public class UserController {
 
     //查询	实现用户信息检索和筛选功能
     @GetMapping
-    public ResponseEntity<Page<UserResponse>> query(UserQueryDTO userQuery) {
+    public ResponseEntity<PageResponse<UserResponse>> query(UserQueryDTO userQuery) {
         return ResponseEntity.ok(userService.query(userQuery));
     }
 
     //注册	开发用户注册流程
     @PostMapping
-    public ResponseEntity<UserResponse> register(@RequestBody UserCreateDTO createDTO) {
+    public ResponseEntity <UserResponse> register(@RequestBody UserCreateDTO createDTO) {
         return ResponseEntity.ok(userService.register(createDTO));
     }
 
