@@ -1,13 +1,14 @@
 package com.ddd.base.adapter;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.ddd.base.application.service.UserService;
+
 import com.ddd.base.application.dto.UserCreateDTO;
 import com.ddd.base.application.dto.UserResponse;
 import com.ddd.base.application.dto.query.UserQueryDTO;
+import com.ddd.base.application.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import utils.page.PageResponse;
 
 @RestController
 @RequestMapping("/users")
