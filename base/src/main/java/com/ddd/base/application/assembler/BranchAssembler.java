@@ -5,7 +5,7 @@ import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 
 @Mapper(componentModel = "spring", typeConversionPolicy = ReportingPolicy.IGNORE, uses = GeneralAssembler.class)
-public interface BranchMapperAssembler {
-    BranchMapperAssembler INSTANCE = Mappers.getMapper(BranchMapperAssembler.class);
+public interface BranchAssembler {
+    BranchAssembler INSTANCE = Mappers.getMapper(BranchAssembler.class);
 
 }

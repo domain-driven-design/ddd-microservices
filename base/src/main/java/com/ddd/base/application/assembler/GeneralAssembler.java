@@ -16,13 +16,13 @@ public class GeneralAssembler {
 
     List<UserIdentityResponse> findUserIdentity(String userId) {
         List<UserIdentity> identities = userRepository.findUserIdentitiesByUserId(userId);
-        return UserMapperAssembler.INSTANCE.toIdentityResponses(identities);
+        return UserAssembler.INSTANCE.toIdentityResponses(identities);
     }
 
     UserIdentityResponse findCurrentUserIdentity(String userId) {
         User user = userRepository.find(userId)
                 .orElseThrow(() -> new RuntimeException("User not found: " + userId));
 
-        return UserMapperAssembler.INSTANCE.toIdentityResponse(user.getCurrentIdentity());
+        return UserAssembler.INSTANCE.toIdentityResponse(user.getCurrentIdentity());
     }
 }

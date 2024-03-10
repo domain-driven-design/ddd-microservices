@@ -15,8 +15,8 @@ import utils.page.PageResponse;
 import java.util.List;
 
 @Mapper(componentModel = "spring", typeConversionPolicy = ReportingPolicy.IGNORE, uses = GeneralAssembler.class)
-public interface UserMapperAssembler {
-    UserMapperAssembler INSTANCE = Mappers.getMapper(UserMapperAssembler.class);
+public interface UserAssembler {
+    UserAssembler INSTANCE = Mappers.getMapper(UserAssembler.class);
 
 
     PageResponse<UserResponse> toPageDTO(Page<UserPO> userPO);
