@@ -1,0 +1,11 @@
+- keyName: "demo-api测试"
+  groupName: "demo"
+  description: "demo接口测试"
+  priority: 1
+  cron: "/5 * * * * ?"
+  callTask:
+    serverName: "demo"
+    url: "${demo}/demo/schedule"
+    method: "PUT"
+    requestBody:
+      mockInput: "1"

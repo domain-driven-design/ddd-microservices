@@ -13,3 +13,6 @@ mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   mapper-locations: classpath:/mapper/*.xml
+
+scheduler.server-urls:
+  demo: http://localhost:8082
