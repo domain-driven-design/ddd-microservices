@@ -7,6 +7,7 @@ import java.util.List;
 
 @Data
 public class UserResponse {
+    private String id;
     private String name;
     private UserIdentityResponse currentIdentity;
     private String status;
