@@ -1,4 +1,4 @@
-package com.ddd.base.domain.aggregate;
+package com.ddd.base.domain.aggregate.user;
 
 import audit.AggregateAudit;
 import auth.UserIdentityRole;

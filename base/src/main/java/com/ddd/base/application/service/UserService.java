@@ -5,7 +5,7 @@ import com.ddd.base.application.assembler.UserAssembler;
 import com.ddd.base.application.dto.UserCreateCommand;
 import com.ddd.base.application.dto.UserResponse;
 import com.ddd.base.application.dto.query.UserQueryDTO;
-import com.ddd.base.domain.aggregate.User;
+import com.ddd.base.domain.aggregate.user.User;
 import com.ddd.base.domain.repository.UserRepository;
 import com.ddd.base.infra.persistence.mapper.UserMapper;
 import com.ddd.base.infra.persistence.po.UserPO;

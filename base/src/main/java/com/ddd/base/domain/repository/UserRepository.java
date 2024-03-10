@@ -1,7 +1,7 @@
 package com.ddd.base.domain.repository;
 
-import com.ddd.base.domain.aggregate.User;
-import com.ddd.base.domain.aggregate.UserIdentity;
+import com.ddd.base.domain.aggregate.user.User;
+import com.ddd.base.domain.aggregate.user.UserIdentity;
 
 import java.util.List;
 import java.util.Optional;

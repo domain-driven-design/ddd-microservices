@@ -1,7 +1,7 @@
 package com.ddd.base.application.dto;
 
-import com.ddd.base.domain.aggregate.User;
-import com.ddd.base.domain.aggregate.UserIdentity;
+import com.ddd.base.domain.aggregate.user.User;
+import com.ddd.base.domain.aggregate.user.UserIdentity;
 import auth.UserIdentityRole;
 import lombok.Data;
 

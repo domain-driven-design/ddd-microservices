@@ -6,17 +6,15 @@ import lombok.Data;
 import java.time.OffsetDateTime;
 
 @Data
-@TableName("user")
-public class UserPO {
+@TableName("branch")
+public class BranchPO {
+
+    private String parentId;
     private String name;
-    private String currentIdentityId;
-    private String abnormalBatch;
-    private String status;
-    private Boolean deleted;
-    private String maintainBy;
-    private String maintainByName;
-    private OffsetDateTime maintainTime;
-    private Integer version;
+    private String l1BranchId;
+    private String parentName;
+    private String pathName;
+    private String level;
 
     private String id;
     private String createdBy;

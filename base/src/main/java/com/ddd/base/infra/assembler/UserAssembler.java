@@ -1,7 +1,7 @@
 package com.ddd.base.infra.assembler;
 
-import com.ddd.base.domain.aggregate.User;
-import com.ddd.base.domain.aggregate.UserIdentity;
+import com.ddd.base.domain.aggregate.user.User;
+import com.ddd.base.domain.aggregate.user.UserIdentity;
 import auth.UserIdentityRole;
 import com.ddd.base.infra.persistence.po.UserIdentityPO;
 import com.ddd.base.infra.persistence.po.UserPO;

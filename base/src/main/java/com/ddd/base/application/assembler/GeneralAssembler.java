@@ -1,8 +1,8 @@
 package com.ddd.base.application.assembler;
 
 import com.ddd.base.application.dto.UserIdentityResponse;
-import com.ddd.base.domain.aggregate.User;
-import com.ddd.base.domain.aggregate.UserIdentity;
+import com.ddd.base.domain.aggregate.user.User;
+import com.ddd.base.domain.aggregate.user.UserIdentity;
 import com.ddd.base.domain.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
