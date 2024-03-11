@@ -8,6 +8,8 @@ import com.example.calculation.infrastructure.util.AbstractExpressionLoader;
 import com.example.calculation.infrastructure.util.calculationflow.Dag;
 import com.example.calculation.infrastructure.util.calculationflow.FlowUtil;
 import com.example.calculation.infrastructure.util.calculationflow.GraphUtil;
+import error.ClientException;
+import error.SystemException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
+
+import static com.example.calculation.domain.exception.CalculationError.NO_MATCHED_CALCULATION_SERVICE;
+import static com.example.calculation.domain.exception.CalculationError.WRITE_FLOW_ERROR;
 
 @Slf4j
 @Service
@@ -29,7 +34,7 @@ public class CalculationAppService {
         // 根据模式获取对应的service
         AbstractCalculationService service = calculationServices.stream()
                 .filter(s -> s.getMode() == command.getMode()).findFirst()
-                .orElseThrow(IllegalAccessError::new); // todo exception
+                .orElseThrow(() -> new ClientException(NO_MATCHED_CALCULATION_SERVICE, command.getMode()));
 
         return service.execute(command);
     }
@@ -46,7 +51,8 @@ public class CalculationAppService {
             writer.flush();
             writer.close();
         } catch (IOException e) {
-            throw new IllegalArgumentException(e); //todo
+            log.error("Fail to handle flow file -----> ", e);
+            throw new SystemException(WRITE_FLOW_ERROR, flowPath);
         }
         log.info("calculation flow file generated successfully!");
     }

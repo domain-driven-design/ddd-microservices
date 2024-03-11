@@ -5,6 +5,7 @@ import com.example.calculation.application.args.CalculationCommand;
 import com.example.calculation.application.dto.CalculationNodeResult;
 import com.example.calculation.application.service.CalculationAppService;
 import com.example.calculation.domain.aggregate.AbstractCalculationData;
+import error.ResponseEntity;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -25,8 +26,8 @@ public class CalculationController {
 
     @PostMapping("/calculate")
     @ApiOperation("测算")
-    public List<CalculationNodeResult> calculate(@RequestBody CalculationCommand<AbstractCalculationData> command) {
-        return calculationAppService.calculate(command);
+    public ResponseEntity<List<CalculationNodeResult>> calculate(@RequestBody CalculationCommand<AbstractCalculationData> command) {
+        return ResponseEntity.success(calculationAppService.calculate(command));
     }
 
 }

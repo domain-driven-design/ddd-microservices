@@ -3,19 +3,24 @@ package error;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * SystemException is used to indicate a variety of system-level error conditions.
+ * It is typically thrown when an underlying system issue prevents the normal
+ * operation of the application.
+ */
 @Getter
 @Setter
 public class SystemException extends AbstractException {
 
     public SystemException() {
-        super(CommonErrorCode.COMM500);
+        super(CommonError.SYSTEM_INTERNAL_ERROR);
     }
 
-    public SystemException(IErrorCode errorCode) {
+    public SystemException(IError errorCode) {
         super(errorCode);
     }
 
-    public SystemException(IErrorCode errorCode, Object... params) {
+    public SystemException(IError errorCode, Object... params) {
         super(errorCode, params);
     }
 
