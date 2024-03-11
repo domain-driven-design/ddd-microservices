@@ -15,5 +15,4 @@ create table user
     created_time        datetime   default CURRENT_TIMESTAMP not null comment '创建时间',
     updated_by          varchar(64)                          not null comment '更新人',
     updated_time        datetime   default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP comment '更新时间'
-)
-    comment '用户';
+) comment '用户';

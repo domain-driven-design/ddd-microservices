@@ -3,9 +3,9 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/calculation
+    url: jdbc:mysql://localhost:3306/ddd-microservice-demo
     username: root
-    password:
+    password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
   redis:
     host: localhost
