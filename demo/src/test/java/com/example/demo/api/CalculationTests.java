@@ -2,9 +2,9 @@ package com.example.demo.api;
 
 import com.example.calculation.application.args.CalculationCommand;
 import com.example.calculation.application.dto.CalculationNodeResult;
-import com.example.demo.domain.aggregate.DemoBizType;
-import com.example.demo.domain.aggregate.DemoCalculationData;
-import com.example.demo.domain.aggregate.DemoCalculationMode;
+import com.example.demo.domain.aggregate.calculation.DemoBizType;
+import com.example.demo.domain.aggregate.calculation.DemoCalculationData;
+import com.example.demo.domain.aggregate.calculation.DemoCalculationMode;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;

@@ -2,8 +2,8 @@ package com.example.demo.service;
 
 import com.example.calculation.application.service.CalculationAppService;
 import com.example.calculation.domain.aggregate.CalculationExpression;
-import com.example.demo.application.service.DemoExpressionLoader;
-import com.example.demo.domain.aggregate.DemoCalculationMode;
+import com.example.demo.application.calculation.service.DemoExpressionLoader;
+import com.example.demo.domain.aggregate.calculation.DemoCalculationMode;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.io.TempDir;
