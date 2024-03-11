@@ -29,12 +29,12 @@ public class UserService {
 
         Page<UserPO> userPOPage = userMapper.selectPage(page, userQuery);
 
-        return assembler.toPageDTO(userPOPage);
+        return assembler.toPageResponse(userPOPage);
     }
 
     @Transactional
     public UserResponse register(UserCreateCommand createDTO) {
-        User user = createDTO.toEntity(authService.currentUser().getUserId());
+        User user = createDTO.toEntity(authService.currentUser());
         userRepository.create(user);
         return assembler.toResponse(user);
     }

@@ -5,7 +5,7 @@ import com.ddd.base.domain.aggregate.user.User;
 import com.ddd.base.domain.aggregate.user.UserIdentity;
 import auth.UserIdentityRole;
 import com.ddd.base.domain.repository.UserRepository;
-import com.ddd.base.infra.assembler.UserAssembler;
+import com.ddd.base.infra.assembler.UserMapperAssembler;
 import com.ddd.base.infra.persistence.mapper.UserIdentityMapper;
 import com.ddd.base.infra.persistence.mapper.UserIdentityRoleMapper;
 import com.ddd.base.infra.persistence.mapper.UserMapper;
@@ -27,7 +27,7 @@ public class UserRepositoryImpl implements UserRepository {
     private final UserMapper userMapper;
     private final UserIdentityMapper userIdentityMapper;
     private final UserIdentityRoleMapper userIdentityRoleMapper;
-    private final UserAssembler assembler;
+    private final UserMapperAssembler assembler;
 
     @Override
     public Optional<User> find(@NotBlank String id) {
@@ -79,7 +79,7 @@ public class UserRepositoryImpl implements UserRepository {
         userIdentityMapper.delete(identityWrapper);
 
         List<String> userIdentityIds =
-                user.getUserIdentity().stream().map(UserIdentity::getId).distinct().collect(Collectors.toList());
+                user.getUserIdentities().stream().map(UserIdentity::getId).distinct().collect(Collectors.toList());
         LambdaQueryWrapper<UserIdentityRolePO> roleWrapper = new LambdaQueryWrapper<>();
         roleWrapper.in(UserIdentityRolePO::getUserIdentityId, userIdentityIds);
         userIdentityRoleMapper.delete(roleWrapper);
@@ -95,7 +95,7 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     private void insertUserIdentity(User user) {
-        user.getUserIdentity().forEach(
+        user.getUserIdentities().forEach(
                 userIdentity -> {
                     userIdentityMapper.insert(assembler.toIdentityPO(userIdentity));
                     userIdentity.getRoles().forEach(insertRoles(userIdentity)

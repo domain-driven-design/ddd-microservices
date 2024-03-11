@@ -30,18 +30,18 @@ public class UserController {
     }
 
     //停用/恢复	设定用户账户的停用和恢复机制
-    @PutMapping("/disable/{id}")
+    @PutMapping("/{id}/disable")
     public ResponseEntity<UserResponse> disable(@PathVariable String id) {
         return ResponseEntity.ok(userService.disable(id));
     }
 
-    @PutMapping("/enable/{id}")
+    @PutMapping("/{id}/enable")
     public ResponseEntity<UserResponse> enable(@PathVariable String id) {
         return ResponseEntity.ok(userService.enable(id));
     }
 
     //身份切换	提供用户角色及权限的动态切换功能
-    @PutMapping("/switch/{id}")
+    @PutMapping("/{id}/switch")
     public ResponseEntity<UserResponse> switchIdentity(@PathVariable String id, @RequestParam String identityId) {
         return ResponseEntity.ok(userService.switchIdentity(id, identityId));
     }

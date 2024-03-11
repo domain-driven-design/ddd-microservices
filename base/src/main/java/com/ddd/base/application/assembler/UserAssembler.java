@@ -19,7 +19,7 @@ public interface UserAssembler {
     UserAssembler INSTANCE = Mappers.getMapper(UserAssembler.class);
 
 
-    PageResponse<UserResponse> toPageDTO(Page<UserPO> userPO);
+    PageResponse<UserResponse> toPageResponse(Page<UserPO> userPO);
 
     @Mapping(target = "userIdentities", source = "userPO.id")
     @Mapping(target = "currentIdentity", source = "userPO.id")

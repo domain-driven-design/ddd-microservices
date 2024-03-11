@@ -19,12 +19,12 @@ public class User extends AggregateAudit {
     private String maintainBy;
     private String maintainByName;
     private OffsetDateTime maintainTime;
-    private List<UserIdentity> userIdentity;
+    private List<UserIdentity> userIdentities;
 
     public void buildUserIdentity(List<UserIdentity> identities, String currentIdentityId) {
         this.currentIdentity = identities.stream().filter(identity ->
                 Objects.equals(identity.getId(), currentIdentityId)).findFirst().orElse(null);
-        this.userIdentity = identities;
+        this.userIdentities = identities;
     }
 
     public void disable(String userId) {
@@ -52,7 +52,7 @@ public class User extends AggregateAudit {
         if (!this.status.equals("NORMAL")) {
             throw new RuntimeException("USER STATUS INVALID");
         }
-        this.currentIdentity = this.userIdentity.stream().filter(identity ->
+        this.currentIdentity = this.userIdentities.stream().filter(identity ->
                 Objects.equals(identity.getId(), identityId)).findFirst().orElse(null);
 
         super.updatedAudit(userId);
