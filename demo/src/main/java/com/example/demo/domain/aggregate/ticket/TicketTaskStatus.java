@@ -1,4 +1,12 @@
 package com.example.demo.domain.aggregate.ticket;
 
-public class TicketTaskStatus {
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@AllArgsConstructor
+@Getter
+public enum TicketTaskStatus {
+    TODO("Todo"), DOING("Doing"), DONE("Done");
+
+    private final String name;
 }
