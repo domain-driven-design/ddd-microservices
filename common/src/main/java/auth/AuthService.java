@@ -14,4 +14,8 @@ public class AuthService {
             throw new UnauthorizedException();
         });
     }
+
+    public String currentUserId() {
+        return currentUser().getUserId();
+    }
 }

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 public interface TicketRepository {
     Ticket get(String id);
 
-    Ticket add(Ticket ticket);
+    void add(Ticket ticket);
 
     long update(Ticket ticket);
 
