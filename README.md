@@ -1,9 +1,38 @@
 # ddd-microservices
 Example project for microservices with DDD.
 
-# modules
+# Modules
 
 - commons: SDK for common utils or base classes.
 - bff: Application gateway.
-- auth-base: Domain service for base feature. e.g. File\User.
-- other auth service
+- demo: Domain service for **example** and team **specification**. A set of CQRUD/Tests examples which team should follow up and could be template as auto script. 
+- base: Some basic functions, e.g. Schedule\User\Branch.
+- calculation: A lib for calculation features.
+
+# Specification
+
+## App project Layers
+
+Layers:
+
+- adapter: Present input/output for Rest API and MQ listener.
+- application: Deal business use case, should define DTOs.
+- domain: Common business case features, optional for business.
+- infrastructure: APIs\Database access\MQ produce.
+  - Data access: Repository(Aggregate) → Mybatis Mapper(Sigle table)
+  - API access: Client(Feign provide, if we use RestTemplate, should implement one Client in project)
+  - MQ produce: Producer → MQTemplate.
+  
+Q: PO(alone) and Model(1 to many)?
+A: It dependes ORM selection. JPA can treat them same, but for Mybatis keep both PO and Model could be better.
+
+Q: do we really need IOC for domain? and keep domain clean? (Some interfaces keep in domain but all in one project).
+A: It's an open problem, currently we chose [TBD]. 
+
+## Package and naming 
+  - Package name should start with "com.example.[module]"
+  - @Ning
+## Exception design @Zebing
+  - 
+## Testing
+  - @Wanglu 
