@@ -15,4 +15,11 @@ public class Ticket extends AbstractEntity {
     private String assigneeId;
     private TicketStatus status;
     private List<TicketTask> tasks;
+
+    public Ticket update(String operatorId, String title, String description) {
+        this.title = title;
+        this.description = description;
+        this.update(operatorId);
+        return this;
+    }
 }

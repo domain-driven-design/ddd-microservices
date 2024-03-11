@@ -12,4 +12,5 @@ public interface TicketConvert {
     TicketConvert INSTANCE = Mappers.getMapper(TicketConvert.class);
 
     TicketPO toPO(Ticket ticket);
+    Ticket toEntity(TicketPO ticketPO);
 }

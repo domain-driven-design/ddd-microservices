@@ -1,15 +1,14 @@
 package com.example.demo.domain.repository;
 
 import com.example.demo.domain.aggregate.ticket.Ticket;
-import org.springframework.stereotype.Repository;
 
 
 public interface TicketRepository {
-    Ticket get(String id);
+    Ticket find(String id);
 
-    void add(Ticket ticket);
+    void create(Ticket ticket);
 
-    long update(Ticket ticket);
+    void update(Ticket ticket);
 
     void remove(String id);
 }

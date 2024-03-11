@@ -1,6 +1,8 @@
 package com.example.demo.application.service;
 
 import auth.AuthService;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.demo.application.assembler.TicketAssembler;
 import com.example.demo.application.dto.request.CreateTicketCommand;
 import com.example.demo.application.dto.request.TicketQuery;
@@ -9,6 +11,7 @@ import com.example.demo.application.dto.response.TicketResponse;
 import com.example.demo.domain.aggregate.ticket.Ticket;
 import com.example.demo.domain.repository.TicketRepository;
 import com.example.demo.infrastructure.persistence.mapper.query.TicketQueryMapper;
+import com.example.demo.infrastructure.persistence.po.TicketPO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import utils.IdUtil;
@@ -24,28 +27,33 @@ public class TicketAppService {
 
     public TicketResponse create(CreateTicketCommand createTicketCommand) {
         String currentUserId = authService.currentUserId();
-
-        Ticket ticket = Ticket.builder()
-                .id(IdUtil.uuid())
-                .createdBy(currentUserId)
-                .updatedBy(currentUserId)
-                .title(createTicketCommand.getTitle())
-                .description(createTicketCommand.getDescription()).build();
-        ticketRepository.add(ticket);
+        Ticket ticket = Ticket.builder().id(IdUtil.uuid()).createdBy(currentUserId).updatedBy(currentUserId).title(createTicketCommand.getTitle()).description(createTicketCommand.getDescription()).build();
+        ticketRepository.create(ticket);
         return ticketAssembler.toResponse(ticket);
     }
 
     public PageResponse<TicketResponse> query(TicketQuery ticketQuery) {
-        return null;
+        LambdaQueryWrapper<TicketPO> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.like(TicketPO::getTitle, ticketQuery.getTitle());
+        Page<TicketPO> page = new Page<>(ticketQuery.getPageNumber(), ticketQuery.getPageSize());
+
+        Page<TicketPO> poPage = ticketQueryMapper.selectPage(page, queryWrapper);
+        return ticketAssembler.toPageResponse(poPage);
     }
 
     public TicketResponse read(String id) {
-        return null;
+        Ticket ticket = ticketRepository.find(id);
+        return ticketAssembler.toResponse(ticket);
     }
 
     public void update(String id, UpdateTicketCommand updateTicketCommand) {
+        String currentUserId = authService.currentUserId();
+        Ticket ticket = ticketRepository.find(id);
+        ticket.update(currentUserId, updateTicketCommand.getTitle(), updateTicketCommand.getDescription());
+        ticketRepository.update(ticket);
     }
 
-    public void delete(String id, TicketQuery ticketQuery) {
+    public void delete(String id) {
+        ticketRepository.remove(id);
     }
 }

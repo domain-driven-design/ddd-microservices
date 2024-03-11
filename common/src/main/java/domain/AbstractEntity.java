@@ -28,7 +28,7 @@ public abstract class AbstractEntity implements Serializable {
         }
     }
 
-    protected void update(String operatorId) {
+    public void update(String operatorId) {
         this.updatedBy = operatorId;
         this.updatedTime = OffsetDateTime.now();
     }
