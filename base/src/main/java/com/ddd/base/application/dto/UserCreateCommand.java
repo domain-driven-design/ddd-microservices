@@ -18,16 +18,16 @@ public class UserCreateCommand {
     private String permissionBranchId;
     private List<UserIdentityRole> roles;
 
-    public User toEntity() {
+    public User toEntity(String userId) {
         String identityId = UUID.randomUUID().toString();
         UserIdentity userIdentity = UserIdentity.builder()
                 .id(identityId)
                 .userId(this.id)
                 .roles(roles)
                 .permissionBranchId(permissionBranchId)
-                .updatedBy("")
+                .updatedBy(userId)
                 .updatedTime(OffsetDateTime.now())
-                .createdBy("")
+                .createdBy(userId)
                 .createdTime(OffsetDateTime.now())
                 .build();
         ArrayList<UserIdentity> userIdentities = new ArrayList<>();
@@ -36,15 +36,15 @@ public class UserCreateCommand {
         return User.builder()
                 .id(this.id)
                 .name(this.name)
-                .maintainBy("")
+                .maintainBy(userId)
                 .maintainTime(OffsetDateTime.now())
                 .deleted(false)
                 .status("NORMAL")
                 .currentIdentity(userIdentity)
                 .userIdentity(userIdentities)
-                .updatedBy("")
+                .updatedBy(userId)
                 .updatedTime(OffsetDateTime.now())
-                .createdBy("")
+                .createdBy(userId)
                 .createdTime(OffsetDateTime.now())
                 .build();
     }

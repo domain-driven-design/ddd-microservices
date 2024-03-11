@@ -1,5 +1,6 @@
 package com.ddd.base.application.service;
 
+import auth.AuthService;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ddd.base.application.assembler.UserAssembler;
 import com.ddd.base.application.dto.UserCreateCommand;
@@ -20,6 +21,7 @@ public class UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
     private final UserAssembler assembler;
+    private final AuthService authService;
 
     public PageResponse<UserResponse> query(UserQueryDTO userQuery) {
 
@@ -32,7 +34,7 @@ public class UserService {
 
     @Transactional
     public UserResponse register(UserCreateCommand createDTO) {
-        User user = createDTO.toEntity();
+        User user = createDTO.toEntity(authService.currentUser().getUserId());
         userRepository.create(user);
         return assembler.toResponse(user);
     }
@@ -41,7 +43,7 @@ public class UserService {
     public UserResponse disable(String id) {
         User user = userRepository.find(id)
                 .orElseThrow(() -> new RuntimeException("User not found: " + id));
-        user.disable(id);
+        user.disable(authService.currentUser().getUserId());
         userRepository.updateAggregate(user);
         return assembler.toResponse(user);
     }
@@ -50,7 +52,7 @@ public class UserService {
     public UserResponse enable(String id) {
         User user = userRepository.find(id)
                 .orElseThrow(() -> new RuntimeException("User not found: " + id));
-        user.enable(id);
+        user.enable(authService.currentUser().getUserId());
         userRepository.updateAggregate(user);
         return assembler.toResponse(user);
     }
@@ -58,7 +60,7 @@ public class UserService {
     public UserResponse switchIdentity(String id, String identityId) {
         User user = userRepository.find(id)
                 .orElseThrow(() -> new RuntimeException("User not found: " + id));
-        user.switchIdentity(identityId);
+        user.switchIdentity(identityId, authService.currentUser().getUserId());
         userRepository.update(user);
         return assembler.toResponse(user);
     }

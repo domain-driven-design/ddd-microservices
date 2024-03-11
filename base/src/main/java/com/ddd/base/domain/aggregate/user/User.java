@@ -27,34 +27,34 @@ public class User extends AggregateAudit {
         this.userIdentity = identities;
     }
 
-    public void disable(String id) {
+    public void disable(String userId) {
         if (!this.status.equals("NORMAL")) {
             throw new RuntimeException("USER STATUS INVALID");
         }
         this.status = "DISABLE";
-        this.maintainBy = id;
+        this.maintainBy = userId;
         this.maintainTime = OffsetDateTime.now();
-        super.updatedAudit(id);
+        super.updatedAudit(userId);
 
     }
 
-    public void enable(String id) {
+    public void enable(String userId) {
         if (!this.status.equals("DISABLE")) {
             throw new RuntimeException("USER STATUS INVALID");
         }
         this.status = "NORMAL";
-        this.maintainBy = id;
+        this.maintainBy = userId;
         this.maintainTime = OffsetDateTime.now();
-        super.updatedAudit(id);
+        super.updatedAudit(userId);
     }
 
-    public void switchIdentity(String identityId) {
+    public void switchIdentity(String identityId, String userId) {
         if (!this.status.equals("NORMAL")) {
             throw new RuntimeException("USER STATUS INVALID");
         }
         this.currentIdentity = this.userIdentity.stream().filter(identity ->
                 Objects.equals(identity.getId(), identityId)).findFirst().orElse(null);
 
-        super.updatedAudit("");
+        super.updatedAudit(userId);
     }
 }
