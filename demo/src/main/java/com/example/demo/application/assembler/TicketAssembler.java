@@ -13,5 +13,6 @@ import utils.page.PageResponse;
 public interface TicketAssembler {
     TicketAssembler INSTANCE = Mappers.getMapper(TicketAssembler.class);
     TicketResponse toResponse(Ticket ticket);
+    TicketResponse toResponse(TicketPO ticketPO);
     PageResponse<TicketResponse> toPageResponse(Page<TicketPO> ticketPOPage);
 }

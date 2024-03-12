@@ -3,9 +3,10 @@ package com.example.demo.domain.aggregate.ticket;
 import domain.AbstractEntity;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.experimental.SuperBuilder;
 
 
-@Builder
+@SuperBuilder
 @Getter
 public class TicketTask extends AbstractEntity {
     private String id;

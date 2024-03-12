@@ -50,8 +50,8 @@ public class TicketController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable String id, @RequestParam @Valid TicketQuery ticketQuery) {
-        ticketAppService.delete(id, ticketQuery);
+    public ResponseEntity<Void> delete(@PathVariable String id) {
+        ticketAppService.delete(id);
         return ResponseEntity.ok().build();
     }
 }
