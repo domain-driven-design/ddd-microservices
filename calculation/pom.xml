@@ -37,11 +37,6 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>QLExpress</artifactId>
             <version>${qlexpress.version}</version>

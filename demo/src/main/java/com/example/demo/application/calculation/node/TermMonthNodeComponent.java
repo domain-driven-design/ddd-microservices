@@ -23,5 +23,4 @@ public class TermMonthNodeComponent extends AbstractNodeComponent {
     protected void calculate(CalculationContext context) {
         context.saveVariables(Map.of(VARIABLE_NAME, BigDecimal.valueOf(12)));
     }
-
 }

@@ -1,7 +1,6 @@
 package com.example.demo.domain.aggregate.ticket;
 
 import domain.AbstractEntity;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.experimental.SuperBuilder;
 
