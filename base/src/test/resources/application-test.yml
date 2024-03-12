@@ -3,4 +3,9 @@ spring:
     jdbc-url: jdbc:mysql://localhost:3308/ddd-microservice-base
     username: root
     password: root
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: org.mariadb.jdbc.Driver
+logging:
+  level:
+    ch:
+      vorburger:
+        mariadb4: DEBUG
