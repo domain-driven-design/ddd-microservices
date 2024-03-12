@@ -1,4 +1,4 @@
-package lock.redis;
+package lock;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-public @interface RedisLock {
+public @interface DistributeLock {
     /**
      * the key of lock
      * @return

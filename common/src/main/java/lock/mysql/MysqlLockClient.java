@@ -1,5 +1,6 @@
 package lock.mysql;
 
+import lock.DistributeLockClient;
 import lock.mysql.repository.MysqlLockPO;
 import lock.mysql.repository.MysqlLockRepository;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +12,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class MysqlLockClient {
+public class MysqlLockClient implements DistributeLockClient {
 
     private MysqlLockRepository mysqlLockRepository;
 

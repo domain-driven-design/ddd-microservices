@@ -4,7 +4,7 @@ package com.example.demo.adapter.controller;
 import com.example.demo.application.calculation.args.DemoScheduleCommand;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import lock.redis.RedisLock;
+import lock.DistributeLock;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -29,7 +29,7 @@ public class DemoController {
     }
 
     @SneakyThrows
-    @RedisLock("#id")
+    @DistributeLock("#id")
     @GetMapping("/lock")
     public void testLock(@RequestParam("id") Long id) {
         System.out.println("starting execute");
