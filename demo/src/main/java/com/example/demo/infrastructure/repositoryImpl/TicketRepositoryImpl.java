@@ -26,14 +26,14 @@ public class TicketRepositoryImpl implements TicketRepository {
         TicketPO ticketPO = ticketConverter.toPO(ticket);
         int result = ticketMapper.insert(ticketPO);
         if (result != 1) {
-            throw new SystemException(DemoErrorCode.DEMO001);
+            throw new SystemException(DemoErrorCode.CREATE_TICKET_FAILED);
         }
     }
 
     @Override
     public Ticket find(String id) {
         TicketPO ticketPO = Optional.ofNullable(ticketMapper.selectById(id)).orElseThrow(() -> {
-            throw new BusinessException(DemoErrorCode.DEMO002);
+            throw new BusinessException(DemoErrorCode.TICKET_NOT_FOUND);
         });
         // TODO Assembling tasks
         return ticketConverter.toEntity(ticketPO);
@@ -44,7 +44,7 @@ public class TicketRepositoryImpl implements TicketRepository {
         TicketPO ticketPO = ticketConverter.toPO(ticket);
         int result = ticketMapper.updateById(ticketPO);
         if (result != 1) {
-            throw new BusinessException(DemoErrorCode.DEMO003);
+            throw new BusinessException(DemoErrorCode.UPDATE_TICKET_FAILED);
         }
     }
 

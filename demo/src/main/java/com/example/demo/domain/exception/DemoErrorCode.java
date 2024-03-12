@@ -1,28 +1,32 @@
 package com.example.demo.domain.exception;
 
-import error.IErrorCode;
+import error.ErrorGroup;
+import error.IError;
 
-public enum DemoErrorCode implements IErrorCode {
+public enum DemoErrorCode implements IError {
 
-    DEMO001("DEMO001", "Create ticket failed"),
-    DEMO002("DEMO002", "Ticket not found"),
-    DEMO003("DEMO003", "Update ticket failed");
+    CREATE_TICKET_FAILED("Create ticket failed"),
+    TICKET_NOT_FOUND("Ticket not found"),
+    UPDATE_TICKET_FAILED("Update ticket failed");
 
-    private final String code;
     private final String message;
 
-    DemoErrorCode(String code, String message) {
-        this.code = code;
+    DemoErrorCode(String message) {
         this.message = message;
     }
 
     @Override
-    public String getCode() {
-        return this.code;
+    public ErrorGroup getErrorGroup() {
+        return ErrorGroup.COMMON;
     }
 
     @Override
     public String getMessage() {
         return this.message;
+    }
+
+    @Override
+    public String getSubCode() {
+        return this.name();
     }
 }

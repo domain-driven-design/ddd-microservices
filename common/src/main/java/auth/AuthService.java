@@ -1,5 +1,6 @@
 package auth;
 
+import error.UnauthorizedException;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
