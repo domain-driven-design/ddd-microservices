@@ -27,7 +27,7 @@ public class TicketAppService {
 
     public TicketResponse create(CreateTicketCommand createTicketCommand) {
         String currentUserId = authService.currentUserId();
-        Ticket ticket = Ticket.builder().id(IdUtil.uuid()).createdBy(currentUserId).updatedBy(currentUserId).title(createTicketCommand.getTitle()).description(createTicketCommand.getDescription()).build();
+        Ticket ticket = createTicketCommand.toEntity(currentUserId);
         ticketRepository.create(ticket);
         return ticketAssembler.toResponse(ticket);
     }

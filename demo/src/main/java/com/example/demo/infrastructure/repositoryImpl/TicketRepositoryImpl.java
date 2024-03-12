@@ -3,7 +3,7 @@ package com.example.demo.infrastructure.repositoryImpl;
 import com.example.demo.domain.aggregate.ticket.Ticket;
 import com.example.demo.domain.exception.DemoErrorCode;
 import com.example.demo.domain.repository.TicketRepository;
-import com.example.demo.infrastructure.convert.TicketConvert;
+import com.example.demo.infrastructure.converter.TicketConverter;
 import com.example.demo.infrastructure.persistence.mapper.base.TicketMapper;
 import com.example.demo.infrastructure.persistence.mapper.base.TicketTaskMapper;
 import com.example.demo.infrastructure.persistence.po.TicketPO;
@@ -19,11 +19,11 @@ import java.util.Optional;
 public class TicketRepositoryImpl implements TicketRepository {
     public final TicketMapper ticketMapper;
     public final TicketTaskMapper ticketTaskMapper;
-    public final TicketConvert ticketConvert;
+    public final TicketConverter ticketConverter;
 
     @Override
     public void create(Ticket ticket) {
-        TicketPO ticketPO = ticketConvert.toPO(ticket);
+        TicketPO ticketPO = ticketConverter.toPO(ticket);
         int result = ticketMapper.insert(ticketPO);
         if (result != 1) {
             throw new SystemException(DemoErrorCode.DEMO001);
@@ -36,12 +36,12 @@ public class TicketRepositoryImpl implements TicketRepository {
             throw new BusinessException(DemoErrorCode.DEMO002);
         });
         // TODO Assembling tasks
-        return ticketConvert.toEntity(ticketPO);
+        return ticketConverter.toEntity(ticketPO);
     }
 
     @Override
     public void update(Ticket ticket) {
-        TicketPO ticketPO = ticketConvert.toPO(ticket);
+        TicketPO ticketPO = ticketConverter.toPO(ticket);
         int result = ticketMapper.updateById(ticketPO);
         if (result != 1) {
             throw new BusinessException(DemoErrorCode.DEMO003);

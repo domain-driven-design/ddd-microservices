@@ -7,7 +7,6 @@ import lombok.Data;
 @Data
 @TableName("ticket_task")
 public class TicketTaskPO extends AbstractPO {
-    private String id;
     // Hints: In PO we have to keep associate attribute but in domain model we don't need it anymore.
     private String ticketId;
     private String name;
