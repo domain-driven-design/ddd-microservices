@@ -14,7 +14,13 @@ spring:
     properties:
       hibernate:
         show_sql: true
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:/mapper/*.xml
 
 liteflow:
   enable: true
   rule-source: classpath*:/config/flow.xml
+
+data-dictionary: com/example/demo/domain
