@@ -1,4 +1,4 @@
-package com.example.demo.infrastructure.lock;
+package lock.redis;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

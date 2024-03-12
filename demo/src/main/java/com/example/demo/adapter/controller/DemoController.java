@@ -2,10 +2,9 @@ package com.example.demo.adapter.controller;
 
 
 import com.example.demo.application.calculation.args.DemoScheduleCommand;
-import com.example.demo.application.args.DemoScheduleCommand;
-import com.example.demo.infrastructure.lock.RedisLock;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lock.redis.RedisLock;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;

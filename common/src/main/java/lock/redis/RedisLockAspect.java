@@ -1,14 +1,14 @@
-package com.example.demo.infrastructure.lock;
+package lock.redis;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 import org.springframework.stereotype.Component;
-import org.aspectj.lang.annotation.Aspect;
 import org.springframework.util.Assert;
 
 import java.util.concurrent.TimeUnit;

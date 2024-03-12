@@ -22,6 +22,7 @@
         <mybatis-plus-boot-starter.version>3.3.1</mybatis-plus-boot-starter.version>
         <springfox.version>3.0.0</springfox.version>
         <openhtml.version>1.0.10</openhtml.version>
+        <redisson.version>3.27.1</redisson.version>
     </properties>
 
     <dependencies>
@@ -104,6 +105,17 @@
             <groupId>org.jxls</groupId>
             <artifactId>jxls-poi</artifactId>
             <version>2.10.0</version>
+        </dependency>
+        <!--   distribute lock     -->
+
+        <dependency>
+            <artifactId>spring-boot-starter-aop</artifactId>
+            <groupId>org.springframework.boot</groupId>
+        </dependency>
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson</artifactId>
+            <version>${redisson.version}</version>
         </dependency>
 
         <!--    测试    -->
