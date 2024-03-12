@@ -20,7 +20,7 @@ public class SystemException extends AbstractException {
         super(errorCode);
     }
 
-    public SystemException(IError errorCode, Object... params) {
+    public SystemException(IError errorCode, String... params) {
         super(errorCode, params);
     }
 

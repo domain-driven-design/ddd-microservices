@@ -2,12 +2,12 @@ package error;
 
 public interface IError {
 
-    ErrorCodePrefix getErrorCodePrefix();
-    int getErrorCodeNumber();
+    ErrorGroup getErrorGroup();
+    String getSubCode();
     String getMessage();
 
     default String getErrorCode() {
-        return getErrorCodePrefix().toString() + String.format("%03d", getErrorCodeNumber());
+        return getErrorGroup().toString() + "_" + getSubCode();
     }
 
 }

@@ -17,7 +17,7 @@ public class ClientException extends AbstractException {
         super(errorCode);
     }
 
-    public ClientException(IError errorCode, Object... params) {
+    public ClientException(IError errorCode, String... params) {
         super(errorCode, params);
     }
 

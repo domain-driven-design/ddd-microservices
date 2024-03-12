@@ -8,16 +8,16 @@ import java.text.MessageFormat;
 public abstract class AbstractException extends RuntimeException {
 
     private final transient IError error;
-    private final transient Object[] params;
+    private final transient String[] params;
 
     protected AbstractException(IError error) {
         super(error.getMessage());
         this.error = error;
-        this.params = new Object[0];
+        this.params = new String[0];
     }
 
-    protected AbstractException(IError error, Object... params) {
-        super(MessageFormat.format(error.getMessage(), params));
+    protected AbstractException(IError error, String... params) {
+        super(MessageFormat.format(error.getMessage(), (Object[]) params));
         this.error = error;
         this.params = params;
     }

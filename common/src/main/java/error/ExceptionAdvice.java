@@ -1,6 +1,8 @@
 package error;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -9,24 +11,30 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class ExceptionAdvice {
 
     @ExceptionHandler(SystemException.class)
-    public ResponseEntity<Object> handleSystemException(SystemException exception) {
+    public ResponseEntity<ErrorResponse> handleSystemException(SystemException exception) {
         log.error("[System Exception] An unexpected system exception has occurred, {}",
                 exception.getMessage(), exception);
-        return ResponseEntity.fail(exception.getError().getErrorCode(), exception.getMessage());
+        ErrorResponse response = ErrorResponse.create(
+                exception.getError().getErrorCode(), exception.getMessage(), null);
+        return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(BusinessException.class)
-    public ResponseEntity<Object> handleBusinessException(BusinessException exception) {
+    public ResponseEntity<ErrorResponse> handleBusinessException(BusinessException exception) {
         log.warn("[Business Exception] An unexpected business exception has occurred, {}",
                 exception.getMessage(), exception);
-        return ResponseEntity.warning(exception.getError().getErrorCode(), exception.getMessage());
+        ErrorResponse response = ErrorResponse.create(
+                exception.getError().getErrorCode(), exception.getMessage(), exception.getPayload());
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST); //todo
     }
 
     @ExceptionHandler(ClientException.class)
-    public ResponseEntity<Object> handleClientException(ClientException exception) {
-        log.error("[Client Exception] An unexpected client exception has occurred, {}",
+    public ResponseEntity<ErrorResponse> handleClientException(ClientException exception) {
+        log.warn("[Client Exception] An unexpected client exception has occurred, {}",
                 exception.getMessage(), exception);
-        return ResponseEntity.fail(exception.getError().getErrorCode(), exception.getMessage());
+        ErrorResponse response = ErrorResponse.create(
+                exception.getError().getErrorCode(), exception.getMessage(), null);
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
 }

@@ -1,6 +1,6 @@
 package error;
 
-public enum ErrorCodePrefix {
+public enum ErrorGroup {
 
     CALCULATION("CAL"),
     AUTHENTICATION("AUT"),
@@ -8,7 +8,7 @@ public enum ErrorCodePrefix {
 
     private final String prefix;
 
-    ErrorCodePrefix(String prefix) {
+    ErrorGroup(String prefix) {
         this.prefix = prefix;
     }
 

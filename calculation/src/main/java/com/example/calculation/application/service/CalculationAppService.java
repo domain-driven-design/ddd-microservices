@@ -34,7 +34,7 @@ public class CalculationAppService {
         // 根据模式获取对应的service
         AbstractCalculationService service = calculationServices.stream()
                 .filter(s -> s.getMode() == command.getMode()).findFirst()
-                .orElseThrow(() -> new ClientException(NO_MATCHED_CALCULATION_SERVICE, command.getMode()));
+                .orElseThrow(() -> new ClientException(NO_MATCHED_CALCULATION_SERVICE, command.getMode().getCode()));
 
         return service.execute(command);
     }

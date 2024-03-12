@@ -14,12 +14,19 @@ import lombok.Setter;
 @Setter
 public class BusinessException extends AbstractException {
 
+    private Object payload;
+
     public BusinessException(IError errorCode) {
         super(errorCode);
     }
 
-    public BusinessException(IError errorCode, Object... params) {
+    public BusinessException(IError errorCode, String... params) {
         super(errorCode, params);
+    }
+
+    public BusinessException(IError errorCode, Object payload, String... params) {
+        super(errorCode, params);
+        this.setPayload(payload);
     }
 
 }
