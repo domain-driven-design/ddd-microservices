@@ -12,13 +12,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import utils.IdUtil;
-import utils.JacksonUtil;
 
 import java.time.OffsetDateTime;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
+import static utils.TestUtil.USER_CONTEXT;
+import static utils.TestUtil.getUserContextString;
 
 class UserControllerTest extends TestBase {
 
