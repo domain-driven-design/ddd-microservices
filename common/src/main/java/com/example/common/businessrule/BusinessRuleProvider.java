@@ -1,5 +1,6 @@
 package com.example.common.businessrule;
 
+import com.example.common.error.BusinessException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
@@ -19,6 +20,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ExecutionException;
+
+import static com.example.common.error.CommonError.ILLEGAL_BUSINESS_RULE;
+import static com.example.common.error.CommonError.PROCESS_JSON_FAILED;
 
 @Slf4j
 @Component
@@ -49,14 +53,14 @@ public class BusinessRuleProvider {
             }
         } catch (IOException e) {
             log.error("Failed to load business rules", e);
-            throw new IllegalArgumentException(); //todo replace by proper exception
+            throw new BusinessException(ILLEGAL_BUSINESS_RULE, BUSINESS_RULES_FILE_PATH);
         }
     }
 
     public <T> T getBusinessRule(String ruleName, TypeReference<T> valueTypeRef) {
         if (!RULE_MAP.containsKey(ruleName)) {
             log.error("No rule with name {} found", ruleName);
-            throw new IllegalArgumentException(); //todo replace by proper exception
+            throw new BusinessException(ILLEGAL_BUSINESS_RULE, ruleName);
         }
         try {
             if (businessRuleConfig.isEnableCache()) {
@@ -65,7 +69,7 @@ public class BusinessRuleProvider {
             return readRule(ruleName, valueTypeRef);
         } catch (ExecutionException e) {
             log.error("Fail to read rule with ruleName {}", ruleName, e);
-            throw new IllegalArgumentException(); //todo replace by proper exception
+            throw new BusinessException(ILLEGAL_BUSINESS_RULE, ruleName);
         }
     }
 
@@ -74,7 +78,7 @@ public class BusinessRuleProvider {
             return yamlMapper.readValue(yamlMapper.writeValueAsString(RULE_MAP.get(ruleName)), valueTypeRef);
         } catch (JsonProcessingException e) {
             log.error("Fail to process json with name {}", ruleName, e);
-            throw new IllegalArgumentException(); //todo replace by proper exception
+            throw new BusinessException(PROCESS_JSON_FAILED, ruleName);
         }
     }
 

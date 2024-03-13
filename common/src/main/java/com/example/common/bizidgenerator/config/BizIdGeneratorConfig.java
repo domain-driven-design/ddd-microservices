@@ -2,11 +2,14 @@ package com.example.common.bizidgenerator.config;
 
 import com.example.common.bizidgenerator.domain.BizIdVariable;
 import com.example.common.bizidgenerator.domain.BizType;
+import com.example.common.error.BusinessException;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.util.List;
+
+import static com.example.common.error.CommonError.NO_MATCHED_BUSINESS_TYPE;
 
 @Setter
 @Getter
@@ -21,7 +24,7 @@ public class BizIdGeneratorConfig {
         return bizIdVariables.stream()
                 .filter(v -> v.getBizType() == bizType)
                 .findFirst()
-                .orElseThrow(IllegalArgumentException::new); // todo exception
+                .orElseThrow(() -> new BusinessException(NO_MATCHED_BUSINESS_TYPE, bizType.getCode()));
     }
 
 }

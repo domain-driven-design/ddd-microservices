@@ -1,5 +1,6 @@
 package com.example.common.statusmachine;
 
+import com.example.common.error.BusinessException;
 import lombok.Getter;
 
 import java.util.EnumMap;
@@ -7,6 +8,9 @@ import java.util.EnumSet;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+
+import static com.example.common.error.CommonError.MAP_KEY_NOT_EXIST;
+import static com.example.common.error.CommonError.NULL_OBJECT;
 
 public abstract class AbstractStatusMachine<E extends Enum<E>, T extends Enum<T>> {
 
@@ -38,7 +42,7 @@ public abstract class AbstractStatusMachine<E extends Enum<E>, T extends Enum<T>
     public T getNextStatus(E event, T currentStatus) {
         T nextStatus = transition.get(event).get(currentStatus);
         if (Objects.isNull(nextStatus)) {
-            throw new IllegalArgumentException(); //todo
+            throw new BusinessException(NULL_OBJECT, currentStatus.toString());
         }
         return nextStatus;
     }
@@ -56,7 +60,7 @@ public abstract class AbstractStatusMachine<E extends Enum<E>, T extends Enum<T>
 
     public void checkTransition(E event) {
         if (!transition.containsKey(event)) {
-            throw new IllegalArgumentException(); //todo
+            throw new BusinessException(MAP_KEY_NOT_EXIST, event.toString());
         }
     }
 

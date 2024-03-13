@@ -6,6 +6,7 @@ import com.alibaba.excel.ExcelWriter;
 import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.read.listener.ReadListener;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
+import com.example.common.error.BusinessException;
 import lombok.extern.slf4j.Slf4j;
 import org.jxls.common.Context;
 import org.jxls.util.JxlsHelper;
@@ -19,6 +20,10 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
+
+import static com.example.common.error.CommonError.FILE_READING_ERROR;
+import static com.example.common.error.CommonError.READ_FILE_FAILED;
+import static com.example.common.error.CommonError.WRITE_FILE_FAILED;
 
 @Slf4j
 /**
@@ -37,10 +42,10 @@ import java.util.function.Consumer;
         try {
             EasyExcel.read(file.getInputStream(), clazz, getReadListener(consumer, errorMessages)).sheet().doRead();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new BusinessException(READ_FILE_FAILED, file.getName());
         }
         if (CollectionUtils.isNotEmpty(errorMessages)) {
-            throw new RuntimeException();
+            throw new BusinessException(FILE_READING_ERROR, errorMessages, file.getName());
         }
     }
 
@@ -53,7 +58,7 @@ import java.util.function.Consumer;
         } catch (Exception exception) {
             log.error(errorMessage);
             response.reset();
-            throw new RuntimeException();
+            throw new BusinessException(WRITE_FILE_FAILED, fileName);
         }
     }
 
@@ -66,7 +71,7 @@ import java.util.function.Consumer;
         } catch (Exception exception) {
             log.error(errorMessage);
             response.reset();
-            throw new RuntimeException(exception);
+            throw new BusinessException(WRITE_FILE_FAILED, fileName);
         }
     }
 

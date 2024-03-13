@@ -1,11 +1,13 @@
 package com.example.common.utils;
 
+import com.example.common.error.BusinessException;
 import com.openhtmltopdf.extend.FSObjectDrawer;
 import com.openhtmltopdf.extend.FSObjectDrawerFactory;
 import com.openhtmltopdf.extend.OutputDevice;
 import com.openhtmltopdf.pdfboxout.PdfRendererBuilder;
 import com.openhtmltopdf.render.RenderingContext;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.w3c.dom.Element;
 
 import java.awt.*;
@@ -15,9 +17,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
 
+import static com.example.common.error.CommonError.WRITE_FILE_FAILED;
+
 /**
  * PDF 导出理想方案，性能好，支持分页、水印
  */
+@Slf4j
 public class PdfUtil {
 
     private PdfUtil() {
@@ -33,7 +38,8 @@ public class PdfUtil {
             builder.run();
             return outputStream.toByteArray();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            log.error("Fail to create pdf", e);
+            throw new BusinessException(WRITE_FILE_FAILED);
         }
     }
 
@@ -54,8 +60,8 @@ public class PdfUtil {
                     Font parent = Font.createFont(Font.TRUETYPE_FONT, fontInputStream);
                     font = parent.deriveFont(20f);
                 } catch (FontFormatException | IOException e1) {
-                    e1.printStackTrace();
-                    throw new RuntimeException(e1);
+                    log.error("Fail to draw watermark", e1);
+                    throw new BusinessException(WRITE_FILE_FAILED);
                 }
                 Rectangle2D bounds = font.getStringBounds(waterMark, g2d.getFontRenderContext());
 

@@ -1,5 +1,6 @@
 package com.example.common.utils;
 
+import com.example.common.error.BusinessException;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -7,6 +8,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
+
+import static com.example.common.error.CommonError.VALIDATION_FAILED;
 
 public class PreconditionUtil {
 
@@ -73,12 +76,11 @@ public class PreconditionUtil {
 
     /**
      * 验证并结束链式调用。如果是FAIL_DEFER模式并且存在错误，则抛出一个汇总异常
-     * @throws IllegalArgumentException 如果存在错误并且是FAIL_DEFER模式，则抛出异常
      */
     public void verify() {
         if (!errors.isEmpty()) {
             List<String> collectedErrors = errors.stream().map(Throwable::getMessage).collect(Collectors.toList());
-            throw new IllegalArgumentException(String.join("; ", collectedErrors));
+            throw new BusinessException(VALIDATION_FAILED, collectedErrors);
         }
     }
 
@@ -91,7 +93,7 @@ public class PreconditionUtil {
         if (!errors.isEmpty()) {
             T exception = exceptionSupplier.get();
             List<String> collectedErrors = errors.stream().map(Throwable::getMessage).collect(Collectors.toList());
-            exception.addSuppressed(new IllegalArgumentException(String.join("; ", collectedErrors)));
+            exception.addSuppressed(new BusinessException(VALIDATION_FAILED, collectedErrors));
             throw exception;
         }
     }

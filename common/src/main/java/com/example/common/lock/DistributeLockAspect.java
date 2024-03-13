@@ -1,5 +1,6 @@
 package com.example.common.lock;
 
+import com.example.common.error.SystemException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 import java.util.concurrent.TimeUnit;
+
+import static com.example.common.error.CommonError.LOCK_FAILED;
 
 @Component
 @Aspect
@@ -36,7 +39,7 @@ public class DistributeLockAspect {
 
         boolean tryLock = lockClient.tryLock(lockKey, waitTime);
         if (!tryLock) {
-            throw new Exception("The lock is occupied, please submit later!");
+            throw new SystemException(LOCK_FAILED);
         }
         try {
             return point.proceed();

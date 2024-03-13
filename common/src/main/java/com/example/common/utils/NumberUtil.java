@@ -1,7 +1,12 @@
 package com.example.common.utils;
 
+import com.example.common.error.BusinessException;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+
+import static com.example.common.error.CommonError.INVALID_OBJECT_TYPE;
+import static com.example.common.error.CommonError.NUMBER_ERROR;
 
 public class NumberUtil {
 
@@ -53,7 +58,7 @@ public class NumberUtil {
 
     public NumberUtil divide(BigDecimal num) {
         if (num.compareTo(BigDecimal.ZERO) == 0) {
-            throw new ArithmeticException("Divisor cannot be zero");
+            throw new BusinessException(NUMBER_ERROR, "Divisor cannot be zero");
         }
         result = result.divide(num, mode.getScale(), RoundingMode.HALF_UP);
         return this;
@@ -81,7 +86,7 @@ public class NumberUtil {
         if (value instanceof Number) {
             return BigDecimal.valueOf(((Number) value).doubleValue());
         }
-        throw new IllegalArgumentException(); //todo
+        throw new BusinessException(INVALID_OBJECT_TYPE);
     }
 
 }
