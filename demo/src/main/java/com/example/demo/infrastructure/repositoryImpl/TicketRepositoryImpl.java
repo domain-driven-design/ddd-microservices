@@ -7,8 +7,8 @@ import com.example.demo.infrastructure.converter.TicketConverter;
 import com.example.demo.infrastructure.persistence.mapper.base.TicketMapper;
 import com.example.demo.infrastructure.persistence.mapper.base.TicketTaskMapper;
 import com.example.demo.infrastructure.persistence.po.TicketPO;
-import error.BusinessException;
-import error.SystemException;
+import com.example.common.error.BusinessException;
+import com.example.common.error.SystemException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 

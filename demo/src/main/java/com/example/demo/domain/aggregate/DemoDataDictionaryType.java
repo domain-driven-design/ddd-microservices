@@ -3,8 +3,8 @@ package com.example.demo.domain.aggregate;
 
 import com.example.demo.domain.aggregate.ticket.TicketStatus;
 import com.example.demo.domain.aggregate.ticket.TicketTaskStatus;
-import datadictionary.DataDictionaryType;
-import datadictionary.Description;
+import com.example.common.datadictionary.DataDictionaryType;
+import com.example.common.datadictionary.Description;
 
 public enum DemoDataDictionaryType implements DataDictionaryType {
     TICKET_STATUS(TicketStatus.class, "Enum for ticket status"), TICKET_TASK_STATUS(TicketTaskStatus.class, "Ticket task status");

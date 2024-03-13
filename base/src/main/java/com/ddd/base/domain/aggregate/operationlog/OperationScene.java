@@ -1,6 +1,6 @@
 package com.ddd.base.domain.aggregate.operationlog;
 
-import datadictionary.Description;
+import com.example.common.datadictionary.Description;
 
 public enum OperationScene implements Description {
 

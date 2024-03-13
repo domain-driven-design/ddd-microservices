@@ -1,6 +1,6 @@
 package com.example.calculation.infrastructure.persistence;
 
-import bizidgenerator.domain.BizType;
+import com.example.common.bizidgenerator.domain.BizType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.example.calculation.domain.aggregate.CalculationMode;
 import com.example.calculation.domain.aggregate.CalculationTransaction;

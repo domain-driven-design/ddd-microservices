@@ -8,7 +8,7 @@ import com.ddd.base.application.service.BranchService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import utils.page.PageResponse;
+import com.example.common.utils.page.PageResponse;
 
 @RestController
 @RequestMapping("/branches")

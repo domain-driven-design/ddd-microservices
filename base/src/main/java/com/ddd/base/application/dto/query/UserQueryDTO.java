@@ -1,7 +1,7 @@
 package com.ddd.base.application.dto.query;
 
-import utils.page.PageQuery;
-import auth.UserIdentityRole;
+import com.example.common.utils.page.PageQuery;
+import com.example.common.auth.UserIdentityRole;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

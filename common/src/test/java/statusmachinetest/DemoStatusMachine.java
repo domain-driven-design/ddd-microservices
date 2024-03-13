@@ -3,7 +3,7 @@ package statusmachinetest;
 
 import common.DemoEvent;
 import common.DemoStatus;
-import statusmachine.AbstractStatusMachine;
+import com.example.common.statusmachine.AbstractStatusMachine;
 
 import java.util.Set;
 

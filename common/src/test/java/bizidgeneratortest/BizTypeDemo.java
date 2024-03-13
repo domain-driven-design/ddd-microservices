@@ -1,6 +1,6 @@
 package bizidgeneratortest;
 
-import bizidgenerator.domain.BizType;
+import com.example.common.bizidgenerator.domain.BizType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

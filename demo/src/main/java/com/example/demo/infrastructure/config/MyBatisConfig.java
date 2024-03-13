@@ -1,6 +1,6 @@
 package com.example.demo.infrastructure.config;
 
-import bizidgenerator.domain.BizType;
+import com.example.common.bizidgenerator.domain.BizType;
 import com.example.calculation.domain.aggregate.CalculationMode;
 import com.example.demo.domain.aggregate.calculation.DemoBizType;
 import com.example.demo.domain.aggregate.calculation.DemoCalculationMode;

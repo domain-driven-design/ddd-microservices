@@ -1,5 +1,5 @@
 package com.example.calculation.domain.aggregate;
 
-import datadictionary.Description;
+import com.example.common.datadictionary.Description;
 
 public interface CalculationMode extends Description {}

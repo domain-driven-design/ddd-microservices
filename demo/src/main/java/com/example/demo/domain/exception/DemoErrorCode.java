@@ -1,7 +1,7 @@
 package com.example.demo.domain.exception;
 
-import error.ErrorGroup;
-import error.IError;
+import com.example.common.error.ErrorGroup;
+import com.example.common.error.IError;
 
 public enum DemoErrorCode implements IError {
 

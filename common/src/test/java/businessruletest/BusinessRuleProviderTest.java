@@ -1,7 +1,7 @@
 package businessruletest;
 
-import businessrule.BusinessRuleConfig;
-import businessrule.BusinessRuleProvider;
+import com.example.common.businessrule.BusinessRuleConfig;
+import com.example.common.businessrule.BusinessRuleProvider;
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;

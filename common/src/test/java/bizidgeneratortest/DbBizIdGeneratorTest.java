@@ -1,11 +1,11 @@
 package bizidgeneratortest;
 
-import bizidgenerator.config.BizIdGeneratorConfig;
-import bizidgenerator.domain.BizIdVariable;
-import bizidgenerator.infrastructure.BizIdGeneratorUtil;
-import bizidgenerator.infrastructure.DbBizIdGenerator;
-import bizidgenerator.repository.BizIdGeneratorPO;
-import bizidgenerator.repository.BizIdGeneratorRepository;
+import com.example.common.bizidgenerator.config.BizIdGeneratorConfig;
+import com.example.common.bizidgenerator.domain.BizIdVariable;
+import com.example.common.bizidgenerator.infrastructure.BizIdGeneratorUtil;
+import com.example.common.bizidgenerator.infrastructure.DbBizIdGenerator;
+import com.example.common.bizidgenerator.repository.BizIdGeneratorPO;
+import com.example.common.bizidgenerator.repository.BizIdGeneratorRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

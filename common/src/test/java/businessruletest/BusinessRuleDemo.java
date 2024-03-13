@@ -1,6 +1,6 @@
 package businessruletest;
 
-import businessrule.IBusinessRule;
+import com.example.common.businessrule.IBusinessRule;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

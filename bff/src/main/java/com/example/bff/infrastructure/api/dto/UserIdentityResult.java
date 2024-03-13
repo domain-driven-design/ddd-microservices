@@ -1,6 +1,6 @@
 package com.example.bff.infrastructure.api.dto;
 
-import auth.UserIdentityRole;
+import com.example.common.auth.UserIdentityRole;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

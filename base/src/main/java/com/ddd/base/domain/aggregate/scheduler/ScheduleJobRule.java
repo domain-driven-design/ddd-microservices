@@ -11,7 +11,7 @@ import org.quartz.JobDataMap;
 import org.quartz.JobDetail;
 import org.quartz.Trigger;
 import org.quartz.TriggerBuilder;
-import utils.MapUtil;
+import com.example.common.utils.MapUtil;
 
 import java.util.HashMap;
 import java.util.Map;

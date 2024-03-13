@@ -1,6 +1,6 @@
 package com.example.demo.domain.aggregate.calculation;
 
-import bizidgenerator.domain.BizType;
+import com.example.common.bizidgenerator.domain.BizType;
 
 public enum DemoBizType implements BizType {
     DEPOSIT;

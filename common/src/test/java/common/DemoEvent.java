@@ -1,6 +1,6 @@
 package common;
 
-import datadictionary.Description;
+import com.example.common.datadictionary.Description;
 
 import java.util.Map;
 

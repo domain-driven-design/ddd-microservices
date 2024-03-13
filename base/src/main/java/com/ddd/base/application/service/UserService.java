@@ -1,6 +1,6 @@
 package com.ddd.base.application.service;
 
-import auth.AuthService;
+import com.example.common.auth.AuthService;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ddd.base.application.assembler.UserAssembler;
 import com.ddd.base.application.dto.UserCreateCommand;
@@ -13,7 +13,7 @@ import com.ddd.base.infra.persistence.po.UserPO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import utils.page.PageResponse;
+import com.example.common.utils.page.PageResponse;
 
 @Service
 @AllArgsConstructor

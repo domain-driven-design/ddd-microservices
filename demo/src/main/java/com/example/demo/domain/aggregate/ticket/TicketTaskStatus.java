@@ -1,6 +1,6 @@
 package com.example.demo.domain.aggregate.ticket;
 
-import datadictionary.Description;
+import com.example.common.datadictionary.Description;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

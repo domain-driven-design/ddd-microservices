@@ -5,7 +5,7 @@ import com.ddd.base.domain.aggregate.operationlog.OperationScene;
 import com.ddd.base.domain.aggregate.operationlog.OperationType;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import utils.page.PageQuery;
+import com.example.common.utils.page.PageQuery;
 
 import java.util.List;
 

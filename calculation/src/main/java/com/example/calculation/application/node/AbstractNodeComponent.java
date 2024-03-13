@@ -6,8 +6,8 @@ import com.ql.util.express.DefaultContext;
 import com.ql.util.express.ExpressRunner;
 import com.yomahub.liteflow.core.NodeComponent;
 import lombok.extern.slf4j.Slf4j;
-import utils.NumberUtil;
-import utils.PreconditionUtil;
+import com.example.common.utils.NumberUtil;
+import com.example.common.utils.PreconditionUtil;
 
 import java.math.BigDecimal;
 import java.util.Map;

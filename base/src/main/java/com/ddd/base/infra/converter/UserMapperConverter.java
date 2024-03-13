@@ -1,6 +1,6 @@
 package com.ddd.base.infra.converter;
 
-import auth.UserIdentityRole;
+import com.example.common.auth.UserIdentityRole;
 import com.ddd.base.domain.aggregate.user.User;
 import com.ddd.base.domain.aggregate.user.UserIdentity;
 import com.ddd.base.infra.persistence.po.UserIdentityPO;

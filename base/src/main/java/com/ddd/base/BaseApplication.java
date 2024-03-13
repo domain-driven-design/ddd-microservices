@@ -1,7 +1,7 @@
 package com.ddd.base;
 
-import enabler.EnableAuthService;
-import enabler.EnableBusinessRule;
+import com.example.common.enabler.EnableAuthService;
+import com.example.common.enabler.EnableBusinessRule;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

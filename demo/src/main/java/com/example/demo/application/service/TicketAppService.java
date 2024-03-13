@@ -1,6 +1,6 @@
 package com.example.demo.application.service;
 
-import auth.AuthService;
+import com.example.common.auth.AuthService;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.demo.application.assembler.TicketAssembler;
@@ -14,8 +14,7 @@ import com.example.demo.infrastructure.persistence.mapper.query.TicketQueryMappe
 import com.example.demo.infrastructure.persistence.po.TicketPO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import utils.IdUtil;
-import utils.page.PageResponse;
+import com.example.common.utils.page.PageResponse;
 
 @AllArgsConstructor
 @Service

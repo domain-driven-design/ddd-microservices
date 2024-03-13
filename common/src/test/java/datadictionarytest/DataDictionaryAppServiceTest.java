@@ -1,8 +1,8 @@
 package datadictionarytest;
 
-import datadictionary.DataDictionaryConfig;
-import datadictionary.DataDictionaryResponse;
-import datadictionary.application.DataDictionaryAppService;
+import com.example.common.datadictionary.DataDictionaryConfig;
+import com.example.common.datadictionary.DataDictionaryResponse;
+import com.example.common.datadictionary.application.DataDictionaryAppService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

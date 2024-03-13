@@ -1,7 +1,7 @@
 package com.example.calculation.application.args;
 
 
-import bizidgenerator.domain.BizType;
+import com.example.common.bizidgenerator.domain.BizType;
 import com.example.calculation.domain.aggregate.AbstractCalculationData;
 import com.example.calculation.domain.aggregate.CalculationMode;
 import lombok.AllArgsConstructor;

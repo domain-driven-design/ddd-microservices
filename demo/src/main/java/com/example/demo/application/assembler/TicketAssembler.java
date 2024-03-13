@@ -7,7 +7,7 @@ import com.example.demo.infrastructure.persistence.po.TicketPO;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
-import utils.page.PageResponse;
+import com.example.common.utils.page.PageResponse;
 
 @Mapper(componentModel = "spring", typeConversionPolicy = ReportingPolicy.IGNORE, uses = GeneralAssembler.class)
 public interface TicketAssembler {

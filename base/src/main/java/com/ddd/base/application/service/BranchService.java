@@ -1,6 +1,6 @@
 package com.ddd.base.application.service;
 
-import auth.AuthService;
+import com.example.common.auth.AuthService;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ddd.base.application.assembler.BranchAssembler;
@@ -14,7 +14,7 @@ import com.ddd.base.infra.persistence.po.BranchPO;
 import lombok.AllArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
-import utils.page.PageResponse;
+import com.example.common.utils.page.PageResponse;
 
 @Service
 @AllArgsConstructor

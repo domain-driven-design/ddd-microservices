@@ -1,18 +1,17 @@
 package com.ddd.base.application.dto;
 
-import auth.UserContext;
+import com.example.common.auth.UserContext;
 import com.ddd.base.domain.aggregate.user.User;
 import com.ddd.base.domain.aggregate.user.UserIdentity;
-import auth.UserIdentityRole;
+import com.example.common.auth.UserIdentityRole;
 import lombok.Data;
-import utils.IdUtil;
+import com.example.common.utils.IdUtil;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 
 @Data

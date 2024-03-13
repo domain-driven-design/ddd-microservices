@@ -2,8 +2,8 @@ package datadictionarytest;
 
 
 import common.DemoStatus;
-import datadictionary.DataDictionaryType;
-import datadictionary.Description;
+import com.example.common.datadictionary.DataDictionaryType;
+import com.example.common.datadictionary.Description;
 
 public enum DataDictionaryDemo implements DataDictionaryType {
     STATUS_DEMO(DemoStatus.class, "状态");

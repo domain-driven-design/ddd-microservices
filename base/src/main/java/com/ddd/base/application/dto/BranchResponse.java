@@ -1,7 +1,6 @@
 package com.ddd.base.application.dto;
 
-import domain.AbstractResponse;
-import lombok.Builder;
+import com.example.common.domain.AbstractResponse;
 import lombok.Data;
 import lombok.experimental.SuperBuilder;
 

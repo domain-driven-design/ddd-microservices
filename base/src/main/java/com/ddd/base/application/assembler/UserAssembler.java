@@ -10,7 +10,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
-import utils.page.PageResponse;
+import com.example.common.utils.page.PageResponse;
 
 import java.util.List;
 

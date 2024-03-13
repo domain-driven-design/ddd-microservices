@@ -1,6 +1,6 @@
 package com.example.calculation.domain.aggregate;
 
-import bizidgenerator.domain.BizType;
+import com.example.common.bizidgenerator.domain.BizType;
 import lombok.Builder;
 import lombok.Data;
 

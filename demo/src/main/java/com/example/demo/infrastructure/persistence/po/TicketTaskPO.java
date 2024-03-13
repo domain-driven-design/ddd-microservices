@@ -1,7 +1,7 @@
 package com.example.demo.infrastructure.persistence.po;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import domain.AbstractPO;
+import com.example.common.domain.AbstractPO;
 import lombok.Data;
 
 @Data

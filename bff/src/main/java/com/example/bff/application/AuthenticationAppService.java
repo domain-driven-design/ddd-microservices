@@ -2,7 +2,7 @@ package com.example.bff.application;
 
 import com.example.bff.application.dto.UserLoginCommand;
 import com.example.bff.application.dto.UserLoginResponse;
-import auth.UserContext;
+import com.example.common.auth.UserContext;
 import com.example.bff.infrastructure.api.UserClient;
 import com.example.bff.infrastructure.api.dto.UserQuery;
 import com.example.bff.infrastructure.api.dto.UserResult;
@@ -10,8 +10,8 @@ import com.example.bff.utils.JwtUtil;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import utils.ResponseEntityUtil;
-import utils.page.PageResult;
+import com.example.common.utils.ResponseEntityUtil;
+import com.example.common.utils.page.PageResult;
 
 import java.util.List;
 

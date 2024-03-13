@@ -1,7 +1,7 @@
 package com.example.calculation.infrastructure.util;
 
-import businessrule.BusinessRuleProvider;
-import businessrule.IBusinessRule;
+import com.example.common.businessrule.BusinessRuleProvider;
+import com.example.common.businessrule.IBusinessRule;
 import com.example.calculation.domain.aggregate.CalculationExpression;
 import com.example.calculation.domain.aggregate.CalculationMode;
 import com.fasterxml.jackson.core.type.TypeReference;

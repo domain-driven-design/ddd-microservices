@@ -1,10 +1,10 @@
 package com.example.bff.utils;
 
-import auth.UserContext;
+import com.example.common.auth.UserContext;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import utils.JacksonUtil;
+import com.example.common.utils.JacksonUtil;
 
 import java.util.Date;
 

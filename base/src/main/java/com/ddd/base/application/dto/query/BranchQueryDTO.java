@@ -2,7 +2,7 @@ package com.ddd.base.application.dto.query;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import utils.page.PageQuery;
+import com.example.common.utils.page.PageQuery;
 
 
 @Data

@@ -3,11 +3,10 @@ package com.ddd.base.application.dto;
 import com.ddd.base.domain.aggregate.branch.Branch;
 import lombok.Builder;
 import lombok.Data;
-import utils.IdUtil;
+import com.example.common.utils.IdUtil;
 
 import javax.validation.constraints.NotBlank;
 import java.time.OffsetDateTime;
-import java.util.UUID;
 
 
 @Data

@@ -1,10 +1,10 @@
 package com.example.demo;
 
 import com.example.calculation.infrastructure.util.EnableCalculation;
-import enabler.EnableAuthService;
-import enabler.EnableBusinessRule;
-import enabler.EnableDataDictionary;
-import enabler.EnableDistributeLock;
+import com.example.common.enabler.EnableAuthService;
+import com.example.common.enabler.EnableBusinessRule;
+import com.example.common.enabler.EnableDataDictionary;
+import com.example.common.enabler.EnableDistributeLock;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

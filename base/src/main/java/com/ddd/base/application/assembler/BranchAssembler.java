@@ -6,7 +6,7 @@ import com.ddd.base.domain.aggregate.branch.Branch;
 import com.ddd.base.infra.persistence.po.BranchPO;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
-import utils.page.PageResponse;
+import com.example.common.utils.page.PageResponse;
 
 @Mapper(componentModel = "spring", typeConversionPolicy = ReportingPolicy.IGNORE, uses = GeneralAssembler.class)
 public interface BranchAssembler {

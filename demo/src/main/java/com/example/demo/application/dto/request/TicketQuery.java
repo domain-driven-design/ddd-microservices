@@ -2,7 +2,7 @@ package com.example.demo.application.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import utils.page.PageQuery;
+import com.example.common.utils.page.PageQuery;
 
 @Data
 @AllArgsConstructor

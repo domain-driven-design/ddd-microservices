@@ -1,9 +1,9 @@
 package businessruletest;
 
-import businessrule.BusinessRuleConfig;
-import businessrule.BusinessRuleProvider;
-import businessrule.BusinessRuleResponse;
-import businessrule.application.BusinessRuleAppService;
+import com.example.common.businessrule.BusinessRuleConfig;
+import com.example.common.businessrule.BusinessRuleProvider;
+import com.example.common.businessrule.BusinessRuleResponse;
+import com.example.common.businessrule.application.BusinessRuleAppService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

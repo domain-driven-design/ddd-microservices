@@ -1,6 +1,6 @@
 package com.ddd.base.domain.aggregate.user;
 
-import domain.AbstractEntity;
+import com.example.common.domain.AbstractEntity;
 import lombok.Getter;
 import lombok.experimental.SuperBuilder;
 

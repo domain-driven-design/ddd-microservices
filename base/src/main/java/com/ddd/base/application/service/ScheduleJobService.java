@@ -1,6 +1,6 @@
 package com.ddd.base.application.service;
 
-import businessrule.BusinessRuleProvider;
+import com.example.common.businessrule.BusinessRuleProvider;
 import com.ddd.base.domain.aggregate.BusinessRule;
 import com.ddd.base.domain.aggregate.scheduler.ScheduleJobRule;
 import com.ddd.base.infra.config.ServerUrlConfig;

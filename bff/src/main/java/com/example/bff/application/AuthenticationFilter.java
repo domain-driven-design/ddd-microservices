@@ -1,6 +1,6 @@
 package com.example.bff.application;
 
-import auth.UserContext;
+import com.example.common.auth.UserContext;
 import io.jsonwebtoken.SignatureException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -10,7 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
-import utils.JacksonUtil;
+import com.example.common.utils.JacksonUtil;
 
 @Component
 @AllArgsConstructor

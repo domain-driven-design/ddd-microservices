@@ -1,7 +1,7 @@
 package com.ddd.base.application.service;
 
-import auth.AuthService;
-import auth.UserContext;
+import com.example.common.auth.AuthService;
+import com.example.common.auth.UserContext;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ddd.base.application.assembler.OperationLogAssembler;
@@ -16,7 +16,7 @@ import lombok.AllArgsConstructor;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
-import utils.page.PageResponse;
+import com.example.common.utils.page.PageResponse;
 
 @Service
 @AllArgsConstructor
