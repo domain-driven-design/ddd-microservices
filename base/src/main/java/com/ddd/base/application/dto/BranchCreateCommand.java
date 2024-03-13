@@ -3,6 +3,7 @@ package com.ddd.base.application.dto;
 import com.ddd.base.domain.aggregate.branch.Branch;
 import lombok.Builder;
 import lombok.Data;
+import utils.IdUtil;
 
 import javax.validation.constraints.NotBlank;
 import java.time.OffsetDateTime;
@@ -27,7 +28,7 @@ public class BranchCreateCommand {
 
     public Branch toEntity(String userId) {
         return Branch.builder()
-                .id(UUID.randomUUID().toString())
+                .id(IdUtil.uuid())
                 .parentId(this.parentId)
                 .name(this.name)
                 .l1BranchId(this.l1BranchId)

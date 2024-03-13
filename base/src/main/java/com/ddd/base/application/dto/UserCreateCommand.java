@@ -5,6 +5,7 @@ import com.ddd.base.domain.aggregate.user.User;
 import com.ddd.base.domain.aggregate.user.UserIdentity;
 import auth.UserIdentityRole;
 import lombok.Data;
+import utils.IdUtil;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -24,8 +25,8 @@ public class UserCreateCommand {
     private List<UserIdentityRole> roles;
 
     public User toEntity(UserContext userContext) {
-        String identityId = UUID.randomUUID().toString();
-        String id = UUID.randomUUID().toString();
+        String identityId = IdUtil.uuid();
+        String id = IdUtil.uuid();
 
         UserIdentity userIdentity = UserIdentity.builder()
                 .id(identityId)

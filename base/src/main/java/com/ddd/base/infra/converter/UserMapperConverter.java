@@ -1,4 +1,4 @@
-package com.ddd.base.infra.assembler;
+package com.ddd.base.infra.converter;
 
 import auth.UserIdentityRole;
 import com.ddd.base.domain.aggregate.user.User;
@@ -12,7 +12,7 @@ import org.mapstruct.ReportingPolicy;
 import java.util.List;
 
 @Mapper(componentModel = "spring", typeConversionPolicy = ReportingPolicy.IGNORE)
-public interface UserMapperAssembler {
+public interface UserMapperConverter {
 
     User toEntity(UserPO userPO);
 

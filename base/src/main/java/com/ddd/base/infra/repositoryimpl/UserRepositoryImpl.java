@@ -5,7 +5,7 @@ import com.ddd.base.domain.aggregate.user.User;
 import com.ddd.base.domain.aggregate.user.UserIdentity;
 import auth.UserIdentityRole;
 import com.ddd.base.domain.repository.UserRepository;
-import com.ddd.base.infra.assembler.UserMapperAssembler;
+import com.ddd.base.infra.converter.UserMapperConverter;
 import com.ddd.base.infra.persistence.mapper.UserIdentityMapper;
 import com.ddd.base.infra.persistence.mapper.UserIdentityRoleMapper;
 import com.ddd.base.infra.persistence.mapper.UserMapper;
@@ -27,7 +27,7 @@ public class UserRepositoryImpl implements UserRepository {
     private final UserMapper userMapper;
     private final UserIdentityMapper userIdentityMapper;
     private final UserIdentityRoleMapper userIdentityRoleMapper;
-    private final UserMapperAssembler assembler;
+    private final UserMapperConverter assembler;
 
     @Override
     public Optional<User> find(@NotBlank String id) {

@@ -2,7 +2,7 @@ package com.ddd.base.infra.repositoryimpl;
 
 import com.ddd.base.domain.aggregate.branch.Branch;
 import com.ddd.base.domain.repository.BranchRepository;
-import com.ddd.base.infra.assembler.BranchMapperAssembler;
+import com.ddd.base.infra.converter.BranchMapperConverter;
 import com.ddd.base.infra.persistence.mapper.BranchMapper;
 import com.ddd.base.infra.persistence.po.BranchPO;
 import lombok.AllArgsConstructor;
@@ -15,7 +15,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class BranchRepositoryImpl implements BranchRepository {
     private final BranchMapper branchMapper;
-    private final BranchMapperAssembler assembler;
+    private final BranchMapperConverter assembler;
 
     @Override
     public void create(Branch branch) {
