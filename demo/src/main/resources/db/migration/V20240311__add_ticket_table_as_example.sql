@@ -9,9 +9,10 @@ CREATE TABLE ticket
     created_by   varchar(64) collate utf8mb4_bin    not null comment '创建人',
     created_time datetime default CURRENT_TIMESTAMP not null comment '创建时间',
     updated_by   varchar(64) collate utf8mb4_bin    not null comment '更新人',
-    updated_time datetime default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP comment '更新时间'
-        PRIMARY KEY (id)
+    updated_time datetime default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP comment '更新时间',
+    PRIMARY KEY (id)
 ) COMMENT '工单信息表' CHARSET = utf8mb4;
+
 
 CREATE TABLE ticket_task
 (
@@ -25,8 +26,9 @@ CREATE TABLE ticket_task
     created_by        varchar(64) collate utf8mb4_bin    not null comment '创建人',
     created_time      datetime default CURRENT_TIMESTAMP not null comment '创建时间',
     updated_by        varchar(64) collate utf8mb4_bin    not null comment '更新人',
-    updated_time      datetime default CURRENT_TIMESTAMP not null on update,
-    CURRENT_TIMESTAMP comment '更新时间',
+    updated_time      datetime default CURRENT_TIMESTAMP not null on update
+        CURRENT_TIMESTAMP comment '更新时间',
     due_time          DATETIME NULL COMMENT '截止时间',
     PRIMARY KEY (id)
 ) COMMENT '工单任务表' CHARSET = utf8mb4;
+

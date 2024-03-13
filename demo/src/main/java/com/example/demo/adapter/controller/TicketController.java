@@ -34,7 +34,7 @@ public class TicketController {
     }
 
     @GetMapping
-    public ResponseEntity<PageResponse<TicketResponse>> query(@RequestParam @Valid TicketQuery ticketQuery) {
+    public ResponseEntity<PageResponse<TicketResponse>> query(TicketQuery ticketQuery) {
         return ResponseEntity.ok(ticketAppService.query(ticketQuery));
     }
 

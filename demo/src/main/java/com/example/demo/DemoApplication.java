@@ -1,8 +1,8 @@
 package com.example.demo;
 
+import com.example.calculation.infrastructure.util.EnableCalculation;
 import enabler.EnableAuthService;
 import enabler.EnableBusinessRule;
-import com.example.calculation.infrastructure.util.EnableCalculation;
 import enabler.EnableDataDictionary;
 import enabler.EnableDistributeLock;
 import org.mybatis.spring.annotation.MapperScan;
@@ -15,7 +15,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @EnableAuthService
 @EnableDistributeLock
 @EnableDataDictionary
-@MapperScan(basePackages = {"com.example.demo.infrastructure", "com.example.calculation.infrastructure"})
+@MapperScan(basePackages = {
+        "com.example.demo.infrastructure", "com.example.calculation.infrastructure"
+})
 public class DemoApplication {
 
     public static void main(String[] args) {
