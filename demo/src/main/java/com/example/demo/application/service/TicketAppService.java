@@ -16,6 +16,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import com.example.common.utils.page.PageResponse;
 
+import java.util.Objects;
+
 @AllArgsConstructor
 @Service
 public class TicketAppService {
@@ -33,7 +35,7 @@ public class TicketAppService {
 
     public PageResponse<TicketResponse> query(TicketQuery ticketQuery) {
         LambdaQueryWrapper<TicketPO> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.like(TicketPO::getTitle, ticketQuery.getTitle());
+        queryWrapper.like(Objects.nonNull(ticketQuery.getTitle()), TicketPO::getTitle, ticketQuery.getTitle());
         Page<TicketPO> page = new Page<>(ticketQuery.getPageNumber(), ticketQuery.getPageSize());
 
         Page<TicketPO> poPage = ticketQueryMapper.selectPage(page, queryWrapper);
