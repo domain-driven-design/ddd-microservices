@@ -1,10 +1,13 @@
 package com.ddd.base.application.dto;
 
+import domain.AbstractResponse;
+import lombok.Builder;
 import lombok.Data;
+import lombok.experimental.SuperBuilder;
 
 @Data
-public class BranchResponse {
-    private String id;
+@SuperBuilder
+public class BranchResponse extends AbstractResponse {
     private String parentId;
     private String name;
     private String l1BranchId;

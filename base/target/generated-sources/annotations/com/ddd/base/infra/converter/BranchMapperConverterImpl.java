@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-03-13T01:04:05+0800",
+    date = "2024-03-13T10:04:18+0800",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.10 (Oracle Corporation)"
 )
 @Component
@@ -46,8 +46,8 @@ public class BranchMapperConverterImpl implements BranchMapperConverter {
         BranchBuilder<?, ?> branch = Branch.builder();
 
         branch.id( branchPO.getId() );
-        branch.createdBy( branchPO.getCreatedBy() );
         branch.createdTime( branchPO.getCreatedTime() );
+        branch.createdBy( branchPO.getCreatedBy() );
         branch.updatedBy( branchPO.getUpdatedBy() );
         branch.updatedTime( branchPO.getUpdatedTime() );
         branch.parentId( branchPO.getParentId() );

@@ -1,6 +1,6 @@
 package com.ddd.base.domain.aggregate.user;
 
-import audit.AggregateAudit;
+import domain.AbstractEntity;
 import lombok.Getter;
 import lombok.experimental.SuperBuilder;
 
@@ -10,7 +10,7 @@ import java.util.Objects;
 
 @Getter
 @SuperBuilder
-public class User extends AggregateAudit {
+public class User extends AbstractEntity {
     private String name;
     private UserIdentity currentIdentity;
     private String abnormalBatch;
@@ -34,7 +34,7 @@ public class User extends AggregateAudit {
         this.status = "DISABLE";
         this.maintainBy = userId;
         this.maintainTime = OffsetDateTime.now();
-        super.updatedAudit(userId);
+        super.update(userId);
 
     }
 
@@ -45,7 +45,7 @@ public class User extends AggregateAudit {
         this.status = "NORMAL";
         this.maintainBy = userId;
         this.maintainTime = OffsetDateTime.now();
-        super.updatedAudit(userId);
+        super.update(userId);
     }
 
     public void switchIdentity(String identityId, String userId) {
@@ -55,6 +55,6 @@ public class User extends AggregateAudit {
         this.currentIdentity = this.userIdentities.stream().filter(identity ->
                 Objects.equals(identity.getId(), identityId)).findFirst().orElse(null);
 
-        super.updatedAudit(userId);
+        super.update(userId);
     }
 }
