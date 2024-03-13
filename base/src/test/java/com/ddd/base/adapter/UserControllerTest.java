@@ -1,5 +1,7 @@
 package com.ddd.base.adapter;
 
+import auth.AuthService;
+import auth.UserContext;
 import com.ddd.base.TestBase;
 import com.ddd.base.application.dto.query.UserQueryDTO;
 import com.ddd.base.infra.persistence.mapper.UserMapper;
@@ -9,6 +11,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import utils.IdUtil;
+import utils.JacksonUtil;
 
 import java.time.OffsetDateTime;
 
@@ -24,7 +28,7 @@ class UserControllerTest extends TestBase {
     @Test
     void should_query_user_page_successfully() {
         UserPO userPO = new UserPO();
-        userPO.setId("1");
+        userPO.setId(IdUtil.uuid());
         userPO.setName("John Doe");
         userPO.setCurrentIdentityId("identity-123");
         userPO.setStatus("Active");
@@ -36,14 +40,15 @@ class UserControllerTest extends TestBase {
         userPO.setCreatedTime(OffsetDateTime.now());
         userPO.setUpdatedBy("testSetup");
         userPO.setUpdatedTime(OffsetDateTime.now());
-
         userMapper.insert(userPO);
+
         UserQueryDTO userQuery = new UserQueryDTO();
         userQuery.setId("1");
 
+
         Response response = given()
+                .header(USER_CONTEXT, getUserContextString())
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
-                .queryParams("id", "1")
                 .when()
                 .get("/users")
                 .then()

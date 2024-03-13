@@ -1,9 +1,10 @@
 spring:
   datasource:
-    jdbc-url: jdbc:mysql://localhost:3308/ddd-microservice-base
+    url: jdbc:mysql://localhost:3308/ddd-microservice-base?useSSL=false&serverTimezone=UTC
     username: root
     password: root
-    driver-class-name: org.mariadb.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
 logging:
   level:
     ch:

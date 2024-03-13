@@ -9,61 +9,110 @@ import org.dbunit.dataset.xml.FlatXmlDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.dbunit.operation.DatabaseOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.EncodedResource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceUtils;
+import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
+import org.springframework.jdbc.datasource.init.ScriptUtils;
 import org.springframework.stereotype.Service;
 
 import javax.sql.DataSource;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Objects;
 
 @Service
 public class ResetDbService {
-
-    private static IDatabaseConnection connection;
 
     @Autowired
     private DataSource dataSource;
     private File tempFile;
 
-    public void backup() throws Exception {
-        this.getConnection();
+    public void backup() {
         this.backupCustom();
     }
 
-    public void rollback() throws Exception {
-        this.reset();
-        this.closeConnection();
+    public void rollback() {
+        reset();
     }
 
     protected void backupCustom() {
+        tempFile = new File("temp.xml");
+        IDatabaseConnection connection = null;
         try {
+            connection = getConnection();
             QueryDataSet queryDataSet = new QueryDataSet(connection);
-            queryDataSet.addTable("user");
-            tempFile = new File("temp.xml");
-            FlatXmlDataSet.write(queryDataSet, new FileWriter(tempFile), "UTF-8");
+            try (FileWriter writer = new FileWriter(tempFile)) {
+                FlatXmlDataSet.write(queryDataSet, writer, "UTF-8");
+            }
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            closeConnection(connection);
         }
     }
 
-    void getConnection() throws DatabaseUnitException {
-        connection = new DatabaseConnection(DataSourceUtils.getConnection(dataSource));
+    protected IDatabaseConnection getConnection() throws Exception {
+        createSchema(dataSource);
+        return new DatabaseConnection(DataSourceUtils.getConnection(dataSource));
     }
 
-    protected void reset() throws FileNotFoundException, DatabaseUnitException, SQLException {
-        FlatXmlDataSetBuilder builder = new FlatXmlDataSetBuilder();
-        builder.setColumnSensing(true);
-        IDataSet dataSet = builder.build(new FileInputStream(tempFile));
-
-        DatabaseOperation.CLEAN_INSERT.execute(connection, dataSet);
+    protected void reset() {
+        IDatabaseConnection connection = null;
+        try {
+            connection = getConnection();
+            FlatXmlDataSetBuilder builder = new FlatXmlDataSetBuilder();
+            builder.setColumnSensing(true);
+            IDataSet dataSet = builder.build(new FileInputStream(tempFile));
+            DatabaseOperation.CLEAN_INSERT.execute(connection, dataSet);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection(connection);
+        }
     }
 
-    protected void closeConnection() throws SQLException {
+    private void closeConnection(IDatabaseConnection connection) {
         if (connection != null) {
-            connection.close();
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            if (tempFile != null && tempFile.exists()) {
+                tempFile.delete();
+            }
         }
     }
+
+    public void createSchema(DataSource dataSource) throws SQLException, IOException {
+        PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+        Resource[] resources = resolver.getResources("classpath:/db/*.sql");
+
+        for (Resource resource : resources) {
+            String tableName = Objects.requireNonNull(resource.getFilename()).replace(".sql", "");
+            if (!tableExists(dataSource, tableName)) {
+                ResourceDatabasePopulator databasePopulator = new ResourceDatabasePopulator(resource);
+                databasePopulator.execute(dataSource);
+            }
+        }
+    }
+
+    private boolean tableExists(DataSource dataSource, String tableName) throws SQLException {
+        try (Connection conn = dataSource.getConnection()) {
+            DatabaseMetaData dbMetaData = conn.getMetaData();
+            try (ResultSet rs = dbMetaData.getTables(null, null, tableName, null)) {
+                return rs.next();
+            }
+        }
+    }
+
 }
