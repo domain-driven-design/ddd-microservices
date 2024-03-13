@@ -26,4 +26,10 @@ liteflow:
   enable: true
   rule-source: classpath*:/config/flow.xml
 
-data-dictionary: com/example/demo/domain
+
+data-dictionary:
+  classPath: com.example.demo.domain.aggregate.DemoDataDictionaryType
+
+logging:
+  level:
+    root: debug
