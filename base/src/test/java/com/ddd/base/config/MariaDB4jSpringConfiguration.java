@@ -23,7 +23,7 @@ public class MariaDB4jSpringConfiguration {
         MariaDB4jSpringService mariaDB4jSpringService = new MariaDB4jSpringService();
         mariaDB4jSpringService.getConfiguration().addArg("--user=root");
         mariaDB4jSpringService.getConfiguration().addArg("--character-set-server=utf8");
-        mariaDB4jSpringService.getConfiguration().setPort(0);
+        mariaDB4jSpringService.getConfiguration().setPort(3389);
         try {
             mariaDB4jSpringService.start(); // Explicitly start MariaDB4j
         } catch (Exception e) {

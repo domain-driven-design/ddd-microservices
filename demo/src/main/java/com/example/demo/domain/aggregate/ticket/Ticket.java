@@ -21,4 +21,8 @@ public class Ticket extends AbstractEntity {
         this.update(operatorId);
         return this;
     }
+
+    public void updateTasks(List<TicketTask> tasks){
+        this.tasks = tasks;
+    }
 }
