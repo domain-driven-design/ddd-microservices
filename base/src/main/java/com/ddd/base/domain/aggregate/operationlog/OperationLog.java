@@ -1,12 +1,12 @@
 package com.ddd.base.domain.aggregate.operationlog;
 
-import audit.AggregateAudit;
+import domain.AbstractEntity;
 import lombok.Getter;
 import lombok.experimental.SuperBuilder;
 
 @Getter
 @SuperBuilder
-public class OperationLog extends AggregateAudit {
+public class OperationLog extends AbstractEntity {
 
     private OperationType operationType;
     private OperationScene operationScene;
