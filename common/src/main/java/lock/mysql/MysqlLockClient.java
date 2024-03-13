@@ -5,12 +5,14 @@ import lock.mysql.repository.MysqlLockPO;
 import lock.mysql.repository.MysqlLockRepository;
 import lombok.RequiredArgsConstructor;
 import org.redisson.api.IdGenerator;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.time.OffsetDateTime;
 import java.util.Optional;
 
 @Service
+@Primary
 @RequiredArgsConstructor
 public class MysqlLockClient implements DistributeLockClient {
 

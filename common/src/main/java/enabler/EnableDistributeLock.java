@@ -1,6 +1,8 @@
 package enabler;
 
 import lock.DistributeLockAspect;
+import lock.mysql.MysqlLockClient;
+import lock.redis.RedisLockClient;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.Documented;
@@ -12,6 +14,6 @@ import java.lang.annotation.Target;
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Import({DistributeLockAspect.class})
+@Import({DistributeLockAspect.class, RedisLockClient.class, MysqlLockClient.class})
 public @interface EnableDistributeLock {
 }

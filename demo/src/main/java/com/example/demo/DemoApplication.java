@@ -13,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @EnableBusinessRule
 @EnableCalculation
 @EnableAuthService
+@EnableDistributeLock
 @EnableDataDictionary
 @MapperScan(basePackages = {"com.example.demo.infrastructure", "com.example.calculation.infrastructure"})
 public class DemoApplication {
