@@ -40,9 +40,10 @@ A: It's an open problem, currently we chose [TBD].
 
 # troubleshooting
 
-## libssl.1.0.0.dylib' (no such file) Problem 
+## libssl.1.0.0.dylib' (no such file) problem 
 
 > brew install rbenv/tap/openssl@1.0
+
 > ln -sfn /usr/local/Cellar/openssl@1.0/1.0.2u /usr/local/opt/openssl
 
 Hints: 1.0.2u could be different, put your right version.

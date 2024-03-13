@@ -1,4 +1,4 @@
-package com.ddd.base.config;
+package com.example.demo.config;
 
 import org.dbunit.database.DatabaseConnection;
 import org.dbunit.database.IDatabaseConnection;
