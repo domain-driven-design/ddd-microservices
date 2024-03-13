@@ -36,3 +36,16 @@ A: It's an open problem, currently we chose [TBD].
   - 
 ## Testing
   - @Wanglu 
+
+
+# troubleshooting
+
+## libssl.1.0.0.dylib' (no such file) Problem 
+
+> brew install rbenv/tap/openssl@1.0
+> ln -sfn /usr/local/Cellar/openssl@1.0/1.0.2u /usr/local/opt/openssl
+
+Hints: 1.0.2u could be different, put your right version.
+
+https://stackoverflow.com/questions/59155991/downgrade-to-openssl-version-1-0-from-1-1-on-mac
+https://stackoverflow.com/questions/59006602/dyld-library-not-loaded-usr-local-opt-openssl-lib-libssl-1-0-0-dylib
