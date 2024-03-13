@@ -2,9 +2,14 @@ package com.example.common.domain;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.OffsetDateTime;
 
+
+@Data
 public abstract class AbstractPO {
     private String id;
     @TableField(fill = FieldFill.INSERT)
@@ -18,25 +23,5 @@ public abstract class AbstractPO {
 
     public AbstractPO() {
 
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public OffsetDateTime getCreatedTime() {
-        return createdTime;
-    }
-
-    public String getCreatedBy() {
-        return createdBy;
-    }
-
-    public String getUpdatedBy() {
-        return updatedBy;
-    }
-
-    public OffsetDateTime getUpdatedTime() {
-        return updatedTime;
     }
 }

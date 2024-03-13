@@ -37,10 +37,8 @@ public class UserContextInitializationFilter implements Filter {
                 // 3. put it to UserContextHolder object
                 UserContextHolder.setContext(userContext);
             }
-        } finally {
+        } catch (Exception exception) {
             UserContextHolder.clear();
-            httpResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            httpResponse.setContentType("application/json");
         }
         // 4. Proceed with the request
         chain.doFilter(request, response);
