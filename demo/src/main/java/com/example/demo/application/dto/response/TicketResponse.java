@@ -1,11 +1,12 @@
 package com.example.demo.application.dto.response;
 
+import com.example.common.domain.AbstractResponse;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
-public class TicketResponse {
+@AllArgsConstructor
+public class TicketResponse extends AbstractResponse {
     private String title;
     private String description;
     private String assigneeId;

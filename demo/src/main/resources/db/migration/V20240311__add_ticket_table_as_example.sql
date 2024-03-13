@@ -3,7 +3,6 @@ CREATE TABLE ticket
     id           VARCHAR(64)                        NOT NULL COMMENT '工单 ID',
     title        VARCHAR(128)                       NOT NULL COMMENT '工单标题',
     description  TEXT                               NOT NULL COMMENT '工单描述',
-    creator_id   VARCHAR(64)                        NOT NULL COMMENT '创建者 ID',
     assignee_id  VARCHAR(64) NULL COMMENT '指派者 ID',
     status       ENUM('TODO', 'DOING', 'DONE') NOT NULL COMMENT '工单状态',
     created_by   varchar(64) collate utf8mb4_bin    not null comment '创建人',

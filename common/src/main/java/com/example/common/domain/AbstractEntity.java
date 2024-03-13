@@ -13,11 +13,11 @@ import java.util.Objects;
 @Getter
 @AllArgsConstructor
 public abstract class AbstractEntity implements Serializable {
-    protected final String id;
-    protected OffsetDateTime createdTime = OffsetDateTime.now();
-    protected String createdBy;
-    protected String updatedBy;
-    protected OffsetDateTime updatedTime = OffsetDateTime.now();
+    private final String id;
+    private OffsetDateTime createdTime = OffsetDateTime.now();
+    private String createdBy;
+    private String updatedBy;
+    private OffsetDateTime updatedTime = OffsetDateTime.now();
 
     public void update(String operatorId) {
         this.updatedBy = operatorId;
