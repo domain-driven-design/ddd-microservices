@@ -33,14 +33,12 @@ class BusinessRuleProviderTest {
 
     @Test
     void should_get_business_rule_success() {
-        // 配置
+        // Config cache
         when(businessRuleConfig.isEnableCache()).thenReturn(true);
 
-        // 执行测试的业务逻辑
         MockRuleResponse response = businessRuleProvider.getBusinessRule(
                 "biz_mock", new TypeReference<>(){});
 
-        // 验证结果
         assertNotNull(response);
         assertEquals("test", response.getType());
         assertEquals("this is a test", response.getDescription());

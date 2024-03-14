@@ -1,6 +1,7 @@
 package com.example.demo.config;
 
 import ch.vorburger.exec.ManagedProcessException;
+import ch.vorburger.mariadb4j.DB;
 import ch.vorburger.mariadb4j.springframework.MariaDB4jSpringService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
@@ -19,18 +20,10 @@ public class MariaDB4jSpringConfiguration {
     private DataSourceProperties dataSourceProperties;
 
     @Bean
-    public MariaDB4jSpringService mariaDB4j() {
-        MariaDB4jSpringService mariaDB4jSpringService = new MariaDB4jSpringService();
-        mariaDB4jSpringService.getConfiguration().addArg("--user=root");
-        mariaDB4jSpringService.getConfiguration().addArg("--character-set-server=utf8");
-        mariaDB4jSpringService.getConfiguration().setPort(0);
-        try {
-            mariaDB4jSpringService.start(); // Explicitly start MariaDB4j
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new RuntimeException("Failed to start MariaDB4j", e);
-        }
-        return mariaDB4jSpringService;
+    public MariaDB4jSpringService mariaDB4j() throws ManagedProcessException {
+        DB db = DB.newEmbeddedDB(3306);
+        db.start();
+        return new MariaDB4jSpringService();
     }
 
     @Bean
@@ -38,11 +31,6 @@ public class MariaDB4jSpringConfiguration {
     public DataSource dataSource() throws ManagedProcessException {
         String dbname = UUID.randomUUID().toString().substring(0, 8);
         mariaDB4j().getDB().createDB(dbname);
-        return DataSourceBuilder.create()
-                .driverClassName(dataSourceProperties.getDriverClassName())
-                .url(mariaDB4j().getConfiguration().getURL(dbname))
-                .username(dataSourceProperties.getUsername())
-                .password(dataSourceProperties.getPassword())
-                .build();
+        return DataSourceBuilder.create().driverClassName(dataSourceProperties.getDriverClassName()).url(mariaDB4j().getConfiguration().getURL(dbname)).username(dataSourceProperties.getUsername()).password(dataSourceProperties.getPassword()).build();
     }
 }
