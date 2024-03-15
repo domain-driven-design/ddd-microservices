@@ -21,7 +21,7 @@ public class MariaDB4jSpringConfiguration {
 
     @Bean
     public MariaDB4jSpringService mariaDB4j() throws ManagedProcessException {
-        DB db = DB.newEmbeddedDB(3306);
+        DB db = DB.newEmbeddedDB(0);
         db.start();
         return new MariaDB4jSpringService();
     }
