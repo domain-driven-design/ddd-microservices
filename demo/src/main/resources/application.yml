@@ -12,6 +12,10 @@ spring:
     port: 6379
     redisson:
       file: classpath:redission.yml
+  cache:
+    type: caffeine
+    caffeine:
+      spec: maximumSize=500,expireAfterAccess=600s
 
   jpa:
     properties:
