@@ -7,6 +7,8 @@ public enum CalculationError implements IError {
 
     NO_MATCHED_CALCULATION_SERVICE("fail to find calculation service with mode {0}"),
     WRITE_FLOW_ERROR("fail to write flow into the target file {0}"),
+    GENERATE_DAG_ERROR("fail to create dag"),
+    GENERATE_FLOW_ERROR("fail to create flow"),
     ;
 
     private final String message;

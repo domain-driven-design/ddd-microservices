@@ -39,11 +39,19 @@ public class CalculationAppService {
         return service.execute(command);
     }
 
+    /**
+     * Generates a calculation flow based on the calculation mode and writes it to a file at the specified path
+     * @param mode      The calculation mode enum, specifying which type of calculation flow to generate
+     * @param flowPath  The path to the file where the calculation flow output will be written
+     */
     public void generateFlow(CalculationMode mode, String flowPath) {
         log.info("Start generating {} calculation flow ----->", mode);
+
         Dag graph = GraphUtil.generateDag(mode, expressionLoader);
-        String flow = FlowUtil.generateFlow(graph, mode.getCode());
+        String flow = FlowUtil.generateFlow(graph.topologicalSort(), mode.getCode());
+
         log.info("Start writing flow to file -----> \n{}", flow);
+
         try {
             File file = new File(flowPath);
             FileWriter writer = new FileWriter(file);
@@ -54,6 +62,7 @@ public class CalculationAppService {
             log.error("Fail to handle flow file -----> ", e);
             throw new SystemException(WRITE_FLOW_ERROR, flowPath);
         }
+
         log.info("calculation flow file generated successfully!");
     }
 
