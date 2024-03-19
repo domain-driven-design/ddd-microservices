@@ -58,7 +58,7 @@ class CalculationServiceTests {
         );
 
         // run the target method
-        calculationService.generateFlow(DemoCalculationMode.DEPOSIT, testFilePath.toAbsolutePath().toString());
+        calculationService.generateFlow(DemoCalculationMode.DEPOSIT, testFilePath.toAbsolutePath().toString(), false);
 
         // compare to the result
         String generatedContent = new String(Files.readAllBytes(testFilePath));

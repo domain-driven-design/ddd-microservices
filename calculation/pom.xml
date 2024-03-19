@@ -23,6 +23,7 @@
         <liteflow.version>2.10.6</liteflow.version>
         <mysql.version>8.0.29</mysql.version>
         <mybatis.plus.version>3.3.1</mybatis.plus.version>
+        <graphviz.version>0.18.1</graphviz.version>
     </properties>
 
     <dependencies>
@@ -65,6 +66,13 @@
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>${mybatis.plus.version}</version>
+        </dependency>
+
+        <!--    graph drawing tool    -->
+        <dependency>
+            <groupId>guru.nidi</groupId>
+            <artifactId>graphviz-java</artifactId>
+            <version>${graphviz.version}</version>
         </dependency>
 
         <dependency>

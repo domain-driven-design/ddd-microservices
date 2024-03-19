@@ -4,6 +4,7 @@ import com.example.common.error.BusinessException;
 import com.example.common.utils.JacksonUtil;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import lombok.Data;
 import org.springframework.util.CollectionUtils;
 
 import java.util.Comparator;
@@ -15,7 +16,7 @@ import java.util.stream.Collectors;
 
 import static com.example.calculation.domain.exception.CalculationError.FLOW_CYCLE_DETECTED;
 
-
+@Data
 public class Dag {
 
     private final Map<String, List<String>> graph = new HashMap<>();

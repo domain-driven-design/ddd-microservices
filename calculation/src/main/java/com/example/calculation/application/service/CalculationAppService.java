@@ -8,6 +8,7 @@ import com.example.calculation.infrastructure.util.AbstractExpressionLoader;
 import com.example.calculation.infrastructure.util.calculationflow.Dag;
 import com.example.calculation.infrastructure.util.calculationflow.FlowUtil;
 import com.example.calculation.infrastructure.util.calculationflow.GraphUtil;
+import com.example.calculation.infrastructure.util.calculationflow.PaintUtil;
 import com.example.common.error.ClientException;
 import com.example.common.error.SystemException;
 import lombok.RequiredArgsConstructor;
@@ -44,14 +45,17 @@ public class CalculationAppService {
      * @param mode      The calculation mode enum, specifying which type of calculation flow to generate
      * @param flowPath  The path to the file where the calculation flow output will be written
      */
-    public void generateFlow(CalculationMode mode, String flowPath) {
+    public void generateFlow(CalculationMode mode, String flowPath, boolean printGraph) {
         log.info("Start generating {} calculation flow ----->", mode);
-
         Dag graph = GraphUtil.generateDag(mode, expressionLoader);
         String flow = FlowUtil.generateFlow(graph.topologicalSort(), mode.getCode());
 
-        log.info("Start writing flow to file -----> \n{}", flow);
+        if (printGraph) {
+            log.info("Start drawing calculation flow ----->");
+            PaintUtil.printGraphImage(graph, flowPath);
+        }
 
+        log.info("Start writing flow to file -----> \n{}", flow);
         try {
             File file = new File(flowPath);
             FileWriter writer = new FileWriter(file);

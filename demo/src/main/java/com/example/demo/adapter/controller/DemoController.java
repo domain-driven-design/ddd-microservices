@@ -48,12 +48,15 @@ public class DemoController {
      * and a file path to generate a calculation flow
      * @param mode The calculation mode which determines the type of calculation flow to be created
      * @param path The filesystem path where the generated calculation flow will be saved
+     * @param createGraph A flag indicating whether a graph should also be created alongside the calculation flow
      * @return
      */
     @PostMapping("/flow")
     @ApiOperation("create calculation flow")
-    public ResponseEntity<String> generateFlow(@RequestParam DemoCalculationMode mode, @RequestParam String path) {
-        calculationAppService.generateFlow(mode, path);
+    public ResponseEntity<String> generateFlow(@RequestParam DemoCalculationMode mode,
+                                               @RequestParam String path,
+                                               @RequestParam(defaultValue = "false") Boolean printGraph) {
+        calculationAppService.generateFlow(mode, path, printGraph);
         return ResponseEntity.ok("Calculation flow generated successfully");
     }
 
