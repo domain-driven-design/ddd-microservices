@@ -51,7 +51,7 @@ class CalculationServiceTests {
                 "            )\n" +
                 "        )\n" +
                 "    </chain>\n" +
-                "</flow>";
+                "</flow>\n";
         // mock some methods
         when(expressionLoader.getLoadedExpression(any())).thenReturn(Map.of(
                 "benchmarkInterestRate", CalculationExpression.builder().componentName("benchmarkInterestRate").variables(List.of("proposedInterestRate")).build(),
@@ -60,7 +60,7 @@ class CalculationServiceTests {
 
         // run the target method
         FlowCreateCommand<DemoCalculationMode> command = FlowCreateCommand.<DemoCalculationMode>builder()
-                .mode(DemoCalculationMode.DEPOSIT).flowFilePath(testFilePath.toAbsolutePath().toString())
+                .mode(DemoCalculationMode.DEPOSIT).flowFilePath(testFilePath.toAbsolutePath().toString().replace(".xml", "")).printGraph(false)
                 .build();
         calculationService.generateFlow(command);
 
