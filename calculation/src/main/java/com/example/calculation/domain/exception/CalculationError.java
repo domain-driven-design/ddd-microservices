@@ -9,6 +9,7 @@ public enum CalculationError implements IError {
     WRITE_FLOW_ERROR("fail to write flow into the target file {0}"),
     GENERATE_DAG_ERROR("fail to create dag"),
     GENERATE_FLOW_ERROR("fail to create flow"),
+    FLOW_CYCLE_DETECTED("A cycle {0} is found when generating flow"),
     ;
 
     private final String message;

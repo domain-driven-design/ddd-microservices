@@ -1,9 +1,10 @@
 package com.example.calculation.infrastructure.util.calculationflow;
 
+import com.example.common.error.BusinessException;
+import com.example.common.utils.JacksonUtil;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import org.springframework.util.CollectionUtils;
-import com.example.common.utils.JacksonUtil;
 
 import java.util.Comparator;
 import java.util.HashMap;
@@ -11,6 +12,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import static com.example.calculation.domain.exception.CalculationError.FLOW_CYCLE_DETECTED;
 
 
 public class Dag {
@@ -45,14 +48,14 @@ public class Dag {
             updateResultAndReturnGraphFilterZeroInDegreeNodes(result, modifyGraph);
             int afterSize = modifyGraph.size();
             if (beforeSize == afterSize) {
-                throw new IllegalArgumentException(); //todo
+                throw new BusinessException(FLOW_CYCLE_DETECTED);
             }
         }
         if (result.size() != graph.size()) {
             Set<String> resultNodes = result.stream().map(NodeWithLevel::getNode).collect(Collectors.toSet());
             Set<String> allNodes = graph.keySet();
             allNodes.removeAll(resultNodes);
-            throw new IllegalArgumentException("has a cycle" + JacksonUtil.toJson(allNodes)); //todo
+            throw new BusinessException(FLOW_CYCLE_DETECTED, JacksonUtil.toJson(allNodes));
         }
         return result;
     }
