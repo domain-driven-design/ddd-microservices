@@ -20,21 +20,21 @@ public class PaintUtil {
 
     PaintUtil() {}
 
-    public static void printGraphImage(Dag graph, String flowPath) {
+    public static void printGraphImage(Dag graph, String flowFilePath) {
         List<LinkSource> links = new ArrayList<>();
         graph.getGraph().forEach((nodeName, edgeNames) -> {
             MutableNode node = Factory.mutNode(nodeName).addLink(edgeNames.toArray(String[]::new));
             links.add(node);
         });
 
-        Graph graphToPaint = Factory.graph("gg")
+        Graph graphToPaint = Factory.graph()
                 .directed()
                 .graphAttr()
                 .with(Rank.dir(Rank.RankDir.LEFT_TO_RIGHT))
                 .with(links);
 
         try {
-            Graphviz.fromGraph(graphToPaint).render(Format.PNG).toFile(new File(flowPath));
+            Graphviz.fromGraph(graphToPaint).render(Format.PNG).toFile(new File(flowFilePath));
         } catch (IOException e) {
             log.error("[printGraphImage] fail to print graph", e);
             throw new SystemException();

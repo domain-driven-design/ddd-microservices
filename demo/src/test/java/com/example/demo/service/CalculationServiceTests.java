@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.calculation.application.args.FlowCreateCommand;
 import com.example.calculation.application.service.CalculationAppService;
 import com.example.calculation.domain.aggregate.CalculationExpression;
 import com.example.demo.application.calculation.service.DemoExpressionLoader;
@@ -58,7 +59,10 @@ class CalculationServiceTests {
         );
 
         // run the target method
-        calculationService.generateFlow(DemoCalculationMode.DEPOSIT, testFilePath.toAbsolutePath().toString(), false);
+        FlowCreateCommand<DemoCalculationMode> command = FlowCreateCommand.<DemoCalculationMode>builder()
+                .mode(DemoCalculationMode.DEPOSIT).flowFilePath(testFilePath.toAbsolutePath().toString())
+                .build();
+        calculationService.generateFlow(command);
 
         // compare to the result
         String generatedContent = new String(Files.readAllBytes(testFilePath));

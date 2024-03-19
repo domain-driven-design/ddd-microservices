@@ -1,6 +1,7 @@
 package com.example.demo.adapter.controller;
 
 
+import com.example.calculation.application.args.FlowCreateCommand;
 import com.example.calculation.application.service.CalculationAppService;
 import com.example.common.lock.DistributeLock;
 import com.example.demo.application.calculation.args.DemoScheduleCommand;
@@ -46,17 +47,13 @@ public class DemoController {
     /**
      * A demo api used to show the use of generateFlow method, which accepts a calculation mode
      * and a file path to generate a calculation flow
-     * @param mode The calculation mode which determines the type of calculation flow to be created
-     * @param path The filesystem path where the generated calculation flow will be saved
-     * @param createGraph A flag indicating whether a graph should also be created alongside the calculation flow
-     * @return
+     * @param command object containing the information needed to generate the flow.
+     *                It should include a calculation mode (DemoCalculationMode), flow file path, and flow name
      */
     @PostMapping("/flow")
     @ApiOperation("create calculation flow")
-    public ResponseEntity<String> generateFlow(@RequestParam DemoCalculationMode mode,
-                                               @RequestParam String path,
-                                               @RequestParam(defaultValue = "false") Boolean printGraph) {
-        calculationAppService.generateFlow(mode, path, printGraph);
+    public ResponseEntity<String> generateFlow(@RequestBody FlowCreateCommand<DemoCalculationMode> command) {
+        calculationAppService.generateFlow(command);
         return ResponseEntity.ok("Calculation flow generated successfully");
     }
 
