@@ -13,8 +13,12 @@ import com.example.demo.domain.repository.TicketRepository;
 import com.example.demo.infrastructure.persistence.mapper.query.TicketQueryMapper;
 import com.example.demo.infrastructure.persistence.po.TicketPO;
 import lombok.AllArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import com.example.common.utils.page.PageResponse;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Objects;
 
@@ -42,11 +46,14 @@ public class TicketAppService {
         return ticketAssembler.toPageResponse(poPage);
     }
 
+    @Cacheable(cacheNames = "tickets", key = "#id", condition = "#id != null")
     public TicketResponse read(String id) {
         Ticket ticket = ticketRepository.find(id);
         return ticketAssembler.toResponse(ticket);
     }
 
+    @CachePut(cacheNames = "tickets", key = "#id")
+    @Transactional
     public void update(String id, UpdateTicketCommand updateTicketCommand) {
         String currentUserId = authService.currentUserId();
         Ticket ticket = ticketRepository.find(id);
@@ -54,6 +61,8 @@ public class TicketAppService {
         ticketRepository.update(ticket);
     }
 
+    @CacheEvict(cacheNames = "tickets", key = "#id")
+    @Transactional
     public void delete(String id) {
         ticketRepository.remove(id);
     }

@@ -12,8 +12,19 @@ spring:
     port: 6379
     redisson:
       file: classpath:redission.yml
+  jedis:
+    pool:
+      max-active: 8
+      max-idle: 8
+      min-idle: 0
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
   cache:
     type: caffeine
+    cache-names: tickets
     caffeine:
       spec: maximumSize=500,expireAfterAccess=600s
 
